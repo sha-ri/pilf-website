@@ -16,6 +16,17 @@ module.exports = function (PIL_CONTENT, ICON, opts) {
   var PHONE = '(407) 502-8068';
   var TEL = 'tel:14075028068';
 
+  // Intake template used on every general/free-consultation mailto: to info@.
+  var CONSULT_SUBJECT = 'Request for Initial Consultation';
+  var CONSULT_BODY = 'We look forward to learning more about your matter and how we may be able to assist.\r\n\r\n' +
+    'Please provide the following information to the best of your ability. If you do not know an answer, simply leave it blank.\r\n\r\n' +
+    'Name: \r\n\r\nPhone Number: \r\n\r\nEmail Address: \r\n\r\nAddress: \r\n\r\nType of Matter: \r\n\r\nDate of Incident, Loss, or Dispute: \r\n\r\n' +
+    'Location of Incident, Loss, or Dispute: \r\n\r\nBrief Description of What Happened: \r\n\r\nAdditional Information You Would Like Us to Know: \r\n\r\n' +
+    'Thank you for contacting propertyinsurance.law. A member of our team will respond within one business day.\r\n\r\n' +
+    'Please note that contacting our firm, submitting this information, or communicating with our office does not create an attorney-client relationship. An attorney-client relationship is established only after a representation agreement has been fully executed by both you and the firm.\r\n\r\n' +
+    'Thank you for reaching out. We look forward to speaking with you soon.';
+  var CONSULT_MAILTO = 'mailto:info@propertyinsurance.law?subject=' + encodeURIComponent(CONSULT_SUBJECT) + '&body=' + encodeURIComponent(CONSULT_BODY);
+
   // Conceptual paths used in blog-post SEO notes -> real site routes.
   var SEO_LINK_MAP = {
     '/water-damage-insurance-claims': 'claim:water',
@@ -400,7 +411,7 @@ module.exports = function (PIL_CONTENT, ICON, opts) {
       '<div><div style="font-family:var(--font-sans);font-size:13px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#fff;margin-bottom:16px">Contact</div>' +
       '<div style="display:flex;flex-direction:column;gap:12px;font-family:var(--font-sans);font-size:14.5px;color:rgba(255,255,255,0.7)">' +
       '<a href="' + TEL + '" style="display:flex;align-items:center;gap:9px;text-decoration:none;color:inherit">' + I('phone', 16) + PHONE + '</a>' +
-      '<a href="mailto:info@propertyinsurance.law" style="display:flex;align-items:center;gap:9px;text-decoration:none;color:inherit">' + I('mail', 16) + 'info@<b>propertyinsurance<span style="color:var(--color-primary)">.law</span></b></a>' +
+      '<a href="' + CONSULT_MAILTO + '" style="display:flex;align-items:center;gap:9px;text-decoration:none;color:inherit">' + I('mail', 16) + 'info@<b>propertyinsurance<span style="color:var(--color-primary)">.law</span></b></a>' +
       '<div style="display:flex;align-items:flex-start;gap:9px"><span style="margin-top:2px;display:flex">' + I('map-pin', 16) + '</span>941 W. Morse Blvd. Ste 100-585<br>Winter Park, FL 32789</div>' +
       '<div style="display:flex;align-items:center;gap:9px"><span style="display:flex">' + I('clock', 16) + '</span>Mon–Fri, 9:00 AM – 5:00 PM</div>' +
       '<div style="font-family:var(--font-sans);font-size:13.5px;color:rgba(255,255,255,0.55);margin-top:-6px;padding-left:25px">By Appointment Only</div>' +
@@ -829,7 +840,7 @@ module.exports = function (PIL_CONTENT, ICON, opts) {
       '<h2 style="font-family:var(--font-display);font-weight:600;font-size:26px;color:var(--color-ink);margin:0">' + o.state + '</h2>' +
       '<div style="display:flex;flex-direction:column;gap:14px">' +
       officeInfoRow('phone', 'Call us', o.phone, o.tel) +
-      officeInfoRow('mail', 'Email', 'info@<b>propertyinsurance<span style="color:var(--color-primary)">.law</span></b>', 'mailto:' + o.email) +
+      officeInfoRow('mail', 'Email', 'info@<b>propertyinsurance<span style="color:var(--color-primary)">.law</span></b>', CONSULT_MAILTO) +
       officeInfoRow('map-pin', 'Office', o.addressLines.join('<br>'), null) +
       '</div>' +
       '<div><div style="font-family:var(--font-sans);font-size:12px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--color-muted);margin-bottom:6px">Hours</div>' +
@@ -838,7 +849,7 @@ module.exports = function (PIL_CONTENT, ICON, opts) {
       '<div style="font-family:var(--font-sans);font-size:14.5px;color:var(--color-muted)">Hablamos español.</div>' +
       '<div style="display:flex;flex-direction:column;gap:10px">' +
       btn({ variant: 'accent', block: true, href: o.tel, label: 'Call Now' }) +
-      btn({ variant: 'secondary', block: true, href: 'mailto:' + o.email, label: 'Free Consultation' }) +
+      btn({ variant: 'secondary', block: true, href: CONSULT_MAILTO, label: 'Free Consultation' }) +
       btn({ variant: 'accent', block: true, href: o.retainHref, label: 'Retain Our Firm' }) +
       '</div></div>';
   }
