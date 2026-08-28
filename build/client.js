@@ -46,9 +46,58 @@
     els.forEach(function (el) { io.observe(el); });
   }
 
+  // Homepage "Recent Recovery" cards + testimonials are baked in at build time
+  // (a fixed pick, so every static page load looked identical). This picks a
+  // fresh random set client-side, same as the old SPA did on every load.
+  function pickN(arr, n) {
+    var idx = arr.map(function (_, i) { return i; });
+    for (var i = idx.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var t = idx[i]; idx[i] = idx[j]; idx[j] = t;
+    }
+    return idx.slice(0, n).map(function (i) { return arr[i]; });
+  }
+
+  function shuffleHome() {
+    var dataEl = document.getElementById('pil-shuffle-data');
+    if (!dataEl) return;
+    var data;
+    try { data = JSON.parse(dataEl.textContent); } catch (e) { return; }
+
+    var wins = pickN(data.caseResults || [], 2);
+    var winEls = document.querySelectorAll('.pil-hero-win, .pil-hero-win2');
+    winEls.forEach(function (el, i) {
+      if (!wins[i]) return;
+      var amtEl = el.querySelector('[data-role="amt"]');
+      var capEl = el.querySelector('[data-role="cap"]');
+      if (amtEl) amtEl.textContent = wins[i].amt;
+      if (capEl) capEl.textContent = wins[i].cap;
+    });
+
+    var grid = document.getElementById('pil-testi-grid');
+    if (grid && grid.children.length) {
+      var picks = pickN(data.testimonials || [], Math.min(grid.children.length, (data.testimonials || []).length));
+      for (var i = 0; i < grid.children.length && i < picks.length; i++) {
+        var card = grid.children[i];
+        var q = picks[i];
+        var quoteEl = card.querySelector('[data-role="quote"]');
+        var nameEl = card.querySelector('[data-role="name"]');
+        var claimEl = card.querySelector('[data-role="claim"]');
+        if (quoteEl) quoteEl.innerHTML = q.quote;
+        if (nameEl) nameEl.textContent = q.name;
+        if (claimEl) {
+          if (q.claim) { claimEl.textContent = q.claim; claimEl.style.display = ''; }
+          else { claimEl.textContent = ''; claimEl.style.display = 'none'; }
+        }
+      }
+    }
+  }
+
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', animateStats);
+    document.addEventListener('DOMContentLoaded', shuffleHome);
   } else {
     animateStats();
+    shuffleHome();
   }
 })();

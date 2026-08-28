@@ -436,8 +436,8 @@ module.exports = function (PIL_CONTENT, ICON, opts) {
       return '<div class="' + tone + '" style="position:absolute;z-index:3;' + pos + ';background:#fff;border:1px solid var(--color-hairline);border-radius:16px;box-shadow:var(--shadow-xl);padding:15px 20px;display:flex;align-items:center;gap:14px">' +
         '<div style="width:44px;height:44px;border-radius:12px;flex:none;background:var(--color-success-soft);color:var(--color-success);display:flex;align-items:center;justify-content:center">' + I('check', 23) + '</div>' +
         '<div><div style="font-family:var(--font-sans);font-size:10.5px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--color-success)">RECENT RECOVERY</div>' +
-        '<div style="font-family:var(--font-mono);font-size:23px;font-weight:600;color:var(--color-ink);line-height:1.15">' + amt + '</div>' +
-        '<div style="font-family:var(--font-sans);font-size:13px;color:var(--color-muted)">' + cap + '</div></div></div>';
+        '<div data-role="amt" style="font-family:var(--font-mono);font-size:23px;font-weight:600;color:var(--color-ink);line-height:1.15">' + amt + '</div>' +
+        '<div data-role="cap" style="font-family:var(--font-sans);font-size:13px;color:var(--color-muted)">' + cap + '</div></div></div>';
     };
 
     var hero = '<section class="pil-hero" style="position:relative;overflow:hidden;background:radial-gradient(640px 480px at 6% 8%, rgba(255,204,82,0.13), transparent 55%), radial-gradient(520px 440px at 4% 100%, rgba(82,112,255,0.06), transparent 60%), #fff">' +
@@ -499,19 +499,24 @@ module.exports = function (PIL_CONTENT, ICON, opts) {
       '<div style="display:inline-flex;align-items:center;gap:10px;margin-top:18px"><span style="display:flex;gap:2px;color:var(--color-accent)">' + stars + '</span>' +
       '<span style="font-family:var(--font-sans);font-size:14.5px;font-weight:600;color:var(--color-body)">5.0 from clients on Google</span></div>' +
       '</div>' +
-      '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:22px;animation:pilFade .4s var(--ease-out) both">' +
+      '<div id="pil-testi-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:22px;animation:pilFade .4s var(--ease-out) both">' +
       vm.homeTestimonials.map(function (t) {
         return '<div style="position:relative;background:#fff;border:1px solid var(--color-hairline);border-radius:18px;padding:30px;box-shadow:var(--shadow-sm);display:flex;flex-direction:column;gap:16px;overflow:hidden">' +
           '<span style="position:absolute;top:20px;right:22px;color:var(--color-primary-soft);display:flex">' + I('quote', 40) + '</span>' +
           '<div style="display:flex;gap:3px;color:var(--color-accent);position:relative;z-index:1">' + starRow(17) + '</div>' +
-          '<p style="font-family:var(--font-display);font-size:19px;line-height:1.5;letter-spacing:-0.01em;color:var(--color-ink);margin:0;flex:1;position:relative;z-index:1">' + t.quote + '</p>' +
+          '<p data-role="quote" style="font-family:var(--font-display);font-size:19px;line-height:1.5;letter-spacing:-0.01em;color:var(--color-ink);margin:0;flex:1;position:relative;z-index:1">' + t.quote + '</p>' +
           '<div style="display:flex;align-items:center;justify-content:space-between;gap:12px;border-top:1px solid var(--color-hairline-soft);padding-top:16px">' +
-          '<div style="font-family:var(--font-sans);font-size:15px;font-weight:700;color:var(--color-ink)">' + t.name + '</div>' +
-          (t.claim ? '<span style="font-family:var(--font-sans);font-size:11px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--color-primary);background:var(--color-primary-soft);padding:5px 11px;border-radius:999px;white-space:nowrap">' + t.claim + '</span>' : '') +
+          '<div data-role="name" style="font-family:var(--font-sans);font-size:15px;font-weight:700;color:var(--color-ink)">' + t.name + '</div>' +
+          '<span data-role="claim" style="font-family:var(--font-sans);font-size:11px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--color-primary);background:var(--color-primary-soft);padding:5px 11px;border-radius:999px;white-space:nowrap' + (t.claim ? '' : ';display:none') + '">' + (t.claim || '') + '</span>' +
           '</div></div>';
       }).join('') + '</div></div></section>';
 
-    return '<div style="animation:pilFade .4s var(--ease-out) both">' + hero + statsBand + problems + why + losses + testi + '</div>';
+    var shuffleData = '<script type="application/json" id="pil-shuffle-data">' + JSON.stringify({
+      testimonials: (PIL_CONTENT.testimonials || []).map(function (t) { return { quote: t.quote, name: t.name, claim: t.claim || '' }; }),
+      caseResults: PIL_CONTENT.caseResults || []
+    }).replace(/</g, '\\u003c') + '<\/script>';
+
+    return '<div style="animation:pilFade .4s var(--ease-out) both">' + hero + statsBand + problems + why + losses + testi + '</div>' + shuffleData;
   }
 
   function damageTile(d) {
