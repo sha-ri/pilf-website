@@ -34,7 +34,7 @@
 
   // -------- available extracted photos --------
   var IMAGES = {
-    'pil-hero': 'assets/pil-hero.webp', 'pil-why': 'assets/pil-why.jpg', 'pil-about': 'assets/pil-about.png',
+    'pil-hero': 'assets/pil-about.png', 'pil-why': 'assets/pil-why.jpg', 'pil-about': 'assets/pil-about.png',
     'pil-att-isabel-freeman': 'assets/pil-bio-isabel-freeman.png', 'pil-bio-isabel-freeman': 'assets/pil-bio-isabel-freeman.png',
     'pil-att-stefan-jose-garcia': 'assets/pil-bio-stefan-jose-garcia.png', 'pil-bio-stefan-jose-garcia': 'assets/pil-bio-stefan-jose-garcia.png',
     'pil-staff-HP': 'assets/pil-staff-hilda-pinto.png', 'pil-staff-JC': 'assets/pil-staff-julian-calvo.png',
@@ -448,7 +448,7 @@
       '<div style="display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:28px;padding-top:26px;border-top:1px solid var(--color-hairline-soft)">' + trust + '</div>' +
       '</div></div>' +
       '<div class="pil-hero-media" style="position:absolute;top:0;right:0;bottom:0;width:53%;z-index:1">' +
-      imageSlot('pil-hero', { style: 'position:absolute;inset:0;width:100%;height:100%', position: '50% 38%', ph: 'The attorneys' }) +
+      imageSlot('pil-hero', { style: 'position:absolute;inset:0;width:100%;height:100%', position: '50% 50%', fit: 'contain', ph: 'The attorneys' }) +
       '<div class="pil-hero-fade" style="position:absolute;inset:0;z-index:2;pointer-events:none;background:linear-gradient(to right, #fff 0%, rgba(255,255,255,0) 6%, rgba(255,255,255,0) 94%, #fff 100%)"></div>' +
       winCard('pil-hero-win', vm.heroWins[0].amt, vm.heroWins[0].cap, 'left:-30px;bottom:44px') +
       winCard('pil-hero-win2', vm.heroWins[1].amt, vm.heroWins[1].cap, 'right:24px;bottom:44px') +
