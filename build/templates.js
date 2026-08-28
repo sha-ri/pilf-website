@@ -1,11 +1,17 @@
 /* ============================================================
-   propertyinsurance.law — standalone app
-   Vanilla re-implementation of the Claude Design document component.
-   No React, no runtime: content comes from window.PIL_CONTENT (content.js),
-   icons from window.ICON (icons.js). Client-side hash routing.
+   propertyinsurance.law — static site templates
+   Node-portable port of app.js's pure (pre-render()) half.
+   Content comes from content.js (PIL_CONTENT), icons from
+   icons.js (ICON). Routing/link generation is injected via
+   `opts` so build.js can choose a BASE_PATH at build time.
    ============================================================ */
-(function () {
+module.exports = function (PIL_CONTENT, ICON, opts) {
   'use strict';
+  opts = opts || {};
+  var basePath = opts.basePath || '';
+  var href = opts.href || function (p) { return '/' + p; };
+  var siteUrl = opts.siteUrl || '';
+  var absUrl = function (p) { return siteUrl + href(p); };
 
   var PHONE = '(407) 502-8068';
   var TEL = 'tel:14075028068';
@@ -33,19 +39,16 @@
   var BIO_AVAIL = { 'shari-freeman': 1, 'zaf-goss': 1, 'james-wilson': 1, 'alex-couture': 1 };
   var BLOG_IMAGE_AVAIL = { 'pre-existing-damage-denial-florida': 1, 'additional-living-expense-ale-florida': 1, 'adjuster-stopped-responding-florida': 1, 'appraisal-clause-florida-homeowners': 1, 'assignment-of-benefits-florida-rules': 1, 'burst-pipe-insurance-coverage-florida': 1, 'business-interruption-coverage-florida': 1, 'cast-iron-pipe-insurance-claim-florida': 1, 'civil-remedy-notice-florida-explained': 1, 'cleanup-before-adjuster-inspection-florida': 1, 'condo-ho6-vs-master-policy-florida': 1, 'constant-repeated-seepage-exclusion-florida': 1, 'cosmetic-roof-damage-denial-florida': 1, 'cost-property-insurance-attorney-florida': 1, 'damage-below-deductible-florida': 1, 'deadline-file-property-claim-florida': 1, 'document-home-before-hurricane-season': 1, 'emergency-tarping-water-removal-coverage': 1, 'failure-to-mitigate-denial-florida': 1, 'faulty-workmanship-exclusion-florida': 1, 'fence-damage-insurance-florida': 1, 'fire-smoke-damage-claims-florida': 1, 'flood-vs-water-damage-florida': 1, 'how-long-insurer-pay-claim-florida': 1, 'how-to-read-denial-letter-florida': 1, 'hurricane-deductibles-florida-explained': 1, 'insurance-company-insolvent-figa-florida': 1, 'insurance-engineer-inspection-florida': 1, 'insurance-inspection-rights-florida': 1, 'insurance-misrepresentation-accusation-florida': 1, 'lightning-damage-claim-florida': 1, 'mold-damage-insurance-coverage-florida': 1, 'mortgage-company-on-insurance-check': 1, 'notice-of-intent-litigation-florida': 1, 'pool-cage-screen-enclosure-claim-florida': 1, 'rcv-vs-acv-florida-property-claim': 1, 'reservation-of-rights-letter-florida': 1, 'roof-leak-covered-by-insurance-florida': 1, 'should-i-cash-insurance-check-florida': 1, 'sinkhole-coverage-florida': 1, 'statute-of-limitations-florida-property-insurance': 1, 'supplemental-claim-florida-explained': 1, 'sworn-proof-of-loss-florida': 1, 'theft-vandalism-insurance-florida': 1, 'tile-roof-damage-claims-florida': 1, 'types-of-insurance-adjusters-florida': 1, 'vacancy-exclusion-denial-florida': 1, 'water-damage-claim-denied-florida': 1, 'water-heater-leak-insurance-claim-florida': 1 };
 
-  var state = { page: 'home', mobileOpen: false, tShuffleKey: Math.floor(Math.random() * 1000000), winShuffleKey: Math.floor(Math.random() * 1000000) };
-
   // ---------------- helpers ----------------
-  function I(name, size, sw) { return window.ICON(name, size, sw); }
-  function href(p) { return '#/' + p; }
+  function I(name, size, sw) { return ICON(name, size, sw); }
   function escAttr(s) { return String(s == null ? '' : s).replace(/"/g, '&quot;'); }
 
   function imgUrl(id) {
-    if (IMAGES[id]) return IMAGES[id];
+    if (IMAGES[id]) return basePath + IMAGES[id];
     var m = id.match(/^pil-(?:att|bio)-(.+)$/);
-    if (m && BIO_AVAIL[m[1]]) return 'assets/pil-bio-' + m[1] + '.webp';
+    if (m && BIO_AVAIL[m[1]]) return basePath + 'assets/pil-bio-' + m[1] + '.webp';
     var mb = id.match(/^pil-blog-(.+)$/);
-    if (mb && BLOG_IMAGE_AVAIL[mb[1]]) return 'assets/blog/' + mb[1] + '.jpg';
+    if (mb && BLOG_IMAGE_AVAIL[mb[1]]) return basePath + 'assets/blog/' + mb[1] + '.jpg';
     return null;
   }
 
@@ -134,8 +137,8 @@
   }
 
   // ---------------- view model (port of renderVals) ----------------
-  function buildVM() {
-    var C = window.PIL_CONTENT || {};
+  function buildVM(state) {
+    var C = PIL_CONTENT || {};
     var claims = C.claims || {}, practices = C.practices || {}, process = C.process || {}, locations = C.locations || {};
     var attorneys = C.attorneys || [];
     var page = state.page;
@@ -267,7 +270,7 @@
     }
     vm.isPost = kind === 'post' && !!vm.post;
 
-    // testimonials (seeded shuffle)
+    // testimonials (seeded shuffle — fixed seed at build time, no client-side reshuffle)
     var testimonials = C.testimonials || [];
     var tKey = state.tShuffleKey || 0;
     var tOrder = (function (n, seed) {
@@ -277,9 +280,8 @@
       return arr;
     })(testimonials.length, tKey + 1);
     vm.homeTestimonials = tOrder.slice(0, 3).map(function (idx) { return testimonials[idx]; });
-    vm.tKeyStr = 'tw-' + tKey;
 
-    // hero "recent recovery" boxes (seeded pick of 2 from the pool of 10; re-rolls on full page load)
+    // hero "recent recovery" boxes (seeded pick of 2 from the pool of 10)
     var caseResults = C.caseResults || [];
     var wKey = state.winShuffleKey || 0;
     var wOrder = (function (n, seed) {
@@ -352,7 +354,6 @@
   }
 
   function mobileMenu(vm) {
-    if (!state.mobileOpen) return '';
     var groups = vm.navGroups.map(function (g) {
       var sub = '';
       if (g.hasChildren && g.items && g.items.length) {
@@ -364,7 +365,8 @@
       return '<a href="' + href(g.page) + '" style="padding:11px 8px;font-family:var(--font-sans);font-size:16px;font-weight:700;color:var(--color-ink);text-decoration:none;border-bottom:1px solid var(--color-hairline-soft)">' + g.label + '</a>' + sub;
     }).join('');
 
-    return '<div class="pil-mobnav" data-action="closeMobile" style="position:fixed;inset:0;z-index:80;background:rgba(21,18,26,0.5)">' +
+    // hidden by default (display:none) — client.js toggles this on data-action="toggleMobile"/"closeMobile" clicks
+    return '<div class="pil-mobnav" data-action="closeMobile" style="position:fixed;inset:0;z-index:80;background:rgba(21,18,26,0.5);display:none">' +
       '<div data-action="stop" style="position:absolute;top:0;right:0;bottom:0;width:min(380px,86vw);background:#fff;box-shadow:var(--shadow-xl);overflow-y:auto;padding:20px 20px 120px">' +
       '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">' + logo('sm') +
       '<button data-action="closeMobile" aria-label="Close" style="width:40px;height:40px;border:1px solid var(--color-hairline);background:#fff;border-radius:10px;cursor:pointer;font-size:20px;color:var(--color-ink)">×</button></div>' +
@@ -485,7 +487,7 @@
       '<h2 style="font-family:var(--font-display);font-weight:600;font-size:clamp(30px,4vw,42px);line-height:1.12;letter-spacing:-0.02em;color:var(--color-ink);margin:14px 0 0">Policyholders we’ve stood up for</h2>' +
       '<div style="display:inline-flex;align-items:center;gap:10px;margin-top:18px"><span style="display:flex;gap:2px;color:var(--color-accent)">' + stars + '</span>' +
       '<span style="font-family:var(--font-sans);font-size:14.5px;font-weight:600;color:var(--color-body)">5.0 from clients on Google</span></div>' +
-      '<div style="margin-top:20px"><button data-action="reshuffle" style="display:inline-flex;align-items:center;gap:8px;font-family:var(--font-sans);font-size:13.5px;font-weight:700;color:var(--color-primary);background:var(--color-primary-soft);border:1px solid var(--color-hairline);border-radius:999px;padding:9px 16px;cursor:pointer"><span style="display:flex">' + I('refresh-cw', 15) + '</span>Show me others</button></div></div>' +
+      '</div>' +
       '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:22px;animation:pilFade .4s var(--ease-out) both">' +
       vm.homeTestimonials.map(function (t) {
         return '<div style="position:relative;background:#fff;border:1px solid var(--color-hairline);border-radius:18px;padding:30px;box-shadow:var(--shadow-sm);display:flex;flex-direction:column;gap:16px;overflow:hidden">' +
@@ -493,8 +495,9 @@
           '<div style="display:flex;gap:3px;color:var(--color-accent);position:relative;z-index:1">' + starRow(17) + '</div>' +
           '<p style="font-family:var(--font-display);font-size:19px;line-height:1.5;letter-spacing:-0.01em;color:var(--color-ink);margin:0;flex:1;position:relative;z-index:1">' + t.quote + '</p>' +
           '<div style="display:flex;align-items:center;justify-content:space-between;gap:12px;border-top:1px solid var(--color-hairline-soft);padding-top:16px">' +
-          '<div style="font-family:var(--font-sans);font-size:15px;font-weight:700;color:var(--color-ink)">' + t.name + '</div>' +
-          (t.claim ? '<span style="font-family:var(--font-sans);font-size:11px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--color-primary);background:var(--color-primary-soft);padding:5px 11px;border-radius:999px;white-space:nowrap">' + t.claim + '</span>' : '') +
+          '<div><div style="font-family:var(--font-sans);font-size:15px;font-weight:700;color:var(--color-ink)">' + t.name + '</div>' +
+          '<div style="font-family:var(--font-sans);font-size:13px;color:var(--color-muted)">' + t.loc + '</div></div>' +
+          '<span style="font-family:var(--font-sans);font-size:11px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--color-primary);background:var(--color-primary-soft);padding:5px 11px;border-radius:999px;white-space:nowrap">' + t.claim + '</span>' +
           '</div></div>';
       }).join('') + '</div></div></section>';
 
@@ -780,7 +783,7 @@
       (tags ? '<div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:8px">' + tags + '</div>' : '') +
       '<div style="margin-top:30px;padding-top:24px;border-top:1px solid var(--color-hairline);display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap"><a href="' + href('blog') + '" class="pil-underline" style="display:inline-flex;align-items:center;gap:8px;font-family:var(--font-sans);font-size:15px;font-weight:700;color:var(--color-primary);text-decoration:none">All articles</a><span style="font-family:var(--font-sans);font-size:12.5px;color:var(--color-muted)">' + (p.disclaimer || 'This article is general information, not legal advice.') + '</span></div></article>' +
       '<aside style="position:sticky;top:96px;display:flex;flex-direction:column;gap:18px">' + sidebarCta('No Recovery, No Fees.', 'You pay nothing unless we recover.') +
-      (related ?'<div style="background:#fff;border:1px solid var(--color-hairline);border-radius:16px;padding:22px;box-shadow:var(--shadow-sm)"><div style="font-family:var(--font-sans);font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-muted);margin-bottom:12px">Related reading</div><div style="display:flex;flex-direction:column;gap:2px">' + related + '</div></div>' : '') +
+      (related ? '<div style="background:#fff;border:1px solid var(--color-hairline);border-radius:16px;padding:22px;box-shadow:var(--shadow-sm)"><div style="font-family:var(--font-sans);font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-muted);margin-bottom:12px">Related reading</div><div style="display:flex;flex-direction:column;gap:2px">' + related + '</div></div>' : '') +
       '</aside></div></section></div>';
   }
 
@@ -801,8 +804,7 @@
       '<div style="font-family:var(--font-mono);font-size:13px;color:var(--color-muted);margin-top:18px">' + d.updated + '</div></div></section>' +
       '<section style="padding:clamp(48px,6vw,80px) 0"><div class="pil-collapse" style="max-width:1100px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:52px;align-items:start">' +
       '<article><p style="font-family:var(--font-sans);font-size:18px;line-height:1.7;color:var(--color-body);margin:0">' + d.intro + '</p>' + sections + '</article>' +
-      '<aside style="position:sticky;top:96px;display:flex;flex-direction:column;gap:18px">' +
-      '<div style="background:#fff;border:1px solid var(--color-hairline);border-radius:16px;padding:22px;box-shadow:var(--shadow-sm)"><div style="font-family:var(--font-sans);font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-muted);margin-bottom:12px">On this page</div><div style="display:flex;flex-direction:column;gap:1px">' + toc + '</div></div>' + sidebarCta() +
+      '<aside style="position:sticky;top:96px;display:flex;flex-direction:column;gap:18px"><div style="background:#fff;border:1px solid var(--color-hairline);border-radius:16px;padding:22px;box-shadow:var(--shadow-sm)"><div style="font-family:var(--font-sans);font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-muted);margin-bottom:12px">On this page</div><div style="display:flex;flex-direction:column;gap:1px">' + toc + '</div></div>' + sidebarCta() +
       '</aside></div></section></div>';
   }
 
@@ -852,7 +854,7 @@
       '<section style="padding:clamp(48px,6vw,84px) 0"><div class="pil-collapse" style="max-width:1000px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start">' + offices + '</div></section></div>';
   }
 
-  // ---------------- render ----------------
+  // ---------------- render dispatch ----------------
   function renderPage(vm) {
     if (vm.isHome) return pageHome(vm);
     if (vm.isArticle) return pageArticle(vm);
@@ -871,16 +873,6 @@
     return pageHome(vm);
   }
 
-  function render() {
-    if (!window.PIL_CONTENT) return; // content not loaded yet
-    var vm = buildVM();
-    var html = header(vm) + mobileMenu(vm) + '<main style="display:block">' + renderPage(vm) +
-      (vm.showClosingCta ? closingCta() : '') + '</main>' + footer(vm) + mobileCall();
-    document.getElementById('root').innerHTML = html;
-    document.title = pageTitle(vm);
-    animateStats();
-  }
-
   function pageTitle(vm) {
     var base = 'propertyinsurance.law — Your Property Damage Attorneys';
     if (vm.isArticle) return vm.av.h1 + ' | propertyinsurance.law';
@@ -894,64 +886,154 @@
     return m[vm.page] ? m[vm.page] + ' | propertyinsurance.law' : base;
   }
 
-  function animateStats() {
-    var els = document.querySelectorAll('[data-statroll]');
-    if (!els.length) return;
-    var run = function (el) {
-      var end = Number(el.getAttribute('data-end')) || 0;
-      var start = el.hasAttribute('data-start') ? Number(el.getAttribute('data-start')) : 0;
-      var s = { prefix: el.getAttribute('data-prefix') || '', suffix: el.getAttribute('data-suffix') || '', comma: el.hasAttribute('data-comma') };
-      var t0 = null, dur = 1600;
-      function step(ts) {
-        if (!t0) t0 = ts;
-        var p = Math.min(1, (ts - t0) / dur);
-        var e = 1 - Math.pow(1 - p, 3);
-        el.textContent = formatStat(start + (end - start) * e, s);
-        if (p < 1) requestAnimationFrame(step);
-      }
-      requestAnimationFrame(step);
+  var FALLBACK_DESCRIPTION = 'Attorneys for denied, delayed, and underpaid property insurance claims. No Recovery, No Fees. Serving Florida and Illinois. Call (407) 502-8068.';
+
+  function truncateDesc(s, max) {
+    s = String(s || '').replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
+    if (s.length <= max) return s;
+    var cut = s.slice(0, max);
+    var lastSpace = cut.lastIndexOf(' ');
+    if (lastSpace > 40) cut = cut.slice(0, lastSpace);
+    return cut.replace(/[,;:.\-–—]+$/, '') + '…';
+  }
+
+  function pageDescription(vm) {
+    if (vm.isArticle) return truncateDesc(vm.av.tagline, 160);
+    if (vm.isBio) return truncateDesc(vm.bio.positioning, 160);
+    if (vm.isFaq) return truncateDesc(vm.faqData.tagline, 160);
+    if (vm.isPolicies) return truncateDesc(vm.policiesData.tagline, 160);
+    if (vm.isBlog) return truncateDesc(vm.blogData.tagline, 160);
+    if (vm.isPost) return truncateDesc((vm.post && vm.post.metaDescription) || FALLBACK_DESCRIPTION, 160);
+    if (vm.isAbout) return 'propertyinsurance.law was built around representing policyholders. Learn about our firm and how we handle denied, delayed, and underpaid property insurance claims in Florida and Illinois.';
+    if (vm.isAttorneys) return 'Meet the attorneys at propertyinsurance.law, representing homeowners and businesses in denied, delayed, and underpaid property insurance claims throughout Florida and Illinois.';
+    if (vm.isStaff) return 'Meet the litigation, presuit, intake, and accounting team who help keep property insurance claims organized and moving at propertyinsurance.law.';
+    if (vm.isClaimsHub) return 'Property insurance claims we handle: denied, delayed, and underpaid claims, hurricane and storm damage, water and roof claims, fire, mold, and more.';
+    if (vm.isPracticeHub) return 'Beyond property insurance: personal injury, auto accident, slip and fall, and construction defect representation from propertyinsurance.law.';
+    if (vm.isContact) return 'Send us your denial letter, estimate, or claim details for a free review. No attorney’s fee unless we recover for you.';
+    return FALLBACK_DESCRIPTION;
+  }
+
+  function ldScript(obj) {
+    return '<script type="application/ld+json">' + JSON.stringify(obj).replace(/</g, '\\u003c') + '</script>';
+  }
+
+  function orgJsonLd() {
+    return {
+      '@context': 'https://schema.org',
+      '@type': 'LegalService',
+      '@id': siteUrl + '/#organization',
+      name: 'Property Insurance Law PLLC',
+      alternateName: 'propertyinsurance.law',
+      url: siteUrl + '/',
+      telephone: '+14075028068',
+      email: 'info@propertyinsurance.law',
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: '941 W. Morse Blvd. Ste 100-585',
+        addressLocality: 'Winter Park',
+        addressRegion: 'FL',
+        postalCode: '32789',
+        addressCountry: 'US'
+      },
+      areaServed: [
+        { '@type': 'State', name: 'Florida' },
+        { '@type': 'State', name: 'Illinois' }
+      ]
     };
-    if (typeof IntersectionObserver === 'undefined') { els.forEach(run); return; }
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (en) { if (en.isIntersecting) { run(en.target); io.unobserve(en.target); } });
-    }, { threshold: 0.4 });
-    els.forEach(function (el) { io.observe(el); });
   }
 
-  function rerender() { var y = window.scrollY; render(); window.scrollTo(0, y); }
-
-  // ---------------- events + routing ----------------
-  document.addEventListener('click', function (e) {
-    var a = e.target.closest ? e.target.closest('[data-action]') : null;
-    if (!a) return;
-    var act = a.getAttribute('data-action');
-    if (act === 'stop') { e.stopPropagation(); return; }
-    e.preventDefault();
-    if (act === 'toggleMobile') { state.mobileOpen = !state.mobileOpen; rerender(); }
-    else if (act === 'closeMobile') { state.mobileOpen = false; rerender(); }
-    else if (act === 'reshuffle') { state.tShuffleKey += 1 + Math.floor(Math.random() * 6); rerender(); }
-  });
-
-  function onHashChange() {
-    var h = location.hash || '';
-    if (h && h.indexOf('#/') !== 0) return; // in-page anchor (e.g. policies TOC): let the browser scroll
-    var p = h.indexOf('#/') === 0 ? decodeURIComponent(h.slice(2)) : '';
-    state.page = p || 'home';
-    state.mobileOpen = false;
-    render();
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+  function breadcrumbJsonLd(items) {
+    return {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: items.map(function (it, i) {
+        return { '@type': 'ListItem', position: i + 1, name: it.name, item: it.url };
+      })
+    };
   }
-  window.addEventListener('hashchange', onHashChange);
 
-  // ---------------- boot (wait for content.js) ----------------
-  function boot() {
-    var h = location.hash || '';
-    if (h.indexOf('#/') === 0) state.page = decodeURIComponent(h.slice(2)) || 'home';
-    if (window.PIL_CONTENT) { render(); }
-    else {
-      var iv = setInterval(function () { if (window.PIL_CONTENT) { clearInterval(iv); render(); } }, 40);
+  function pageJsonLd(vm) {
+    var blocks = [orgJsonLd()];
+
+    if (vm.isArticle) {
+      blocks.push(breadcrumbJsonLd([
+        { name: 'Home', url: absUrl('home') },
+        { name: vm.av.h1, url: absUrl(vm.page) }
+      ]));
+    } else if (vm.isBio) {
+      var b = vm.bio;
+      var personLd = {
+        '@context': 'https://schema.org',
+        '@type': 'Person',
+        name: b.name,
+        jobTitle: b.role,
+        url: absUrl('bio:' + b.slug),
+        worksFor: { '@type': 'LegalService', name: 'Property Insurance Law PLLC' },
+        description: b.positioning
+      };
+      var photo = imgUrl('pil-bio-' + b.slug);
+      if (photo) personLd.image = siteUrl + photo;
+      if (b.practiceAreas && b.practiceAreas.length) personLd.knowsAbout = b.practiceAreas;
+      blocks.push(personLd);
+      blocks.push(breadcrumbJsonLd([
+        { name: 'Home', url: absUrl('home') },
+        { name: 'Our Attorneys', url: absUrl('attorneys') },
+        { name: b.name, url: absUrl('bio:' + b.slug) }
+      ]));
+    } else if (vm.isFaq) {
+      var mainEntity = [];
+      (vm.faqData.groups || []).forEach(function (grp) {
+        (grp.items || []).forEach(function (it) {
+          mainEntity.push({
+            '@type': 'Question',
+            name: it.q,
+            acceptedAnswer: { '@type': 'Answer', text: String(it.a || '').replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim() }
+          });
+        });
+      });
+      blocks.push({ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: mainEntity });
+    } else if (vm.isPolicies) {
+      blocks.push(breadcrumbJsonLd([
+        { name: 'Home', url: absUrl('home') },
+        { name: 'Law Firm Policies', url: absUrl('policies') }
+      ]));
+    } else if (vm.isPost) {
+      var post = vm.post;
+      var articleLd = {
+        '@context': 'https://schema.org',
+        '@type': 'Article',
+        headline: post.title,
+        description: post.metaDescription,
+        datePublished: post.date,
+        dateModified: post.date,
+        url: absUrl('post:' + post.slug),
+        mainEntityOfPage: absUrl('post:' + post.slug),
+        author: { '@type': 'Person', name: post.author },
+        publisher: { '@type': 'Organization', name: 'Property Insurance Law PLLC', url: siteUrl + '/' }
+      };
+      var postPhoto = imgUrl('pil-blog-' + post.slug);
+      if (postPhoto) articleLd.image = siteUrl + postPhoto;
+      blocks.push(articleLd);
+      blocks.push(breadcrumbJsonLd([
+        { name: 'Home', url: absUrl('home') },
+        { name: 'Blog', url: absUrl('blog') },
+        { name: post.title, url: absUrl('post:' + post.slug) }
+      ]));
     }
+
+    return blocks.map(ldScript).join('\n');
   }
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
-  else boot();
-})();
+
+  return {
+    buildVM: buildVM,
+    renderPage: renderPage,
+    pageTitle: pageTitle,
+    pageDescription: pageDescription,
+    pageJsonLd: pageJsonLd,
+    header: header,
+    mobileMenu: mobileMenu,
+    closingCta: closingCta,
+    footer: footer,
+    mobileCall: mobileCall
+  };
+};
