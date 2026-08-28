@@ -506,9 +506,8 @@ module.exports = function (PIL_CONTENT, ICON, opts) {
           '<div style="display:flex;gap:3px;color:var(--color-accent);position:relative;z-index:1">' + starRow(17) + '</div>' +
           '<p style="font-family:var(--font-display);font-size:19px;line-height:1.5;letter-spacing:-0.01em;color:var(--color-ink);margin:0;flex:1;position:relative;z-index:1">' + t.quote + '</p>' +
           '<div style="display:flex;align-items:center;justify-content:space-between;gap:12px;border-top:1px solid var(--color-hairline-soft);padding-top:16px">' +
-          '<div><div style="font-family:var(--font-sans);font-size:15px;font-weight:700;color:var(--color-ink)">' + t.name + '</div>' +
-          '<div style="font-family:var(--font-sans);font-size:13px;color:var(--color-muted)">' + t.loc + '</div></div>' +
-          '<span style="font-family:var(--font-sans);font-size:11px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--color-primary);background:var(--color-primary-soft);padding:5px 11px;border-radius:999px;white-space:nowrap">' + t.claim + '</span>' +
+          '<div style="font-family:var(--font-sans);font-size:15px;font-weight:700;color:var(--color-ink)">' + t.name + '</div>' +
+          (t.claim ? '<span style="font-family:var(--font-sans);font-size:11px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--color-primary);background:var(--color-primary-soft);padding:5px 11px;border-radius:999px;white-space:nowrap">' + t.claim + '</span>' : '') +
           '</div></div>';
       }).join('') + '</div></div></section>';
 

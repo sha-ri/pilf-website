@@ -321,6 +321,12 @@ details.pil-faq[open] summary .pil-faqchev { transform: rotate(90deg); }
   .pil-hero-fade { display: none !important; }
   .pil-hero-inner { min-height: 0 !important; padding-bottom: clamp(28px,5vw,40px) !important; }
   .pil-hero-copy { max-width: 640px !important; }
-  .pil-hero-win { left: 14px !important; bottom: 14px !important; }
-  .pil-hero-win2 { top: 14px !important; right: 14px !important; bottom: auto !important; }
+  .pil-hero-win, .pil-hero-win2 { left: 14px !important; right: auto !important; top: auto !important; padding: 10px 14px !important; }
+  .pil-hero-win { bottom: 14px !important; }
+  .pil-hero-win2 { bottom: 92px !important; }
+}
+@media (max-width: 420px) {
+  .pil-hero-win, .pil-hero-win2 { padding: 8px 12px !important; gap: 10px !important; }
+  .pil-hero-win > div:first-child, .pil-hero-win2 > div:first-child { width: 36px !important; height: 36px !important; }
+  .pil-hero-win2 { bottom: 82px !important; }
 }
