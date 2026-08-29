@@ -410,7 +410,10 @@
       '<div style="display:flex;flex-direction:column;gap:12px;font-family:var(--font-sans);font-size:14.5px;color:rgba(255,255,255,0.7)">' +
       '<a href="' + TEL + '" style="display:flex;align-items:center;gap:9px;text-decoration:none;color:inherit">' + I('phone', 16) + PHONE + '</a>' +
       '<a href="' + CONSULT_MAILTO + '" style="display:flex;align-items:center;gap:9px;text-decoration:none;color:inherit">' + I('mail', 16) + 'info@<b>propertyinsurance<span style="color:var(--color-primary)">.law</span></b></a>' +
-      '<div style="display:flex;align-items:flex-start;gap:9px"><span style="margin-top:2px;display:flex">' + I('map-pin', 16) + '</span>941 W. Morse Blvd. Ste 100-585<br>Winter Park, FL 32789</div>' +
+      '<div style="display:flex;align-items:flex-start;gap:9px"><span style="margin-top:2px;display:flex;flex:none">' + I('map-pin', 16) + '</span>' +
+      '<div style="display:flex;flex-direction:column;gap:10px">' + (vm.offices || []).map(function (o) {
+        return '<div><div style="font-weight:700;color:#fff;font-size:12.5px;letter-spacing:0.04em;text-transform:uppercase;margin-bottom:2px">' + o.state + ' Office</div>' + o.addressLines.join('<br>') + '</div>';
+      }).join('') + '</div></div>' +
       '<div style="display:flex;align-items:center;gap:9px"><span style="display:flex">' + I('clock', 16) + '</span>Mon–Fri, 9:00 AM – 5:00 PM</div>' +
       '<div style="font-family:var(--font-sans);font-size:13.5px;color:rgba(255,255,255,0.55);margin-top:-6px;padding-left:25px">By Appointment Only</div>' +
       '</div></div></div>' +
