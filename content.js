@@ -1080,7 +1080,7 @@
       ],
       credentials: [
         { heading: 'Education', items: ['University of Florida Fredric G. Levin College of Law, J.D., 2016'] },
-        { heading: 'Admitted to Practice', items: ['The Florida Bar, 2016'] },
+        { heading: 'Admitted to Practice', items: ['The Florida Bar, 2017'] },
         { heading: 'Federal Courts', items: ['U.S. District Court for the Middle District of Florida'] }
       ],
       personal: ''
