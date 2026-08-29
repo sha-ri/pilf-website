@@ -1070,8 +1070,7 @@
         'He brings that same trial-focused approach to representing policyholders and property owners today.',
         'James handles first-party property insurance disputes involving coverage, causation, valuation, policy conditions, storm damage, water losses, roof claims, and other contested property matters. He also works on construction defect cases involving defective work, water intrusion, building-envelope issues, repair disputes, and claims involving contractors and other construction professionals.',
         'His courtroom background shapes the way he approaches both insurance and construction cases: identify the issues that will ultimately matter, develop the evidence needed to prove them, and prepare the case with litigation in mind from the beginning.',
-        'James understands that many disputes are decided long before a trial ever occurs. A well-developed file, a clear factual record, and a willingness to litigate when necessary can affect how a case is evaluated at every stage. He works with the firm\u2019s attorneys, engineers, contractors, and other professionals to build cases that are prepared for negotiation, mediation, appraisal where appropriate, or court.',
-        'James earned his J.D. from the University of Florida Fredric G. Levin College of Law in 2016 and was admitted to The Florida Bar that same year.'
+        'James understands that many disputes are decided long before a trial ever occurs. A well-developed file, a clear factual record, and a willingness to litigate when necessary can affect how a case is evaluated at every stage. He works with the firm\u2019s attorneys, engineers, contractors, and other professionals to build cases that are prepared for negotiation, mediation, appraisal where appropriate, or court.'
       ],
       approachHeading: 'How James Approaches a Case',
       approach: [
