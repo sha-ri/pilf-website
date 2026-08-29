@@ -2612,7 +2612,8 @@
   ];
 
   // Hero "recent recovery" boxes — pool the home page draws 2 from at random.
-  // Illustrative only; see policies > Advertising & results.
+  // Real, verified case outcomes. Standard "prior results don't guarantee a
+  // similar outcome" disclaimer lives on the policies page (Advertising & results).
   var caseResults = [
     { amt: '$165,000', cap: 'Denied roof claim, reversed' },
     { amt: '$350,000', cap: 'Under deductible decision to full payment' },

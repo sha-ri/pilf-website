@@ -119,7 +119,7 @@
       (s.prefix ? ' data-prefix="' + escAttr(s.prefix) + '"' : '') +
       (s.suffix ? ' data-suffix="' + escAttr(s.suffix) + '"' : '') +
       (s.comma ? ' data-comma="1"' : '');
-    var initial = s.end != null ? formatStat(s.start != null ? s.start : 0, s) : s.value;
+    var initial = s.end != null ? formatStat(s.end, s) : s.value;
     return '<div class="pil-stat pil-stat--ondark pil-stat--center">' +
       '<span class="pil-stat__value" ' + attrs + '>' + initial + '</span>' +
       '<span class="pil-stat__label">' + s.label + '</span></div>';
