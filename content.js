@@ -2565,7 +2565,7 @@
       phone: '(407) 502-8068', tel: 'tel:14075028068',
       email: 'info@propertyinsurance.law',
       addressLines: ['941 W. Morse Boulevard', 'Ste. 100-585', 'Winter Park, FL 32789'],
-      hours: 'Monday to Friday, 9:00 AM to 5:00 PM EST',
+      hours: 'Monday to Friday, 9:00 AM to 5:00 PM ET',
       appointment: 'By appointment only',
       retainHref: 'https://signnow.com/s/o1YccX4i'
     },
@@ -2574,7 +2574,7 @@
       phone: '618-440-3088', tel: 'tel:16184403088',
       email: 'info@propertyinsurance.law',
       addressLines: ['203 N LaSalle Street', 'Ste. 2100', 'Chicago, IL 60601'],
-      hours: 'Monday to Friday, 8:00 AM to 4:00 PM CST',
+      hours: 'Monday to Friday, 8:00 AM to 4:00 PM CT',
       appointment: 'By appointment only',
       retainHref: '#'
     }

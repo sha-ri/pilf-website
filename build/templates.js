@@ -359,7 +359,7 @@ module.exports = function (PIL_CONTENT, ICON, opts) {
       '<nav class="pil-desknav" style="display:flex;align-items:center;gap:2px;flex:1;justify-content:center">' + nav + '</nav>' +
       '<div style="display:flex;align-items:center;gap:10px;flex:none">' +
       '<a href="' + TEL + '" class="pil-headcta" style="display:flex;align-items:center;gap:7px;font-family:var(--font-mono);font-size:13.5px;font-weight:500;color:var(--color-ink);text-decoration:none;white-space:nowrap"><span style="display:flex;color:var(--color-primary)">' + I('phone', 16) + '</span>' + PHONE + '</a>' +
-      '<div class="pil-headcta" style="display:flex;align-items:center;gap:9px">' + btn({ variant: 'accent', size: 'sm', href: href('contact'), label: 'Retain Our Firm' }) + '</div>' +
+      '<div class="pil-headcta" style="display:flex;align-items:center;gap:9px">' + btn({ variant: 'accent', size: 'sm', href: href('contact'), label: 'Get a Free Claim Review' }) + '</div>' +
       '<button class="pil-hamb" data-action="toggleMobile" aria-label="Menu" style="align-items:center;justify-content:center;width:42px;height:42px;border:1px solid var(--color-hairline);background:#fff;border-radius:11px;cursor:pointer;color:var(--color-ink)">' + I('menu', 22) + '</button>' +
       '</div></div></header>';
   }
@@ -383,7 +383,7 @@ module.exports = function (PIL_CONTENT, ICON, opts) {
       '<button data-action="closeMobile" aria-label="Close" style="width:40px;height:40px;border:1px solid var(--color-hairline);background:#fff;border-radius:10px;cursor:pointer;font-size:20px;color:var(--color-ink)">×</button></div>' +
       '<div style="display:flex;flex-direction:column;gap:4px">' + groups + '</div>' +
       '<div style="display:flex;flex-direction:column;gap:10px;margin-top:20px">' +
-      btn({ variant: 'accent', block: true, href: href('contact'), label: 'Retain Our Firm Now' }) + callBtn('md', true) +
+      btn({ variant: 'accent', block: true, href: href('contact'), label: 'Get a Free Claim Review' }) + callBtn('md', true) +
       '</div></div></div>';
   }
 
@@ -393,7 +393,7 @@ module.exports = function (PIL_CONTENT, ICON, opts) {
       '<p style="font-family:var(--font-sans);font-size:18px;line-height:1.6;color:rgba(255,255,255,0.72);margin:14px 0 0">Send us the denial letter, the estimate, or just the story so far. A <b>propertyinsurance<span style="color:var(--color-primary)">.law</span></b> attorney will review your claim for free and tell you plainly where it stands. No fees or costs unless we recover for you.</p>' +
       '<p style="font-family:var(--font-sans);font-size:12.5px;color:rgba(255,255,255,0.45);margin:16px 0 0">Attorney advertising. Prior results do not guarantee a similar outcome.</p></div>' +
       '<div style="display:flex;flex-direction:column;align-items:stretch;gap:12px;min-width:240px">' +
-      btn({ variant: 'accent', size: 'lg', block: true, href: href('contact'), label: 'Retain Our Firm Now' }) + callBtn('lg', true) +
+      btn({ variant: 'accent', size: 'lg', block: true, href: href('contact'), label: 'Get a Free Claim Review' }) + callBtn('lg', true) +
       '</div></div></section>';
   }
 
@@ -412,12 +412,13 @@ module.exports = function (PIL_CONTENT, ICON, opts) {
       '<div style="display:flex;flex-direction:column;gap:12px;font-family:var(--font-sans);font-size:14.5px;color:rgba(255,255,255,0.7)">' +
       '<a href="' + TEL + '" style="display:flex;align-items:center;gap:9px;text-decoration:none;color:inherit">' + I('phone', 16) + PHONE + '</a>' +
       '<a href="' + CONSULT_MAILTO + '" style="display:flex;align-items:center;gap:9px;text-decoration:none;color:inherit">' + I('mail', 16) + 'info@<b>propertyinsurance<span style="color:var(--color-primary)">.law</span></b></a>' +
-      '<div style="display:flex;align-items:flex-start;gap:9px"><span style="margin-top:2px;display:flex;flex:none">' + I('map-pin', 16) + '</span>' +
-      '<div style="display:flex;flex-direction:column;gap:10px">' + (vm.offices || []).map(function (o) {
-        return '<div><div style="font-weight:700;color:#fff;font-size:12.5px;letter-spacing:0.04em;text-transform:uppercase;margin-bottom:2px">' + o.state + ' Office</div>' + o.addressLines.join('<br>') + '</div>';
-      }).join('') + '</div></div>' +
-      '<div style="display:flex;align-items:center;gap:9px"><span style="display:flex">' + I('clock', 16) + '</span>Mon–Fri, 9:00 AM – 5:00 PM EST</div>' +
-      '<div style="font-family:var(--font-sans);font-size:13.5px;color:rgba(255,255,255,0.55);margin-top:-6px;padding-left:25px">By Appointment Only</div>' +
+      '<div style="display:flex;flex-direction:column;gap:16px">' + (vm.offices || []).map(function (o) {
+        return '<div style="display:flex;align-items:flex-start;gap:9px"><span style="margin-top:2px;display:flex;flex:none">' + I('map-pin', 16) + '</span>' +
+          '<div><div style="font-weight:700;color:#fff;font-size:12.5px;letter-spacing:0.04em;text-transform:uppercase;margin-bottom:2px">' + o.state + ' Office</div>' +
+          o.addressLines.join('<br>') +
+          '<div style="margin-top:6px">' + o.hours + '</div>' +
+          '<div style="font-size:13px;color:rgba(255,255,255,0.55)">' + o.appointment + '</div></div></div>';
+      }).join('') + '</div>' +
       '</div></div></div>' +
       '<div style="max-width:1240px;margin:0 auto;padding:18px 24px 0;border-top:1px solid rgba(255,255,255,0.1)"><span style="font-family:var(--font-sans);font-size:12.5px;line-height:1.6;color:rgba(255,255,255,0.45)">© 2026 Property Insurance Law PLLC, d/b/a <b>propertyinsurance<span style="color:var(--color-primary)">.law</span></b>. All rights reserved. Attorney advertising. Prior results do not guarantee a similar outcome.</span></div>' +
       '</footer>';
@@ -426,7 +427,7 @@ module.exports = function (PIL_CONTENT, ICON, opts) {
   function mobileCall() {
     return '<div class="pil-mobcall" style="position:fixed;left:0;right:0;bottom:0;z-index:55;background:#fff;border-top:1px solid var(--color-hairline);box-shadow:0 -6px 20px rgba(30,25,32,0.08);padding:10px 14px;gap:10px;align-items:center">' +
       '<a href="' + TEL + '" style="flex:1;display:flex;align-items:center;justify-content:center;gap:8px;height:46px;border-radius:999px;background:var(--color-primary-soft);color:var(--color-primary-active);font-family:var(--font-sans);font-size:15px;font-weight:700;text-decoration:none">' + I('phone', 18) + 'Call</a>' +
-      '<a href="' + href('contact') + '" style="flex:1;display:flex;align-items:center;justify-content:center;gap:8px;height:46px;border-radius:999px;background:var(--color-accent);color:var(--color-on-accent);font-family:var(--font-sans);font-size:15px;font-weight:700;text-decoration:none">Retain Now</a></div>';
+      '<a href="' + href('contact') + '" style="flex:1;display:flex;align-items:center;justify-content:center;gap:8px;height:46px;border-radius:999px;background:var(--color-accent);color:var(--color-on-accent);font-family:var(--font-sans);font-size:15px;font-weight:700;text-decoration:none">Free Claim Review</a></div>';
   }
 
   // ---------------- pages ----------------
@@ -449,7 +450,7 @@ module.exports = function (PIL_CONTENT, ICON, opts) {
       '<h1 style="font-family:var(--font-display);font-weight:600;font-size:clamp(44px,5.2vw,68px);line-height:1.02;letter-spacing:-0.025em;color:var(--color-ink);margin:22px 0 0">Your Property Damage Attorneys.</h1>' +
       '<p style="font-family:var(--font-sans);font-size:20px;line-height:1.6;color:var(--color-muted);margin:22px 0 0">At <b style="color:var(--color-body);font-weight:600">propertyinsurance<span style="color:var(--color-primary)">.law</span></b>, we represent Florida and Illinois policyholders with <b>denied, delayed, and underpaid</b> property insurance claims — we stand up for you when the insurance company won’t.&nbsp;</p>' +
       '<div style="display:flex;flex-direction:column;align-items:flex-start;gap:12px;margin-top:32px">' +
-      '<a href="' + href('contact') + '" class="pil-btn pil-btn--accent pil-btn--lg">Retain Our Firm Now</a>' + callBtn('lg', false) + '</div>' +
+      '<a href="' + href('contact') + '" class="pil-btn pil-btn--accent pil-btn--lg">Get a Free Claim Review</a>' + callBtn('lg', false) + '</div>' +
       '<div style="display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:28px;padding-top:26px;border-top:1px solid var(--color-hairline-soft)">' + trust + '</div>' +
       '</div></div>' +
       '<div class="pil-hero-media" style="position:absolute;top:0;right:0;bottom:0;width:53%;z-index:1">' +
@@ -573,7 +574,7 @@ module.exports = function (PIL_CONTENT, ICON, opts) {
       eyebrowPlain(av.eyebrow) +
       '<h1 style="font-family:var(--font-display);font-weight:600;font-size:clamp(32px,4.6vw,52px);line-height:1.08;letter-spacing:-0.02em;color:var(--color-ink);margin:12px 0 0;max-width:820px">' + av.h1 + '</h1>' +
       '<p style="font-family:var(--font-sans);font-size:20px;line-height:1.5;color:var(--color-muted);margin:16px 0 0;max-width:720px">' + av.tagline + '</p>' +
-      '<div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:26px">' + btn({ variant: 'accent', href: href('contact'), label: 'Retain Our Firm Now' }) + btn({ variant: 'secondary', href: href('contact'), label: 'Get a Free Claim Review' }) + '</div>' +
+      '<div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:26px">' + btn({ variant: 'accent', href: href('contact'), label: 'Get a Free Claim Review' }) + callBtn() + '</div>' +
       '</div></section>' +
       '<section style="padding:clamp(48px,6vw,80px) 0"><div class="pil-collapse" style="max-width:1100px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:52px;align-items:start">' +
       '<article>' + intro + sections + steps + faqs +
@@ -592,7 +593,7 @@ module.exports = function (PIL_CONTENT, ICON, opts) {
   function sidebarCta(title, body) {
     return '<div style="background:var(--color-ink);border-radius:18px;padding:26px;color:#fff"><h3 style="font-family:var(--font-display);font-size:22px;font-weight:600;line-height:1.2;color:#fff;margin:0 0 8px">' + (title || 'Send us the letter.') + '</h3>' +
       '<p style="font-family:var(--font-sans);font-size:14.5px;line-height:1.6;color:rgba(255,255,255,0.72);margin:0 0 18px">' + (body || 'A free review by an attorney, and a plain answer on where your claim stands.') + '</p>' +
-      '<div style="display:flex;flex-direction:column;gap:10px">' + btn({ variant: 'accent', block: true, href: href('contact'), label: 'Retain Our Firm Now' }) + btn({ variant: 'secondary', block: true, href: href('contact'), label: 'Free Claim Review' }) + '</div>' +
+      '<div style="display:flex;flex-direction:column;gap:10px">' + btn({ variant: 'accent', block: true, href: href('contact'), label: 'Get a Free Claim Review' }) + '</div>' +
       '<a href="' + TEL + '" style="display:flex;align-items:center;justify-content:center;gap:8px;margin-top:14px;font-family:var(--font-mono);font-size:15px;font-weight:500;color:#fff;text-decoration:none">' + I('phone', 17) + PHONE + '</a></div>';
   }
 
@@ -704,7 +705,7 @@ module.exports = function (PIL_CONTENT, ICON, opts) {
       '<div style="font-family:var(--font-sans);font-size:16px;font-weight:600;color:var(--color-primary);margin:12px 0 0">' + b.role + '</div>' +
       '<div style="display:flex;flex-wrap:wrap;gap:6px 18px;margin-top:10px">' + practiceAreas + '</div>' +
       '<p style="font-family:var(--font-sans);font-size:18px;line-height:1.6;color:var(--color-muted);margin:16px 0 0">' + b.positioning + '</p>' +
-      '<div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:22px">' + btn({ variant: 'accent', href: b.ctaHref || href('contact'), label: b.ctaLabel || 'Retain Our Firm Now' }) +
+      '<div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:22px">' + btn({ variant: 'accent', href: b.ctaHref || href('contact'), label: b.ctaLabel || 'Get a Free Claim Review' }) +
       '<a href="' + TEL + '" style="display:inline-flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:15px;font-weight:500;color:var(--color-ink);text-decoration:none;padding:0 6px">' + I('phone', 17) + PHONE + '</a></div>' +
       '</div></div></section>' +
       '<section style="padding:clamp(48px,6vw,80px) 0"><div class="pil-collapse" style="max-width:1100px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:52px;align-items:start">' +
@@ -856,7 +857,7 @@ module.exports = function (PIL_CONTENT, ICON, opts) {
       '<div style="font-family:var(--font-sans);font-size:14.5px;color:var(--color-muted)">Hablamos español.</div>' +
       '<div style="display:flex;flex-direction:column;gap:10px">' +
       btn({ variant: 'accent', block: true, href: o.tel, label: 'Call Now' }) +
-      btn({ variant: 'secondary', block: true, href: CONSULT_MAILTO, label: 'Free Consultation' }) +
+      btn({ variant: 'secondary', block: true, href: CONSULT_MAILTO, label: 'Get a Free Claim Review' }) +
       btn({ variant: 'accent', block: true, href: o.retainHref, label: 'Retain Our Firm' }) +
       '</div></div>';
   }
