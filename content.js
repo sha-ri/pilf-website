@@ -1368,7 +1368,7 @@
         metaDescription: 'What is ordinance and law coverage in Florida property insurance? Learn how building code upgrades affect fire, water, and storm claims and when insurance must pay.',
         category: 'Property Damage Law', tags: ['coverage basics', 'building code', 'storm damage'],
         author: 'J. Alex Couture', date: '2026-08-14',
-        links: [],
+        links: ['/post/how-much-should-my-florida-roof-claim-really-pay', '/hurricane-property-damage-lawyer'],
         body: [
           { type: 'para', text: 'When your home suffers significant damage, repairs are not always as simple as replacing what was there before.' },
           { type: 'para', text: 'Local building codes may require upgrades that did not exist when the property was originally constructed. This is where ordinance and law coverage becomes critically important.' },
@@ -1805,7 +1805,7 @@
         metaDescription: 'What if repairs fail after your Florida insurance claim is closed? Learn who may be responsible, how to document defective repairs, and what options homeowners may have.',
         category: 'Insurance Dispute Advice', tags: ['contractors', 'claim process'],
         author: 'J. Alex Couture', date: '2026-06-05',
-        links: [],
+        links: ['/post/do-i-have-to-use-insurance-preferred-contractor-florida', '/post/contractor-estimate-higher-than-insurance-florida'],
         body: [
           { type: 'para', text: 'You completed your property insurance claim. The check was issued. The contractor performed the work. The file was closed.' },
           { type: 'para', text: 'Then months later, problems appear.' },
@@ -1848,7 +1848,7 @@
         metaDescription: 'Do you have to use your insurer’s preferred contractor for a Florida property claim? Learn your rights, how preferred contractor programs work, and what to consider before agreeing.',
         category: 'Insurance Dispute Advice', tags: ['contractors', 'claim process', 'policyholder rights'],
         author: 'James Wilson', date: '2026-05-29',
-        links: [],
+        links: ['/post/repairs-fail-after-insurance-claim-florida', '/post/contractor-estimate-higher-than-insurance-florida'],
         body: [
           { type: 'para', text: 'After filing a property insurance claim, you may be told that the insurance company has a preferred contractor who can handle the repairs. That often leads to an important question: do I have to use the insurance company’s preferred contractor in Florida?' },
           { type: 'para', text: 'In most situations, the answer is no. As a homeowner, you generally have the right to choose your own contractor. However, there are important details to understand before making a decision.' },
@@ -1922,7 +1922,7 @@
         metaDescription: 'Can you reopen a closed Florida property insurance claim? Learn when reopening may be possible, what deadlines apply, and how to respond if your insurer refuses to reconsider.',
         category: 'Insurance Dispute Advice', tags: ['claim process', 'deadlines', 'supplemental claims'],
         author: 'Shari Freeman', date: '2026-05-15',
-        links: [],
+        links: ['/underpaid-insurance-claims', '/post/florida-insurance-claim-underpaid'],
         body: [
           { type: 'para', text: 'It is not uncommon for homeowners to discover additional damage after a claim has been paid and marked closed. This leads to an important question: can I reopen my Florida insurance claim after it was closed?' },
           { type: 'para', text: 'In many situations, the answer is yes. However, timing, documentation, and policy language all matter.' },
@@ -2002,7 +2002,7 @@
         metaDescription: 'Is it worth hiring a Florida property insurance attorney? Learn when legal help may make sense, how disputes arise, and what homeowners should consider before escalating a claim.',
         category: 'Insurance Dispute Advice', tags: ['hiring an attorney', 'policyholder rights'],
         author: 'James Wilson', date: '2026-05-01',
-        links: [],
+        links: ['/post/how-long-florida-property-insurance-lawsuit', '/denied-homeowners-insurance-claims'],
         body: [
           { type: 'para', text: 'If your property insurance claim has been delayed, underpaid, or denied, you may be asking a very practical question: is it worth hiring an attorney for my Florida insurance claim?' },
           { type: 'para', text: 'Not every claim requires legal involvement. Many claims are handled and resolved without dispute. However, when communication breaks down or the scope of payment does not reflect the damage, legal guidance can sometimes make a meaningful difference.' },
@@ -2041,7 +2041,7 @@
         metaDescription: 'How long does a Florida property insurance lawsuit take? Learn the typical timeline, key stages of litigation, and what can affect how quickly your claim is resolved.',
         category: 'Insurance Dispute Advice', tags: ['litigation', 'claim process'],
         author: 'J. Alex Couture', date: '2026-04-24',
-        links: [],
+        links: ['/post/is-it-worth-hiring-attorney-florida-insurance-claim'],
         body: [
           { type: 'para', text: 'If your insurance claim has been denied or underpaid and negotiations have stalled, you may be considering legal action. One of the first questions homeowners ask is straightforward and important: how long does a Florida property insurance lawsuit take?' },
           { type: 'para', text: 'The honest answer is that it depends. Every case is different. However, understanding the general timeline and the factors that influence it can help you set realistic expectations.' },
@@ -2085,7 +2085,7 @@
         metaDescription: 'Can your insurer cancel or nonrenew your policy after you file a property claim in Florida? Learn when it is allowed, when it is not, and what homeowners should know.',
         category: 'Insurance Dispute Advice', tags: ['cancellation', 'nonrenewal', 'policyholder rights'],
         author: 'Shari Freeman', date: '2026-04-17',
-        links: [],
+        links: ['/post/florida-homeowners-insurance-faqs'],
         body: [
           { type: 'para', text: 'It is a common fear for homeowners. You file a roof or water damage claim, and then a new worry sets in. Can my insurance company drop me after I file a claim in Florida?' },
           { type: 'para', text: 'The short answer is that insurance companies can cancel or nonrenew policies in certain circumstances. However, there are rules that govern when and how they can do it.' },

@@ -740,7 +740,7 @@
     var d = vm.blogData;
     var posts = (d.posts || []).map(function (b) {
       return '<a href="' + href('post:' + b.slug) + '" class="pil-lift-sm" style="display:flex;flex-direction:column;background:#fff;border:1px solid var(--color-hairline);border-radius:16px;overflow:hidden;box-shadow:var(--shadow-sm);text-decoration:none">' +
-        imageSlot('pil-blog-' + b.slug, { style: 'width:100%;height:170px', ph: 'Article image' }) +
+        imageSlot('pil-blog-' + b.slug, { style: 'width:100%;height:170px', ph: b.title }) +
         '<div style="padding:24px;display:flex;flex-direction:column;flex:1"><span style="font-family:var(--font-sans);font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-primary);margin-bottom:10px">' + b.category + '</span>' +
         '<h3 style="font-family:var(--font-display);font-size:20px;font-weight:600;line-height:1.25;color:var(--color-ink);margin:0 0 10px">' + b.title + '</h3>' +
         '<p style="font-family:var(--font-sans);font-size:14px;line-height:1.6;color:var(--color-muted);margin:0 0 16px;flex:1">' + b.dek + '</p>' +
@@ -787,7 +787,7 @@
       '<div style="font-family:var(--font-sans);font-size:14px;line-height:1.45;color:var(--color-muted)">' + authorNameHtml + (p.authorRole ? ' · ' + p.authorRole : '') + '<br>' + p.dateDisplay + ' · ' + p.readTime + '</div></div>' +
       '</div></section>' +
       '<section style="padding:clamp(40px,5vw,72px) 0"><div class="pil-collapse" style="max-width:1040px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:52px;align-items:start">' +
-      '<article>' + imageSlot('pil-blog-' + p.slug, { style: 'width:100%;height:clamp(240px,32vw,380px);border-radius:20px;box-shadow:var(--shadow-md);margin-bottom:clamp(24px,3vw,36px)', ph: 'Article hero image' }) + blocks +
+      '<article>' + imageSlot('pil-blog-' + p.slug, { style: 'width:100%;height:clamp(240px,32vw,380px);border-radius:20px;box-shadow:var(--shadow-md);margin-bottom:clamp(24px,3vw,36px)', ph: p.title }) + blocks +
       (tags ? '<div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:8px">' + tags + '</div>' : '') +
       '<div style="margin-top:30px;padding-top:24px;border-top:1px solid var(--color-hairline);display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap"><a href="' + href('blog') + '" class="pil-underline" style="display:inline-flex;align-items:center;gap:8px;font-family:var(--font-sans);font-size:15px;font-weight:700;color:var(--color-primary);text-decoration:none">All articles</a><span style="font-family:var(--font-sans);font-size:12.5px;color:var(--color-muted)">' + (p.disclaimer || 'This article is general information, not legal advice.') + '</span></div></article>' +
       '<aside style="position:sticky;top:96px;display:flex;flex-direction:column;gap:18px">' + sidebarCta('No Recovery, No Fees.', 'You pay nothing unless we recover.') +

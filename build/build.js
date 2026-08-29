@@ -64,12 +64,13 @@ function escAttr(s) {
     .replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 }
 
-// opts: { title, description, canonical, ogType, jsonLd, noindex }
+// opts: { title, description, canonical, ogType, ogImage, jsonLd, noindex }
 function wrapDocument(bodyHtml, opts) {
   var title = opts.title;
   var description = opts.description || DESCRIPTION;
   var canonical = opts.canonical;
   var ogType = opts.ogType || 'website';
+  var ogImage = opts.ogImage;
   return '<!DOCTYPE html>\n<html lang="en">\n<head>\n' +
     '<meta charset="utf-8">\n<meta name="viewport" content="width=device-width, initial-scale=1">\n' +
     '<title>' + escAttr(title) + '</title>\n' +
@@ -83,9 +84,11 @@ function wrapDocument(bodyHtml, opts) {
     '<meta property="og:title" content="' + escAttr(title) + '">\n' +
     '<meta property="og:description" content="' + escAttr(description) + '">\n' +
     (canonical ? '<meta property="og:url" content="' + escAttr(canonical) + '">\n' : '') +
-    '<meta name="twitter:card" content="summary">\n' +
+    (ogImage ? '<meta property="og:image" content="' + escAttr(ogImage) + '">\n' : '') +
+    '<meta name="twitter:card" content="' + (ogImage ? 'summary_large_image' : 'summary') + '">\n' +
     '<meta name="twitter:title" content="' + escAttr(title) + '">\n' +
     '<meta name="twitter:description" content="' + escAttr(description) + '">\n' +
+    (ogImage ? '<meta name="twitter:image" content="' + escAttr(ogImage) + '">\n' : '') +
     (opts.jsonLd || '') +
     '</head>\n<body>\n' + bodyHtml + '\n<script src="' + config.BASE_PATH + 'client.js"></script>\n</body>\n</html>\n';
 }
@@ -118,6 +121,8 @@ function build() {
       title: T.pageTitle(vmObj),
       description: T.pageDescription(vmObj),
       canonical: canonical,
+      ogType: vmObj.isPost ? 'article' : 'website',
+      ogImage: T.pageOgImage(vmObj),
       jsonLd: T.pageJsonLd(vmObj),
       noindex: NOINDEX_ALL
     });
