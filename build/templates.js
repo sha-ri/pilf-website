@@ -941,7 +941,7 @@ module.exports = function (PIL_CONTENT, ICON, opts) {
   }
 
   function orgJsonLd() {
-    return {
+    var org = {
       '@context': 'https://schema.org',
       '@type': 'LegalService',
       '@id': siteUrl + '/#organization',
@@ -963,6 +963,24 @@ module.exports = function (PIL_CONTENT, ICON, opts) {
         { '@type': 'State', name: 'Illinois' }
       ]
     };
+    var testimonials = PIL_CONTENT.testimonials || [];
+    if (testimonials.length) {
+      org.aggregateRating = {
+        '@type': 'AggregateRating',
+        ratingValue: '5.0',
+        bestRating: '5',
+        reviewCount: String(testimonials.length)
+      };
+      org.review = testimonials.slice(0, 8).map(function (t) {
+        return {
+          '@type': 'Review',
+          author: { '@type': 'Person', name: t.name },
+          reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' },
+          reviewBody: String(t.quote).replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim()
+        };
+      });
+    }
+    return org;
   }
 
   function breadcrumbJsonLd(items) {

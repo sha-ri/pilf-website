@@ -93,6 +93,59 @@ function wrapDocument(bodyHtml, opts) {
     '</head>\n<body>\n' + bodyHtml + '\n<script src="' + config.BASE_PATH + 'client.js"></script>\n</body>\n</html>\n';
 }
 
+// llms.txt — a plain-text guide for AI/LLM crawlers, per the emerging
+// llmstxt.org convention. Not consumed by browsers or search engines;
+// generated straight from content.js so it stays in sync automatically.
+function buildLlmsTxt(C) {
+  var lines = [];
+  lines.push('# propertyinsurance.law');
+  lines.push('');
+  lines.push('> Property Insurance Law PLLC represents policyholders in Florida and Illinois whose property insurance claims have been denied, delayed, or underpaid. No recovery, no fee.');
+  lines.push('');
+
+  lines.push('## Firm');
+  var firmLabels = { about: 'About the Firm', attorneys: 'Our Attorneys', staff: 'Our Staff', faq: 'FAQ', policies: 'Law Firm Policies', contact: 'Contact / Free Claim Review' };
+  Object.keys(firmLabels).forEach(function (p) {
+    lines.push('- [' + firmLabels[p] + '](' + config.SITE_URL + config.href(p) + ')');
+  });
+  lines.push('');
+
+  lines.push('## Property Claims We Handle');
+  Object.keys(C.claims || {}).forEach(function (k) {
+    var c = C.claims[k];
+    lines.push('- [' + c.nav + '](' + config.SITE_URL + config.href('claim:' + k) + '): ' + (c.tagline || ''));
+  });
+  lines.push('');
+
+  lines.push('## Other Practice Areas');
+  Object.keys(C.practices || {}).forEach(function (k) {
+    var p = C.practices[k];
+    lines.push('- [' + p.nav + '](' + config.SITE_URL + config.href('practice:' + k) + '): ' + (p.tagline || ''));
+  });
+  lines.push('');
+
+  lines.push('## Attorneys');
+  (C.attorneys || []).forEach(function (a) {
+    lines.push('- [' + a.name + '](' + config.SITE_URL + config.href('bio:' + a.slug) + '): ' + (a.role || ''));
+  });
+  lines.push('');
+
+  lines.push('## Locations');
+  Object.keys(C.locations || {}).forEach(function (k) {
+    var l = C.locations[k];
+    lines.push('- [' + (l.nav || k) + '](' + config.SITE_URL + config.href('location:' + k) + ')');
+  });
+  lines.push('');
+
+  lines.push('## Blog');
+  ((C.blog && C.blog.posts) || []).slice().sort(function (a, b) { return a.date < b.date ? 1 : -1; }).forEach(function (p) {
+    lines.push('- [' + p.title + '](' + config.SITE_URL + config.href('post:' + p.slug) + '): ' + (p.metaDescription || ''));
+  });
+  lines.push('');
+
+  return lines.join('\n') + '\n';
+}
+
 function assemblePage(T, vmObj) {
   return T.header(vmObj) + T.mobileMenu(vmObj) +
     '<main style="display:block">' + T.renderPage(vmObj) + (vmObj.showClosingCta ? T.closingCta() : '') + '</main>' +
@@ -163,6 +216,8 @@ function build() {
       return '  <url>\n    <loc>' + u + '</loc>\n    <lastmod>' + today + '</lastmod>\n  </url>';
     }).join('\n') + '\n</urlset>\n';
   writeFile(path.join(DOCS, 'sitemap.xml'), sitemapXml);
+
+  writeFile(path.join(DOCS, 'llms.txt'), buildLlmsTxt(PIL_CONTENT));
 
   console.log('Built ' + routes.length + ' pages + 404.html into docs/ (BASE_PATH=' + (config.BASE_PATH || '/') + ', SITE_URL=' + config.SITE_URL + ')');
 }
