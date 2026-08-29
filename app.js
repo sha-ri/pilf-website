@@ -414,7 +414,7 @@
       '<div style="display:flex;flex-direction:column;gap:10px">' + (vm.offices || []).map(function (o) {
         return '<div><div style="font-weight:700;color:#fff;font-size:12.5px;letter-spacing:0.04em;text-transform:uppercase;margin-bottom:2px">' + o.state + ' Office</div>' + o.addressLines.join('<br>') + '</div>';
       }).join('') + '</div></div>' +
-      '<div style="display:flex;align-items:center;gap:9px"><span style="display:flex">' + I('clock', 16) + '</span>Mon–Fri, 9:00 AM – 5:00 PM</div>' +
+      '<div style="display:flex;align-items:center;gap:9px"><span style="display:flex">' + I('clock', 16) + '</span>Mon–Fri, 9:00 AM – 5:00 PM EST</div>' +
       '<div style="font-family:var(--font-sans);font-size:13.5px;color:rgba(255,255,255,0.55);margin-top:-6px;padding-left:25px">By Appointment Only</div>' +
       '</div></div></div>' +
       '<div style="max-width:1240px;margin:0 auto;padding:18px 24px 0;border-top:1px solid rgba(255,255,255,0.1)"><span style="font-family:var(--font-sans);font-size:12.5px;line-height:1.6;color:rgba(255,255,255,0.45)">© 2026 Property Insurance Law PLLC, d/b/a <b>propertyinsurance<span style="color:var(--color-primary)">.law</span></b>. All rights reserved. Attorney advertising. Prior results do not guarantee a similar outcome.</span></div>' +
