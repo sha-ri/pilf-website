@@ -447,7 +447,7 @@ module.exports = function (PIL_CONTENT, ICON, opts) {
       '<div class="pil-hero-inner" style="position:relative;z-index:2;max-width:1240px;margin:0 auto;padding:clamp(48px,6vw,84px) 24px;min-height:min(84vh,680px);display:flex;align-items:center">' +
       '<div class="pil-hero-copy" style="max-width:512px">' + badge('accent', 'No Fee Unless We Win') +
       '<h1 style="font-family:var(--font-display);font-weight:600;font-size:clamp(44px,5.2vw,68px);line-height:1.02;letter-spacing:-0.025em;color:var(--color-ink);margin:22px 0 0">Your Property Damage Attorneys.</h1>' +
-      '<p style="font-family:var(--font-sans);font-size:20px;line-height:1.6;color:var(--color-muted);margin:22px 0 0">At <b style="color:var(--color-body);font-weight:600">propertyinsurance<span style="color:var(--color-primary)">.law</span></b>, we stand up for policyholders when insurance companies <b>don’t</b>.&nbsp;</p>' +
+      '<p style="font-family:var(--font-sans);font-size:20px;line-height:1.6;color:var(--color-muted);margin:22px 0 0">At <b style="color:var(--color-body);font-weight:600">propertyinsurance<span style="color:var(--color-primary)">.law</span></b>, we represent Florida and Illinois policyholders with <b>denied, delayed, and underpaid</b> property insurance claims — we stand up for you when the insurance company won’t.&nbsp;</p>' +
       '<div style="display:flex;flex-direction:column;align-items:flex-start;gap:12px;margin-top:32px">' +
       '<a href="' + href('contact') + '" class="pil-btn pil-btn--accent pil-btn--lg">Retain Our Firm Now</a>' + callBtn('lg', false) + '</div>' +
       '<div style="display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:28px;padding-top:26px;border-top:1px solid var(--color-hairline-soft)">' + trust + '</div>' +
@@ -892,7 +892,7 @@ module.exports = function (PIL_CONTENT, ICON, opts) {
   }
 
   function pageTitle(vm) {
-    var base = 'propertyinsurance.law — Your Property Damage Attorneys';
+    var base = 'Property Insurance Claim Lawyers | Florida & Illinois | propertyinsurance.law';
     if (vm.isArticle) return vm.av.h1 + ' | propertyinsurance.law';
     if (vm.isBio) return vm.bio.name + ' | propertyinsurance.law';
     if (vm.isPost) return (vm.post.metaTitle || vm.post.title) + ' | propertyinsurance.law';

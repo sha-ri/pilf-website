@@ -19,10 +19,21 @@ var WSHUFFLE_SEED = 1; // fixed at build time — which 2 of the 10 hero case re
 
 // CNAME_DOMAIN: set empty to skip writing docs/CNAME (e.g. a temporary GitHub Pages
 // preview under the default *.github.io URL, before the custom domain is approved/pointed).
-var CNAME_DOMAIN = process.env.CNAME_DOMAIN != null ? process.env.CNAME_DOMAIN : 'propertyinsurance.law';
+var CNAME_DOMAIN = process.env.CNAME_DOMAIN != null ? process.env.CNAME_DOMAIN : 'www.propertyinsurance.law';
 // NOINDEX: set '1' to mark every page noindex and Disallow all in robots.txt — for
 // preview deploys that shouldn't get crawled/indexed under a non-final URL.
 var NOINDEX_ALL = process.env.NOINDEX === '1';
+
+// Old Wix URLs with no equivalent page on the new site (everything else that
+// used to rank keeps its exact old URL via config.js's LEGACY_FLAT_DIRS instead
+// of needing a redirect at all). These get a static meta-refresh + canonical
+// stub — GitHub Pages can't serve a real server-side 301, and Google's own
+// guidance treats an instant meta-refresh as equivalent to one for ranking
+// purposes. Verified against the real Wix sitemap on 2026-08-29.
+var LEGACY_REDIRECTS = [
+  { from: 'blog/categories/property-damage-law', to: 'blog' },
+  { from: 'blog/categories/insurance-dispute-advice', to: 'blog' }
+];
 
 function loadWindowScript(relPath) {
   var sandbox = { window: {} };
@@ -146,6 +157,19 @@ function buildLlmsTxt(C) {
   return lines.join('\n') + '\n';
 }
 
+function writeRedirectStub(fromDir, toPage) {
+  var target = config.href(toPage);
+  var absTarget = config.SITE_URL + target;
+  var html = '<!DOCTYPE html>\n<html lang="en">\n<head>\n<meta charset="utf-8">\n' +
+    '<meta http-equiv="refresh" content="0; url=' + escAttr(target) + '">\n' +
+    '<link rel="canonical" href="' + escAttr(absTarget) + '">\n' +
+    (NOINDEX_ALL ? '<meta name="robots" content="noindex">\n' : '') +
+    '<title>Redirecting…</title>\n</head>\n<body>\n' +
+    '<p>This page has moved. <a href="' + escAttr(target) + '">Continue to the new page</a>.</p>\n' +
+    '</body>\n</html>\n';
+  writeFile(path.join(DOCS, fromDir, 'index.html'), html);
+}
+
 function assemblePage(T, vmObj) {
   return T.header(vmObj) + T.mobileMenu(vmObj) +
     '<main style="display:block">' + T.renderPage(vmObj) + (vmObj.showClosingCta ? T.closingCta() : '') + '</main>' +
@@ -193,6 +217,8 @@ function build() {
     '<a href="' + config.href('home') + '" class="pil-btn pil-btn--accent pil-btn--lg">Back to Home</a>' +
     '</div></main>' + T.footer(vm404) + T.mobileCall();
   writeFile(path.join(DOCS, '404.html'), wrapDocument(body404, { title: 'Page Not Found | propertyinsurance.law', noindex: true }));
+
+  LEGACY_REDIRECTS.forEach(function (r) { writeRedirectStub(r.from, r.to); });
 
   copyFile(path.join(ROOT, 'styles.css'), path.join(DOCS, 'styles.css'));
   copyFile(path.join(__dirname, 'client.js'), path.join(DOCS, 'client.js'));
