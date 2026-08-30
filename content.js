@@ -904,6 +904,27 @@
     }
   };
 
+  // Urgent, red-styled CTA block reused at the top and bottom of the hurricane
+  // readiness page — deliberately distinct from the sitewide accent "Get a
+  // Free Claim Review" CTA, to signal time-sensitivity right after a storm hits.
+  var HURRICANE_URGENT_CTA =
+    '<div style="margin-top:16px;background:var(--color-danger-soft);border:1px solid #f3c6c6;border-left:4px solid var(--color-danger);border-radius:14px;padding:clamp(20px,3vw,28px)">' +
+    '<h3 style="font-family:var(--font-display);font-weight:600;font-size:clamp(19px,2.4vw,23px);line-height:1.25;color:var(--color-ink);margin:0 0 8px">Storms move fast. So do insurance companies.</h3>' +
+    '<p style="font-family:var(--font-sans);font-size:15.5px;line-height:1.6;color:var(--color-body);margin:0 0 18px">After a major storm, carriers are flooded with claims and adjusters fall behind. A claim without an advocate pushing it forward is a claim that can get lost in the backlog. We walk clients through everything from first notice of loss to final resolution — reach out now, before the queue gets longer.</p>' +
+    '<div style="display:flex;flex-wrap:wrap;gap:12px">' +
+    '<a href="mailto:info@propertyinsurance.law?subject=Hurricane%20Claim%20%E2%80%94%20Immediate%20Assistance" class="pil-btn pil-btn--danger pil-btn--md"><span>Email Our Team Now</span></a>' +
+    '<a href="tel:14075028068" class="pil-btn pil-btn--danger pil-btn--md"><span style="display:flex"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span><span>Call (407) 502-8068 Now</span></a>' +
+    '</div></div>';
+
+  var HURRICANE_URGENT_CTA_BOTTOM =
+    '<div style="margin-top:38px;background:var(--color-danger-soft);border:1px solid #f3c6c6;border-left:4px solid var(--color-danger);border-radius:14px;padding:clamp(20px,3vw,28px);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:18px">' +
+    '<div><h3 style="font-family:var(--font-display);font-weight:600;font-size:clamp(19px,2.4vw,23px);line-height:1.25;color:var(--color-ink);margin:0 0 6px">Already dealing with storm damage?</h3>' +
+    '<p style="font-family:var(--font-sans);font-size:15.5px;line-height:1.6;color:var(--color-body);margin:0">Don’t wait for the adjuster backlog to catch up. Reach out now and we’ll get to work.</p></div>' +
+    '<div style="display:flex;flex-wrap:wrap;gap:12px">' +
+    '<a href="mailto:info@propertyinsurance.law?subject=Hurricane%20Claim%20%E2%80%94%20Immediate%20Assistance" class="pil-btn pil-btn--danger pil-btn--md"><span>Email Our Team Now</span></a>' +
+    '<a href="tel:14075028068" class="pil-btn pil-btn--danger pil-btn--md"><span style="display:flex"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span><span>Call (407) 502-8068 Now</span></a>' +
+    '</div></div>';
+
   // ---- Process / explainer pages ----
   var process = {
     'how-we-handle': {
@@ -975,13 +996,15 @@
     'hurricane-readiness': {
       draft: true, // built ahead of storm season; not linked or built until flipped live
       nav: 'Hurricane Readiness', icon: 'hurricane',
-      eyebrow: 'Storm Watch',
-      h1: 'Hurricane & Tropical Storm Resource Center',
-      tagline: 'Live tracking, official emergency resources, and what to do before, during, and after a storm to protect your property insurance claim.',
+      eyebrow: 'Florida Storm Watch',
+      h1: 'Florida Hurricane & Tropical Storm Resource Center',
+      tagline: 'Live tracking, official emergency resources, and the fastest way to get an advocate on your claim before, during, and after a Florida storm.',
       intro: [
-        'When a hurricane or tropical storm threatens Florida or Illinois, the decisions you make in the days before and after landfall can shape how your property insurance claim gets handled later. This page brings together live storm tracking, official emergency resources, and the practical steps that protect a claim, in one place.',
-        'If you are already dealing with storm damage, our attorneys are available for a free claim review at any stage, whether you have not yet filed, are waiting on an adjuster, or have already received a payment that does not cover the damage.'
+        'When a hurricane makes landfall in Florida, insurance companies are often flooded with new claims within days. Adjusters get backed up, timelines slip, and a claim without an active advocate behind it can get lost in the chaos. This page brings together live storm tracking, official emergency resources, and the practical steps that protect a claim, all in one place.',
+        '<strong style="color:var(--color-ink)">Time is of the essence.</strong> The earlier we’re involved, the harder it is for a claim to get buried in the backlog. We walk clients through everything from first notice of loss to final resolution, and a free claim review takes minutes.'
       ],
+      urgentCtaTop: HURRICANE_URGENT_CTA,
+      urgentCtaBottom: HURRICANE_URGENT_CTA_BOTTOM,
       sections: [
         { heading: 'Track the Storm', type: 'para', body: [
           'This graphic from the National Hurricane Center (NOAA/NHC) shows the current tropical weather outlook for the Atlantic basin and updates automatically as conditions change.',
@@ -993,7 +1016,6 @@
           { term: 'Florida Division of Emergency Management.', desc: 'Statewide alerts, evacuation orders, and shelter information. <a href="https://www.floridadisaster.org" target="_blank" rel="noopener" style="color:var(--color-primary);font-weight:600;text-decoration:underline;text-underline-offset:3px">floridadisaster.org</a>' },
           { term: 'Ready.gov Hurricane Guide.', desc: 'FEMA’s preparation checklist and family emergency planning tools. <a href="https://www.ready.gov/hurricanes" target="_blank" rel="noopener" style="color:var(--color-primary);font-weight:600;text-decoration:underline;text-underline-offset:3px">ready.gov/hurricanes</a>' },
           { term: 'FL511.', desc: 'Real-time Florida traffic, road closures, and evacuation route conditions. <a href="https://fl511.com" target="_blank" rel="noopener" style="color:var(--color-primary);font-weight:600;text-decoration:underline;text-underline-offset:3px">fl511.com</a>' },
-          { term: 'Illinois Emergency Management Agency.', desc: 'Severe weather alerts and preparedness resources for Illinois policyholders. <a href="https://iema.illinois.gov" target="_blank" rel="noopener" style="color:var(--color-primary);font-weight:600;text-decoration:underline;text-underline-offset:3px">iema.illinois.gov</a>' },
           { term: 'Federal Emergency Management Agency (FEMA).', desc: 'Disaster assistance and federal relief program information. <a href="https://www.fema.gov" target="_blank" rel="noopener" style="color:var(--color-primary);font-weight:600;text-decoration:underline;text-underline-offset:3px">fema.gov</a>' }
         ]},
         { heading: 'More Preparedness Resources', type: 'named', body: [
@@ -1035,8 +1057,8 @@
         { q: 'What happens if my insurance company becomes insolvent after a major storm?', a: '<p style="margin:0">If a Florida insurer is placed into liquidation, the Florida Insurance Guaranty Association (FIGA) generally steps in to process and pay eligible claims, subject to statutory caps and deadlines. Your policy is also cancelled on a schedule set by the liquidation order, so replacement coverage should be arranged promptly.</p>' },
         { q: 'When should I contact an attorney about my hurricane claim?', a: '<p style="margin:0">Any time. Whether you have not yet filed, are waiting on an inspection, or have already received a payment that seems too low, a free review can clarify where the claim stands and what it may still need.</p>' }
       ],
-      ctaTitle: 'Storm damage? We’re ready.',
-      ctaBody: 'A free review of your hurricane claim, no matter where you are in the process.',
+      ctaTitle: 'Storm damage? We’re ready now.',
+      ctaBody: 'A free review of your hurricane claim, no matter where you are in the process. The sooner we start, the sooner your claim has an advocate.',
       disclaimer: 'This page is provided for general informational purposes and is not legal advice. Storm tracking data is sourced from NOAA and may change rapidly; always follow official guidance from local authorities and the National Weather Service. Coverage depends on your specific policy language and facts.',
       related: [ { label: 'Hurricane Claims', page: 'claim:hurricane' }, { label: 'What to Do After Hurricane Damage', page: 'post:what-to-do-after-hurricane-damage-florida' }, { label: 'Free Claim Review', page: 'contact' } ]
     }
@@ -2633,7 +2655,7 @@
       phone: '(407) 502-8068', tel: 'tel:14075028068',
       email: 'info@propertyinsurance.law',
       addressLines: ['941 W. Morse Boulevard', 'Ste. 100-585', 'Winter Park, FL 32789'],
-      hours: 'Monday to Friday, 9:00 AM to 5:00 PM ET',
+      hours: 'Mon–Fri, 9:00 AM–5:00 PM ET',
       appointment: 'By appointment only',
       retainHref: 'https://signnow.com/s/o1YccX4i'
     },
@@ -2642,7 +2664,7 @@
       phone: '618-440-3088', tel: 'tel:16184403088',
       email: 'info@propertyinsurance.law',
       addressLines: ['203 N LaSalle Street', 'Ste. 2100', 'Chicago, IL 60601'],
-      hours: 'Monday to Friday, 8:00 AM to 4:00 PM CT',
+      hours: 'Mon–Fri, 8:00 AM–4:00 PM CT',
       appointment: 'By appointment only',
       retainHref: '#'
     }

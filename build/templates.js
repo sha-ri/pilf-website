@@ -176,6 +176,7 @@ module.exports = function (PIL_CONTENT, ICON, opts) {
     if (article) {
       vm.av = {
         eyebrow: article.eyebrow, h1: article.h1, tagline: article.tagline, intro: article.intro || [],
+        urgentCtaTop: article.urgentCtaTop || '', urgentCtaBottom: article.urgentCtaBottom || '',
         sections: (article.sections || []).map(function (s) {
           return { heading: s.heading, isNamed: s.type === 'named', isPara: s.type === 'para', named: s.type === 'named' ? s.body : [], paras: s.type === 'para' ? s.body : [] };
         }),
@@ -577,7 +578,7 @@ module.exports = function (PIL_CONTENT, ICON, opts) {
       '<div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:26px">' + btn({ variant: 'accent', href: href('contact'), label: 'Get a Free Claim Review' }) + callBtn() + '</div>' +
       '</div></section>' +
       '<section style="padding:clamp(48px,6vw,80px) 0"><div class="pil-collapse" style="max-width:1100px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:52px;align-items:start">' +
-      '<article>' + intro + sections + steps + faqs +
+      '<article>' + intro + (av.urgentCtaTop || '') + sections + steps + (av.urgentCtaBottom || '') + faqs +
       '<div style="margin-top:36px;padding:18px 22px;background:#fff;border:1px solid var(--color-hairline);border-left:3px solid var(--color-primary);border-radius:12px;font-family:var(--font-sans);font-size:14px;line-height:1.6;color:var(--color-muted)">' + av.disclaimer + '</div></article>' +
       '<aside style="position:sticky;top:96px;display:flex;flex-direction:column;gap:18px">' + sidebarCta(av.ctaTitle, av.ctaBody) + related + '</aside>' +
       '</div></section></div>';

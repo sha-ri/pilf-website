@@ -43,6 +43,8 @@
   --color-warning: #b8860b;
   --color-warning-soft: var(--color-accent-soft);
   --color-danger: #d64545;
+  --color-danger-hover: #c23838;
+  --color-danger-active: #ac2f2f;
   --color-danger-soft: #fdecec;
   --color-info: var(--color-primary);
   --color-info-soft: var(--color-primary-soft);
@@ -105,6 +107,7 @@
   --shadow-xl: 0 32px 72px rgba(40, 56, 120, 0.16);
   --shadow-primary: 0 10px 28px rgba(82, 112, 255, 0.30);
   --shadow-accent: 0 10px 24px rgba(255, 204, 82, 0.40);
+  --shadow-danger: 0 10px 24px rgba(214, 69, 69, 0.35);
 
   --border-width: 1px;
   --border-hairline: 1px solid var(--color-hairline);
@@ -189,6 +192,7 @@ a { color: inherit; text-decoration: none; }
 .pil-btn--lg { font-size: var(--text-lead); padding: 0.95rem 2rem; }
 .pil-btn--primary { --_shadow: var(--shadow-primary); }
 .pil-btn--accent { --_bg: var(--color-accent); --_bg-hover: var(--color-accent-hover); --_bg-active: var(--color-accent-active); --_fg: var(--color-on-accent); --_shadow: var(--shadow-accent); }
+.pil-btn--danger { --_bg: var(--color-danger); --_bg-hover: var(--color-danger-hover); --_bg-active: var(--color-danger-active); --_fg: #fff; --_shadow: var(--shadow-danger); }
 .pil-btn--secondary { --_bg: var(--color-primary-soft); --_bg-hover: #dde6ff; --_bg-active: #d2ddff; --_fg: var(--color-primary-active); --_shadow: none; --_border: var(--color-hairline); }
 .pil-btn--ghost { --_bg: transparent; --_bg-hover: var(--color-primary-soft); --_bg-active: var(--color-primary-soft); --_fg: var(--color-primary); --_shadow: none; }
 .pil-btn--link { --_bg: transparent; --_bg-hover: transparent; --_bg-active: transparent; --_fg: var(--color-primary); --_shadow: none; border-radius: var(--radius-xs); padding-left: 0.25rem; padding-right: 0.25rem; }
