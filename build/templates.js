@@ -27,6 +27,11 @@ module.exports = function (PIL_CONTENT, ICON, opts) {
     'Thank you for reaching out. We look forward to speaking with you soon.';
   var CONSULT_MAILTO = 'mailto:info@propertyinsurance.law?subject=' + encodeURIComponent(CONSULT_SUBJECT) + '&body=' + encodeURIComponent(CONSULT_BODY);
 
+  // Same intake template, routed to info@ + intake@ with an urgency-flagged
+  // subject line — used by the hurricane readiness page's red CTA buttons.
+  var HURRICANE_MAILTO = 'mailto:info@propertyinsurance.law?cc=intake@propertyinsurance.law&subject=' +
+    encodeURIComponent('URGENT Request - Hurricane / Tropical Storm') + '&body=' + encodeURIComponent(CONSULT_BODY);
+
   // Conceptual paths used in blog-post SEO notes -> real site routes.
   var SEO_LINK_MAP = {
     '/water-damage-insurance-claims': 'claim:water',
@@ -599,8 +604,8 @@ module.exports = function (PIL_CONTENT, ICON, opts) {
     return '<div style="margin-top:' + marginTop + ';background:var(--color-danger-soft);border:1px solid #f3c6c6;border-left:4px solid var(--color-danger);border-radius:14px;padding:clamp(20px,3vw,28px)">' +
       '<h3 style="font-family:var(--font-display);font-weight:600;font-size:clamp(19px,2.4vw,23px);line-height:1.25;color:var(--color-ink);margin:0 0 8px">' + o.heading + '</h3>' +
       '<p style="font-family:var(--font-sans);font-size:15.5px;line-height:1.6;color:var(--color-body);margin:0 0 18px">' + o.body + '</p>' +
-      '<div style="display:flex;flex-wrap:wrap;gap:12px">' + btn({ variant: 'danger', href: href('contact'), label: 'Get a Free Claim Review' }) +
-      '<a href="' + TEL + '" class="pil-btn pil-btn--danger pil-btn--md"><span style="display:flex">' + I('phone', 17) + '</span><span>Call ' + PHONE + '</span></a></div></div>';
+      '<div style="display:flex;flex-wrap:wrap;gap:12px">' + btn({ variant: 'danger', href: HURRICANE_MAILTO, label: 'Email Our Team Now' }) +
+      '<a href="' + TEL + '" class="pil-btn pil-btn--danger pil-btn--md"><span style="display:flex">' + I('phone', 17) + '</span><span>Call ' + PHONE + ' Now</span></a></div></div>';
   }
 
   function sidebarCta(title, body) {
