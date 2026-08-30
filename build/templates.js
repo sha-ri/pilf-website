@@ -176,7 +176,7 @@ module.exports = function (PIL_CONTENT, ICON, opts) {
     if (article) {
       vm.av = {
         eyebrow: article.eyebrow, h1: article.h1, tagline: article.tagline, intro: article.intro || [],
-        urgentCtaTop: article.urgentCtaTop || '', urgentCtaBottom: article.urgentCtaBottom || '',
+        urgentCtaTop: article.urgentCtaTop || null, urgentCtaBottom: article.urgentCtaBottom || null,
         sections: (article.sections || []).map(function (s) {
           return { heading: s.heading, isNamed: s.type === 'named', isPara: s.type === 'para', named: s.type === 'named' ? s.body : [], paras: s.type === 'para' ? s.body : [] };
         }),
@@ -578,7 +578,7 @@ module.exports = function (PIL_CONTENT, ICON, opts) {
       '<div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:26px">' + btn({ variant: 'accent', href: href('contact'), label: 'Get a Free Claim Review' }) + callBtn() + '</div>' +
       '</div></section>' +
       '<section style="padding:clamp(48px,6vw,80px) 0"><div class="pil-collapse" style="max-width:1100px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:52px;align-items:start">' +
-      '<article>' + intro + (av.urgentCtaTop || '') + sections + steps + (av.urgentCtaBottom || '') + faqs +
+      '<article>' + intro + urgentCta(av.urgentCtaTop, '16px') + sections + steps + urgentCta(av.urgentCtaBottom, '38px') + faqs +
       '<div style="margin-top:36px;padding:18px 22px;background:#fff;border:1px solid var(--color-hairline);border-left:3px solid var(--color-primary);border-radius:12px;font-family:var(--font-sans);font-size:14px;line-height:1.6;color:var(--color-muted)">' + av.disclaimer + '</div></article>' +
       '<aside style="position:sticky;top:96px;display:flex;flex-direction:column;gap:18px">' + sidebarCta(av.ctaTitle, av.ctaBody) + related + '</aside>' +
       '</div></section></div>';
@@ -589,6 +589,18 @@ module.exports = function (PIL_CONTENT, ICON, opts) {
       '<summary style="cursor:pointer;list-style:none;padding:18px 22px;font-family:var(--font-sans);font-size:16.5px;font-weight:700;color:var(--color-ink);display:flex;align-items:center;justify-content:space-between;gap:16px">' + f.q +
       '<span class="pil-faqchev" style="color:var(--color-primary);display:flex;flex:none;transition:transform .2s var(--ease-out)">' + I('chevron-right', 20) + '</span></summary>' +
       '<div style="padding:0 22px 20px;font-family:var(--font-sans);font-size:16px;line-height:1.65;color:var(--color-muted)">' + f.a + '</div></details>';
+  }
+
+  // Red, high-urgency CTA block (distinct from the standard accent sidebarCta)
+  // used inline within article bodies — e.g. the hurricane readiness page —
+  // to press a time-sensitive "reach out now" moment.
+  function urgentCta(o, marginTop) {
+    if (!o) return '';
+    return '<div style="margin-top:' + marginTop + ';background:var(--color-danger-soft);border:1px solid #f3c6c6;border-left:4px solid var(--color-danger);border-radius:14px;padding:clamp(20px,3vw,28px)">' +
+      '<h3 style="font-family:var(--font-display);font-weight:600;font-size:clamp(19px,2.4vw,23px);line-height:1.25;color:var(--color-ink);margin:0 0 8px">' + o.heading + '</h3>' +
+      '<p style="font-family:var(--font-sans);font-size:15.5px;line-height:1.6;color:var(--color-body);margin:0 0 18px">' + o.body + '</p>' +
+      '<div style="display:flex;flex-wrap:wrap;gap:12px">' + btn({ variant: 'danger', href: href('contact'), label: 'Get a Free Claim Review' }) +
+      '<a href="' + TEL + '" class="pil-btn pil-btn--danger pil-btn--md"><span style="display:flex">' + I('phone', 17) + '</span><span>Call ' + PHONE + '</span></a></div></div>';
   }
 
   function sidebarCta(title, body) {
