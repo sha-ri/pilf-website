@@ -66,17 +66,21 @@ function outDirFor(page) {
 
 // Enumerates every route straight off content.js's own keys, so adding
 // a new claim/practice/process/location/attorney later needs no build-script edits.
+// Any content entry with `draft: true` is skipped entirely — not written to
+// docs/, not in the sitemap, not linked anywhere — for content that's ready
+// but shouldn't go live until explicitly flipped (e.g. a hurricane-readiness
+// page prepared ahead of storm season).
 function enumerateRoutes(C) {
   var routes = [];
   Object.keys(FLAT_PAGE_DIRS).forEach(function (p) {
     routes.push({ page: p, outDir: outDirFor(p) });
   });
-  Object.keys(C.claims || {}).forEach(function (k) { routes.push({ page: 'claim:' + k, outDir: outDirFor('claim:' + k) }); });
-  Object.keys(C.practices || {}).forEach(function (k) { routes.push({ page: 'practice:' + k, outDir: outDirFor('practice:' + k) }); });
-  Object.keys(C.process || {}).forEach(function (k) { routes.push({ page: 'process:' + k, outDir: outDirFor('process:' + k) }); });
-  Object.keys(C.locations || {}).forEach(function (k) { routes.push({ page: 'location:' + k, outDir: outDirFor('location:' + k) }); });
-  (C.attorneys || []).forEach(function (a) { routes.push({ page: 'bio:' + a.slug, outDir: outDirFor('bio:' + a.slug) }); });
-  ((C.blog && C.blog.posts) || []).forEach(function (p) { routes.push({ page: 'post:' + p.slug, outDir: outDirFor('post:' + p.slug) }); });
+  Object.keys(C.claims || {}).forEach(function (k) { if (!C.claims[k].draft) routes.push({ page: 'claim:' + k, outDir: outDirFor('claim:' + k) }); });
+  Object.keys(C.practices || {}).forEach(function (k) { if (!C.practices[k].draft) routes.push({ page: 'practice:' + k, outDir: outDirFor('practice:' + k) }); });
+  Object.keys(C.process || {}).forEach(function (k) { if (!C.process[k].draft) routes.push({ page: 'process:' + k, outDir: outDirFor('process:' + k) }); });
+  Object.keys(C.locations || {}).forEach(function (k) { if (!C.locations[k].draft) routes.push({ page: 'location:' + k, outDir: outDirFor('location:' + k) }); });
+  (C.attorneys || []).forEach(function (a) { if (!a.draft) routes.push({ page: 'bio:' + a.slug, outDir: outDirFor('bio:' + a.slug) }); });
+  ((C.blog && C.blog.posts) || []).forEach(function (p) { if (!p.draft) routes.push({ page: 'post:' + p.slug, outDir: outDirFor('post:' + p.slug) }); });
   return routes;
 }
 

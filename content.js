@@ -971,6 +971,60 @@
         ]}
       ],
       related: [ { label: 'Water Damage', page: 'claim:water' }, { label: 'Roof Damage', page: 'claim:roof' }, { label: 'Fire & Smoke', page: 'claim:fire' } ]
+    },
+    'hurricane-readiness': {
+      draft: true, // built ahead of storm season; not linked or built until flipped live
+      nav: 'Hurricane Readiness', icon: 'hurricane',
+      eyebrow: 'Storm Watch',
+      h1: 'Hurricane & Tropical Storm Resource Center',
+      tagline: 'Live tracking, official emergency resources, and what to do before, during, and after a storm to protect your property insurance claim.',
+      intro: [
+        'When a hurricane or tropical storm threatens Florida or Illinois, the decisions you make in the days before and after landfall can shape how your property insurance claim gets handled later. This page brings together live storm tracking, official emergency resources, and the practical steps that protect a claim, in one place.',
+        'If you are already dealing with storm damage, our attorneys are available for a free claim review at any stage, whether you have not yet filed, are waiting on an adjuster, or have already received a payment that does not cover the damage.'
+      ],
+      sections: [
+        { heading: 'Track the Storm', type: 'para', body: [
+          'This graphic from the National Hurricane Center (NOAA/NHC) shows the current tropical weather outlook for the Atlantic basin and updates automatically as conditions change.',
+          '<img src="https://www.nhc.noaa.gov/xgtwo/two_atl_7d0.png" alt="NOAA National Hurricane Center 7-day Atlantic tropical weather outlook" style="width:100%;max-width:720px;border-radius:14px;border:1px solid var(--color-hairline);box-shadow:var(--shadow-sm);margin-top:4px" loading="lazy">',
+          '<span style="display:block;font-family:var(--font-sans);font-size:13px;color:var(--color-muted);margin-top:8px">Source: NOAA / National Hurricane Center. This graphic is hosted directly by NOAA and reflects their most recent update. For live tracking, forecast cones, and full model guidance, visit the <a href="https://www.nhc.noaa.gov/?atlc" target="_blank" rel="noopener" style="color:var(--color-primary);font-weight:600;text-decoration:underline;text-underline-offset:3px">National Hurricane Center’s Atlantic page</a>.</span>'
+        ]},
+        { heading: 'Official Emergency Resources', type: 'named', body: [
+          { term: 'National Hurricane Center (NOAA).', desc: 'Official storm tracking, forecast cones, and advisories. <a href="https://www.nhc.noaa.gov" target="_blank" rel="noopener" style="color:var(--color-primary);font-weight:600;text-decoration:underline;text-underline-offset:3px">nhc.noaa.gov</a>' },
+          { term: 'Florida Division of Emergency Management.', desc: 'Statewide alerts, evacuation orders, and shelter information. <a href="https://www.floridadisaster.org" target="_blank" rel="noopener" style="color:var(--color-primary);font-weight:600;text-decoration:underline;text-underline-offset:3px">floridadisaster.org</a>' },
+          { term: 'Ready.gov Hurricane Guide.', desc: 'FEMA’s preparation checklist and family emergency planning tools. <a href="https://www.ready.gov/hurricanes" target="_blank" rel="noopener" style="color:var(--color-primary);font-weight:600;text-decoration:underline;text-underline-offset:3px">ready.gov/hurricanes</a>' },
+          { term: 'FL511.', desc: 'Real-time Florida traffic, road closures, and evacuation route conditions. <a href="https://fl511.com" target="_blank" rel="noopener" style="color:var(--color-primary);font-weight:600;text-decoration:underline;text-underline-offset:3px">fl511.com</a>' },
+          { term: 'Illinois Emergency Management Agency.', desc: 'Severe weather alerts and preparedness resources for Illinois policyholders. <a href="https://iema.illinois.gov" target="_blank" rel="noopener" style="color:var(--color-primary);font-weight:600;text-decoration:underline;text-underline-offset:3px">iema.illinois.gov</a>' },
+          { term: 'Federal Emergency Management Agency (FEMA).', desc: 'Disaster assistance and federal relief program information. <a href="https://www.fema.gov" target="_blank" rel="noopener" style="color:var(--color-primary);font-weight:600;text-decoration:underline;text-underline-offset:3px">fema.gov</a>' }
+        ]},
+        { heading: 'What to Do Immediately After the Storm', type: 'para', body: [
+          'Once it is safe to do so, check for immediate hazards such as downed power lines, gas leaks, or structural instability before entering the property.',
+          'Take reasonable steps to prevent further damage, such as tarping a damaged roof or removing standing water, and keep every receipt for emergency repairs, since those costs are typically part of a hurricane claim.',
+          'Photograph and video the damage before any cleanup begins, and report the claim to your insurer as soon as reasonably possible. Florida law generally requires notice of a new or reopened property claim within one year of the date of loss.',
+          'Be cautious with contractors who canvass the neighborhood immediately after a storm. Verify licenses, get everything in writing, and avoid signing anything you have not had a chance to read carefully.'
+        ]}
+      ],
+      stepsHeading: 'Before Landfall: A Short Checklist',
+      steps: [
+        'Photograph and video every room, the roof, and the exterior of your home. Dated documentation is the single most valuable asset in a disputed claim.',
+        'Locate your full insurance policy, not just the declarations page, and store a copy somewhere the storm cannot reach.',
+        'Note your hurricane deductible percentage and dwelling coverage limit so you know roughly what you are responsible for.',
+        'Secure loose outdoor items, and if time allows, install storm shutters or plywood over windows.',
+        'Save your insurer’s claims phone number and this page somewhere accessible in case power or internet service goes down.'
+      ],
+      faqs: [
+        { q: 'How long do I have to file a hurricane damage claim in Florida?', a: '<p style="margin:0 0 12px">Florida law generally requires notice of a new or reopened property insurance claim within one year of the date of loss, and notice of a supplemental claim within 18 months. Report damage as early as possible, even if the full extent is not yet known.</p><p style="margin:0">You can supplement a claim later as additional damage is discovered.</p>' },
+        { q: 'How does my hurricane deductible work?', a: '<p style="margin:0">Hurricane deductibles in Florida are typically a percentage of your dwelling coverage limit rather than a flat dollar amount, and generally apply once per calendar year across all hurricane losses combined. Check your declarations page for the exact percentage that applies to your policy.</p>' },
+        { q: 'What if I cannot stay in my home after the storm?', a: '<p style="margin:0">Most homeowners policies include additional living expense (ALE) coverage, which can help pay for temporary housing and related costs while your home is uninhabitable due to a covered loss. Keep your receipts.</p>' },
+        { q: 'Do I have to use the insurance company’s preferred contractor?', a: '<p style="margin:0">In most cases, no. You generally have the right to choose your own licensed contractor. Some policies contain an election-to-repair provision that changes this analysis, so it is worth reviewing your specific policy language.</p>' },
+        { q: 'My insurer says the roof damage is wear and tear, not storm damage. What now?', a: '<p style="margin:0">This is one of the most common storm-claim disputes in Florida. Independent documentation, an inspection from your own roofer, and weather data for your address can all help challenge that conclusion. A legal review can help determine whether the denial appears consistent with the evidence.</p>' },
+        { q: 'Is flood damage covered under my homeowners policy?', a: '<p style="margin:0">Typically not. Standard homeowners policies generally cover wind and wind-driven rain but exclude flood damage, which is usually covered separately through the National Flood Insurance Program or a private flood policy.</p>' },
+        { q: 'What happens if my insurance company becomes insolvent after a major storm?', a: '<p style="margin:0">If a Florida insurer is placed into liquidation, the Florida Insurance Guaranty Association (FIGA) generally steps in to process and pay eligible claims, subject to statutory caps and deadlines. Your policy is also cancelled on a schedule set by the liquidation order, so replacement coverage should be arranged promptly.</p>' },
+        { q: 'When should I contact an attorney about my hurricane claim?', a: '<p style="margin:0">Any time. Whether you have not yet filed, are waiting on an inspection, or have already received a payment that seems too low, a free review can clarify where the claim stands and what it may still need.</p>' }
+      ],
+      ctaTitle: 'Storm damage? We’re ready.',
+      ctaBody: 'A free review of your hurricane claim, no matter where you are in the process.',
+      disclaimer: 'This page is provided for general informational purposes and is not legal advice. Storm tracking data is sourced from NOAA and may change rapidly; always follow official guidance from local authorities and the National Weather Service. Coverage depends on your specific policy language and facts.',
+      related: [ { label: 'Hurricane Claims', page: 'claim:hurricane' }, { label: 'What to Do After Hurricane Damage', page: 'post:what-to-do-after-hurricane-damage-florida' }, { label: 'Free Claim Review', page: 'contact' } ]
     }
   };
 
