@@ -218,7 +218,7 @@
       ], panelWidth: '260px', panelCols: 'repeat(1, minmax(0,1fr))' },
       { label: 'Our Locations', hasChildren: true, page: 'location:winter-park', items: navItems(locations, 'location'), panelWidth: '240px', panelCols: 'repeat(1, minmax(0,1fr))' },
       { label: 'Resources', hasChildren: true, page: 'faq', items: [
-        { label: 'Storm Resource Center', icon: 'hurricane', page: 'process:hurricane-readiness' },
+        { label: 'Storm Resource Center', icon: 'triangle-alert', page: 'process:hurricane-readiness' },
         { label: 'FAQ', icon: 'file-text', page: 'faq' },
         { label: 'Blog', icon: 'quote', page: 'blog' },
         { label: 'Law Firm Policies', icon: 'scale', page: 'policies' }
