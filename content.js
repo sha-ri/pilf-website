@@ -973,8 +973,7 @@
       related: [ { label: 'Water Damage', page: 'claim:water' }, { label: 'Roof Damage', page: 'claim:roof' }, { label: 'Fire & Smoke', page: 'claim:fire' } ]
     },
     'hurricane-readiness': {
-      draft: true, // built ahead of storm season; not linked or built until flipped live
-      nav: 'Hurricane Readiness', icon: 'hurricane',
+      nav: 'Storm Resource Center', icon: 'hurricane',
       eyebrow: 'Florida Storm Watch',
       h1: 'Florida Hurricane & Tropical Storm Resource Center',
       tagline: 'Current storm tracking, official emergency resources, and practical information for Florida property owners before and after a hurricane or tropical storm.',
