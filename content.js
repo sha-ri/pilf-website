@@ -1347,7 +1347,8 @@
     externalArticles: [
       { title: 'The Clock Started the Day of the Storm: Florida’s One Year Deadline to Report a Property Claim', author: 'Shari Freeman', dateDisplay: 'July 6, 2026', url: 'https://www.linkedin.com/pulse/clock-started-day-storm-floridas-one-year-deadline-report-freeman-jcsbe' },
       { title: 'Who Funds the Fight: The Campaign Against Litigation Funding and Why Policyholders Should Be Paying Attention', author: 'Shari Freeman', dateDisplay: 'July 13, 2026', url: 'https://www.linkedin.com/pulse/who-funds-fight-campaign-against-litigation-funding-why-shari-freeman-2yvke' },
-      { title: 'One Hand Washes the Other: Citizens, the DOAH Endorsement, and the Separate Justice System Built for Florida’s Insurer of Last Resort', author: 'Shari Freeman', dateDisplay: 'July 20, 2026', url: 'https://www.linkedin.com/pulse/one-hand-washes-other-citizens-doah-endorsement-separate-freeman-f58ke' }
+      { title: 'One Hand Washes the Other: Citizens, the DOAH Endorsement, and the Separate Justice System Built for Florida’s Insurer of Last Resort', author: 'Shari Freeman', dateDisplay: 'July 20, 2026', url: 'https://www.linkedin.com/pulse/one-hand-washes-other-citizens-doah-endorsement-separate-freeman-f58ke' },
+      { title: 'Your Insurance Company Is on a Timer: The Deadlines Florida Law Sets for Every Property Claim', author: 'Shari Freeman', dateDisplay: 'August 31, 2026', url: 'https://www.linkedin.com/pulse/your-insurance-company-timer-deadlines-florida-law-sets-shari-freeman-xljte/' }
     ],
     posts: [
       {
