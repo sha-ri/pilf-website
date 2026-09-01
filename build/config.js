@@ -36,6 +36,9 @@ var FLAT_PAGE_DIRS = {
 // lightning, tornado, theft, sinkhole, winter-park) are genuinely new and
 // use the normal /kind/slug/ pattern below instead.
 var LEGACY_FLAT_DIRS = {
+  // Not a legacy carryover like the others below — a deliberate rebrand so the
+  // URL matches the "Storm Resource Center" nav label instead of /process/hurricane-readiness/.
+  'process:hurricane-readiness': 'storm-center',
   'claim:denied': 'denied-homeowners-insurance-claims',
   'claim:underpaid': 'underpaid-insurance-claims',
   'claim:delayed': 'delayed-insurance-claims-florida',
