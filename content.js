@@ -1056,7 +1056,7 @@
       title: 'Shareholder, CEO | First-Party Property Insurance Litigation',
       role: 'Shareholder, CEO',
       focus: 'Claim valuation, litigation strategy',
-      ctaLabel: 'Contact Zaf', ctaHref: 'mailto:zg@propertyinsurance.law',
+      ctaLabel: 'Contact Zaf', ctaHref: 'mailto:zg@propertyinsurance.law?cc=info@propertyinsurance.law',
       practiceAreas: ['First Party Property Insurance Litigation', 'Coverage Disputes', 'Complex Civil Litigation', 'Business Litigation'],
       positioning: 'Zaf Goss has spent his entire legal career representing policyholders in first-party property insurance disputes.',
       bio: [
@@ -1083,7 +1083,7 @@
       title: 'Shareholder, COO | First-Party Property Insurance Litigation',
       role: 'Shareholder, COO',
       focus: 'Property insurance litigation, bilingual counsel',
-      ctaLabel: 'Contact Shari', ctaHref: 'mailto:sf@propertyinsurance.law',
+      ctaLabel: 'Contact Shari', ctaHref: 'mailto:sf@propertyinsurance.law?cc=info@propertyinsurance.law',
       practiceAreas: ['First Party Property Insurance Litigation', 'Coverage Disputes', 'Complex Civil Litigation', 'Construction Litigation'],
       positioning: 'Shari Freeman represents homeowners and business owners in first-party property insurance disputes involving denied, delayed, and underpaid claims.',
       bio: [
@@ -1112,7 +1112,7 @@
       title: 'Shareholder, CSO | First-Party Property Insurance Litigation',
       role: 'Shareholder, CSO',
       focus: 'Post-loss disputes, repair accountability',
-      ctaLabel: 'Contact Alex', ctaHref: 'mailto:ac@propertyinsurance.law',
+      ctaLabel: 'Contact Alex', ctaHref: 'mailto:ac@propertyinsurance.law?cc=info@propertyinsurance.law',
       practiceAreas: ['First Party Property Insurance Litigation', 'Coverage Disputes', 'Complex Civil Litigation'],
       positioning: 'J. Alex Couture represents homeowners and business owners in first-party property insurance disputes involving denied, delayed, and underpaid claims.',
       bio: [
@@ -1137,7 +1137,7 @@
       title: 'Shareholder, CCO | First-Party Property Insurance Litigation',
       role: 'Shareholder, CCO',
       focus: 'Coverage defenses, policy conditions',
-      ctaLabel: 'Contact James', ctaHref: 'mailto:jw@propertyinsurance.law',
+      ctaLabel: 'Contact James', ctaHref: 'mailto:jw@propertyinsurance.law?cc=info@propertyinsurance.law',
       practiceAreas: ['First Party Property Insurance Litigation', 'Coverage Disputes', 'Construction Litigation'],
       positioning: 'James Wilson represents homeowners and business owners in first-party property insurance disputes and construction-related litigation.',
       bio: [
@@ -1165,7 +1165,7 @@
       title: 'Senior Litigation Attorney | First-Party Property Insurance Litigation',
       role: 'Senior Litigation Attorney',
       focus: 'Litigated property disputes, trial preparation',
-      ctaLabel: 'Contact Stefan-José', ctaHref: 'mailto:sjg@propertyinsurance.law',
+      ctaLabel: 'Contact Stefan-José', ctaHref: 'mailto:sjg@propertyinsurance.law?cc=info@propertyinsurance.law',
       practiceAreas: ['First Party Property Insurance Litigation'],
       positioning: 'Stefan-José Garcia represents homeowners and business owners in first-party property insurance disputes throughout Florida and Illinois.',
       bio: [
