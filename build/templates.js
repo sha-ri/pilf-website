@@ -180,7 +180,7 @@ module.exports = function (PIL_CONTENT, ICON, opts) {
     // article view
     if (article) {
       vm.av = {
-        eyebrow: article.eyebrow, h1: article.h1, tagline: article.tagline, intro: article.intro || [],
+        eyebrow: article.eyebrow, h1: article.h1, metaTitle: article.metaTitle || null, tagline: article.tagline, intro: article.intro || [],
         urgentCtaTop: article.urgentCtaTop || null, urgentCtaBottom: article.urgentCtaBottom || null,
         sections: (article.sections || []).map(function (s) {
           return { heading: s.heading, isNamed: s.type === 'named', isPara: s.type === 'para', named: s.type === 'named' ? s.body : [], paras: s.type === 'para' ? s.body : [] };
@@ -913,7 +913,7 @@ module.exports = function (PIL_CONTENT, ICON, opts) {
 
   function pageTitle(vm) {
     var base = 'Property Insurance Claim Lawyers | Florida & Illinois | propertyinsurance.law';
-    if (vm.isArticle) return vm.av.h1 + ' | propertyinsurance.law';
+    if (vm.isArticle) return vm.av.metaTitle || (vm.av.h1 + ' | propertyinsurance.law');
     if (vm.isBio) return vm.bio.name + ' | propertyinsurance.law';
     if (vm.isPost) return (vm.post.metaTitle || vm.post.title) + ' | propertyinsurance.law';
     var m = {

@@ -12,6 +12,7 @@
       nav: 'Denied Claims', icon: 'shield-x',
       eyebrow: 'Denied Claims',
       h1: 'Denied Insurance Claims',
+      metaTitle: 'Denied Homeowners Insurance Claims | Florida Insurance Attorney - propertyinsurance.law',
       tagline: 'A denial letter does not necessarily mean your claim is over.',
       intro: [
         'You paid your premiums, reported the loss, and cooperated with the insurance company\u2019s investigation. Then you received a letter saying the claim was not covered.',
@@ -58,6 +59,7 @@
       nav: 'Delayed Claims', icon: 'clock',
       eyebrow: 'Delayed Claims',
       h1: 'Delayed Insurance Claims',
+      metaTitle: 'Delayed Homeowners Insurance Claims | Florida Insurance Attorney - propertyinsurance.law',
       tagline: 'If your insurance claim has been sitting for weeks or months without a clear decision, you may have options to move it forward.',
       intro: [
         'You submitted the claim. You provided documents. You allowed inspections. And you are still waiting.',
@@ -105,6 +107,7 @@
       nav: 'Underpaid Claims', icon: 'banknote',
       eyebrow: 'Underpaid Claims',
       h1: 'Underpaid Insurance Claims',
+      metaTitle: 'Underpaid Homeowners Insurance Claims | Florida Insurance Attorney - propertyinsurance.law',
       tagline: 'If the insurance company\u2019s estimate does not come close to the actual cost of repairing your property, the claim may not be finished.',
       intro: [
         'Sometimes the insurance company accepts that a covered loss occurred but pays far less than the repairs actually cost.',
@@ -152,6 +155,7 @@
       nav: 'Hurricane & Tropical Storm', icon: 'hurricane',
       eyebrow: 'Hurricane & Tropical Storm',
       h1: 'Hurricane and Tropical Storm Damage Claims',
+      metaTitle: 'Hurricane & Tropical Storm Damage Claims | Florida Homeowners Attorney - propertyinsurance.law',
       tagline: 'Hurricane and tropical storm damage can affect far more than the roof, and the full extent of the loss is not always captured in the insurance company\u2019s first inspection or estimate.',
       intro: [
         'A major storm can damage multiple parts of a property at once.',
@@ -202,6 +206,7 @@
       nav: 'Wind & Hail', icon: 'wind',
       eyebrow: 'Wind & Hail',
       h1: 'Wind and Hail Damage Insurance Claims',
+      metaTitle: 'Wind & Hail Damage Insurance Claims | Florida Homeowners Attorney - propertyinsurance.law',
       tagline: 'Wind and hail damage is not always obvious from the ground, and disagreements over what caused the damage are common.',
       intro: [
         'Hail can damage shingles in ways that are difficult to see without a close inspection. Wind can lift, crease, or loosen roofing materials even when the roof appears intact from the driveway.',
@@ -246,6 +251,7 @@
       nav: 'Roof Damage', icon: 'house',
       eyebrow: 'Roof Damage',
       h1: 'Roof Damage Insurance Claims',
+      metaTitle: 'Roof Damage Insurance Claims | Florida Homeowners Attorney - propertyinsurance.law',
       tagline: 'Roof claims often come down to three questions: what caused the damage, how extensive it is, and whether the roof can reasonably be repaired or needs to be replaced.',
       intro: [
         'Roof damage is one of the most common sources of disagreement in property insurance claims.',
@@ -294,6 +300,7 @@
       nav: 'Water Damage', icon: 'droplets',
       eyebrow: 'Water Damage',
       h1: 'Water Damage Insurance Claims',
+      metaTitle: 'Water Damage Insurance Claims | Florida Homeowners Attorney - propertyinsurance.law',
       tagline: 'Water damage claims often turn on one question: was the loss sudden, or did it happen gradually over time?',
       intro: [
         'A supply line breaks. A water heater fails. A drain backs up. Water spreads through flooring, drywall, cabinets, and other parts of the property.',
@@ -340,6 +347,7 @@
       nav: 'Mold & Biohazard', icon: 'microbe',
       eyebrow: 'Mold & Biohazard',
       h1: 'Mold and Biohazard Insurance Claims',
+      metaTitle: 'Mold & Biohazard Insurance Claims | Florida Homeowners Attorney - propertyinsurance.law',
       tagline: 'Mold and contamination claims often depend on what caused the condition, how far it spread, and which policy provisions apply to the cleanup and resulting damage.',
       intro: [
         'Mold often develops after a water loss.',
@@ -390,6 +398,7 @@
       nav: 'Frozen & Burst Pipe', icon: 'snowflake',
       eyebrow: 'Frozen & Burst Pipe',
       h1: 'Frozen and Burst Pipe Insurance Claims',
+      metaTitle: 'Frozen & Burst Pipe Insurance Claims | Florida Homeowners Attorney - propertyinsurance.law',
       tagline: 'Frozen and burst pipe claims often turn on whether the property was properly heated and what caused the pipe to fail.',
       intro: [
         'A hard freeze can cause a pipe to rupture and send water through walls, ceilings, flooring, and finished spaces in a matter of minutes.',
@@ -435,6 +444,7 @@
       nav: 'Fire & Smoke', icon: 'flame',
       eyebrow: 'Fire & Smoke',
       h1: 'Fire and Smoke Damage Insurance Claims',
+      metaTitle: 'Fire & Smoke Damage Insurance Claims | Florida Homeowners Attorney - propertyinsurance.law',
       tagline: 'Fire damage often extends far beyond the area where the flames were contained.',
       intro: [
         'A fire may be limited to one room, but smoke, soot, heat, and water from firefighting efforts can affect much more of the property.',
@@ -483,6 +493,7 @@
       nav: 'Commercial & Large Loss', icon: 'building-2',
       eyebrow: 'Commercial & Large Loss',
       h1: 'Commercial Property Insurance Claims',
+      metaTitle: 'Commercial Property Insurance Claims | Florida Commercial Property Attorney - propertyinsurance.law',
       tagline: 'Commercial property losses can affect more than the building. They can disrupt operations, reduce revenue, damage inventory and equipment, and create expenses that continue long after the initial loss.',
       intro: [
         'A serious commercial property loss can create several insurance issues at the same time.',
@@ -530,6 +541,7 @@
       nav: 'Lightning', icon: 'cloud-lightning',
       eyebrow: 'Lightning',
       h1: 'Lightning Damage Insurance Claims',
+      metaTitle: 'Lightning Damage Insurance Claims | Florida Homeowners Attorney - propertyinsurance.law',
       tagline: 'Lightning damage is not always obvious, and problems with electrical systems and equipment may not appear immediately after the storm.',
       intro: [
         'A lightning strike can affect much more than the place where it makes contact.',
@@ -578,6 +590,7 @@
       nav: 'Tornado', icon: 'tornado',
       eyebrow: 'Tornado',
       h1: 'Tornado Damage Insurance Claims',
+      metaTitle: 'Tornado Damage Insurance Claims | Florida Homeowners Attorney - propertyinsurance.law',
       tagline: 'Tornado damage can extend well beyond what is immediately visible, and an incomplete inspection can leave major parts of the loss unpaid.',
       intro: [
         'A tornado can damage a property in seconds, but identifying the full extent of that damage can take much longer.',
@@ -623,6 +636,7 @@
       nav: 'Theft & Vandalism', icon: 'mask',
       eyebrow: 'Theft & Vandalism',
       h1: 'Theft and Vandalism Insurance Claims',
+      metaTitle: 'Theft & Vandalism Insurance Claims | Florida Homeowners Attorney - propertyinsurance.law',
       tagline: 'Theft and vandalism claims can become complicated quickly, especially when the insurance company questions ownership, value, occupancy, or how the loss occurred.',
       intro: [
         'A break-in or act of vandalism can leave behind more than missing property.',
@@ -671,6 +685,7 @@
       nav: 'Sinkhole & Ground Collapse', icon: 'map-pin',
       eyebrow: 'Sinkhole & Ground Collapse',
       h1: 'Sinkhole and Ground Settlement Insurance Claims',
+      metaTitle: 'Sinkhole & Ground Collapse Insurance Claims | Florida Homeowners Attorney - propertyinsurance.law',
       tagline: 'Ground movement claims can be highly technical, and coverage often depends on exactly what caused the movement and how the policy defines it.',
       intro: [
         'Cracks in block walls, doors that no longer close properly, separating finishes, and sloping floors can all point to movement beneath or around a structure.',
@@ -719,6 +734,7 @@
       nav: 'Personal Injury', icon: 'hand-heart',
       eyebrow: 'Personal Injury',
       h1: 'Personal Injury Attorneys',
+      metaTitle: 'Personal Injury Attorneys | Florida & Illinois Law Firm - propertyinsurance.law',
       tagline: 'When someone else\u2019s negligence causes a serious injury, the insurance company immediately begins evaluating what the claim is worth. You should have someone doing the same for you.',
       intro: [
         'Our firm spends much of its time dealing with insurance companies. That experience carries directly into personal injury cases, where insurers investigate what happened, question fault, review medical treatment, and decide what they believe an injury is worth.',
@@ -759,6 +775,7 @@
       nav: 'Slip & Fall', icon: 'arm-sling',
       eyebrow: 'Slip & Fall',
       h1: 'Slip and Fall Injury Claims',
+      metaTitle: 'Slip & Fall Injury Claims | Florida Personal Injury Attorney - propertyinsurance.law',
       tagline: 'When a dangerous condition causes a serious injury, what happened before the fall can be just as important as what happened after it.',
       intro: [
         'Wet floors. Broken stairs. Uneven walkways. Poor lighting. Merchandise or debris left where people walk.',
@@ -806,6 +823,7 @@
       nav: 'Auto Accident', icon: 'steering-wheel',
       eyebrow: 'Auto Accident',
       h1: 'Auto Accident Injury Claims',
+      metaTitle: 'Auto Accident Injury Claims | Florida Personal Injury Attorney - propertyinsurance.law',
       tagline: 'After a serious crash, the insurance companies begin evaluating what happened almost immediately. You should have someone protecting your side of the case too.',
       intro: [
         'A car crash can create several problems at once: injuries, medical treatment, missed work, vehicle damage, and calls from insurance adjusters asking questions before you know how the accident will affect you.',
@@ -856,6 +874,7 @@
       nav: 'Construction Defect', icon: 'hammer',
       eyebrow: 'Construction Defect',
       h1: 'Construction Defect Claims',
+      metaTitle: 'Construction Defect Claims | Florida Property Attorney - propertyinsurance.law',
       tagline: 'Construction defects can remain hidden for months or years before the damage becomes impossible to ignore.',
       intro: [
         'Water coming through windows or walls. Cracking in stucco, masonry, or foundations. Roofing that repeatedly leaks. Improper drainage. Failed waterproofing. Problems with balconies, decks, or building envelopes.',
@@ -1226,6 +1245,7 @@
       nav: 'Winter Park, FL', icon: 'map-pin',
       eyebrow: 'Winter Park, FL',
       h1: 'Winter Park Property Insurance Claim Lawyers',
+      metaTitle: 'Winter Park Property Insurance Claim Lawyers | Homeowners Insurance Attorney - propertyinsurance.law',
       tagline: 'Our home office is in Winter Park, and we represent homeowners, associations, landlords, and businesses throughout Florida when property insurance claims are denied, delayed, or underpaid.',
       intro: [
         'Property damage can create immediate questions about what is covered, what needs to be documented, and whether the insurance company\u2019s estimate reflects the actual loss.',
@@ -1260,6 +1280,7 @@
       nav: 'Chicago, IL', icon: 'map-pin',
       eyebrow: 'Chicago, IL',
       h1: 'Chicago Property Insurance Claim Lawyers',
+      metaTitle: 'Chicago Property Insurance Claim Lawyers | Illinois Insurance Attorney - propertyinsurance.law',
       tagline: 'From our Chicago office, we represent homeowners, associations, landlords, and businesses throughout Illinois when property insurance claims are denied, delayed, or underpaid.',
       intro: [
         'Property losses in Illinois can involve everything from frozen and burst pipes to wind, hail, water intrusion, fire, roof damage, and significant commercial losses.',
