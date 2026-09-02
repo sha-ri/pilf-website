@@ -12,7 +12,8 @@ var BASE_PATH = process.env.BASE_PATH != null ? process.env.BASE_PATH : '/';
 var SITE_URL = process.env.SITE_URL != null ? process.env.SITE_URL : 'https://www.propertyinsurance.law';
 
 // kind:slug -> output dir prefix
-var KIND_DIRS = { claim: 'claims', practice: 'practice', process: 'process', location: 'locations', bio: 'attorneys', post: 'post' };
+// esclaim: 'es' -> Spanish-translated claim pages live at /es/<slug>/, alongside the /es homepage.
+var KIND_DIRS = { claim: 'claims', practice: 'practice', process: 'process', location: 'locations', bio: 'attorneys', post: 'post', esclaim: 'es' };
 
 // flat page -> output dir (relative to docs/); 'home' is handled separately (outputs to docs/index.html)
 var FLAT_PAGE_DIRS = {
@@ -83,6 +84,7 @@ function enumerateRoutes(C) {
   Object.keys(C.practices || {}).forEach(function (k) { if (!C.practices[k].draft) routes.push({ page: 'practice:' + k, outDir: outDirFor('practice:' + k) }); });
   Object.keys(C.process || {}).forEach(function (k) { if (!C.process[k].draft) routes.push({ page: 'process:' + k, outDir: outDirFor('process:' + k) }); });
   Object.keys(C.locations || {}).forEach(function (k) { if (!C.locations[k].draft) routes.push({ page: 'location:' + k, outDir: outDirFor('location:' + k) }); });
+  Object.keys(C.claimsEs || {}).forEach(function (k) { if (!C.claimsEs[k].draft) routes.push({ page: 'esclaim:' + k, outDir: outDirFor('esclaim:' + k) }); });
   (C.attorneys || []).forEach(function (a) { if (!a.draft) routes.push({ page: 'bio:' + a.slug, outDir: outDirFor('bio:' + a.slug) }); });
   ((C.blog && C.blog.posts) || []).forEach(function (p) { if (!p.draft) routes.push({ page: 'post:' + p.slug, outDir: outDirFor('post:' + p.slug) }); });
   return routes;

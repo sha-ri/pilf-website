@@ -728,6 +728,155 @@
     }
   };
 
+  // ---- Spanish-translated claim pages, linked from /es ----
+  // Only these three (the ones most requested in Spanish) have translated
+  // versions; everything else on /es still links to the English claim pages.
+  var claimsEsDisclaimer = 'Las leyes de seguros de propiedad varían según el estado. Representamos a asegurados en toda Florida e Illinois. Durante su consulta, le explicaremos las reglas y plazos que puedan aplicar a su reclamo.';
+  var claimsEs = {
+    'reclamos-denegados': {
+      eyebrow: 'Reclamos Denegados',
+      h1: 'Reclamos de Seguro Denegados',
+      metaTitle: 'Reclamos de Seguro Denegados | Abogado de Seguros en Florida - propertyinsurance.law',
+      tagline: 'Una carta de denegación no significa necesariamente que su reclamo haya terminado.',
+      intro: [
+        'Usted pagó sus primas, reportó la pérdida y cooperó con la investigación de la aseguradora. Luego recibió una carta diciendo que el reclamo no estaba cubierto.',
+        'Tal vez la aseguradora culpó al desgaste normal. Tal vez llamó al daño preexistente. Tal vez se basó en una exclusión de la póliza.',
+        'Cualquiera que sea la razón, una denegación es la postura de la aseguradora sobre su reclamo. Debe revisarse contra la póliza, los hechos y la evidencia en la que se basó la aseguradora.',
+        'Hemos revisado cientos de expedientes de reclamos de seguro de propiedad. Sabemos qué buscar: inspecciones que pasaron por alto áreas importantes de daño, conclusiones basadas en información incompleta, opiniones de ingeniería que no coinciden con el estado de la propiedad, y exclusiones aplicadas más ampliamente de lo que permite el lenguaje de la póliza.',
+        'Nuestro trabajo es determinar si la denegación se sostiene.'
+      ],
+      sections: [
+        { heading: 'Cómo se Deniegan los Reclamos de Seguro', type: 'named', body: [
+          { term: 'Una inspección incompleta.', desc: 'Una inspección breve puede convertirse en la base de toda la decisión de la aseguradora. Si un área nunca fue examinada adecuadamente, un daño importante puede pasarse por alto o descartarse.' },
+          { term: 'Una disputa sobre la causa del daño.', desc: 'La causa de la pérdida a menudo determina si hay cobertura. Una aseguradora puede caracterizar el daño por tormenta como desgaste normal, o una falla repentina de plomería como filtración de largo plazo. Esas distinciones importan.' },
+          { term: 'Una exclusión en la póliza.', desc: 'Las pólizas de seguro contienen exclusiones, pero la redacción importa. Una denegación debe evaluarse contra el lenguaje real de la póliza, no simplemente el resumen que hace la aseguradora de ella.' },
+          { term: 'Un presunto incumplimiento de los requisitos de la póliza.', desc: 'Las aseguradoras pueden plantear problemas como aviso tardío, documentación insuficiente, falta de protección de la propiedad, o inspecciones no realizadas. Si esos problemas justifican una denegación depende de la póliza, los hechos y la ley estatal aplicable.' },
+          { term: 'Una decisión tomada desde el escritorio.', desc: 'En algunos reclamos, la decisión final de cobertura o el estimado provienen de alguien que nunca inspeccionó la propiedad. Eso puede crear una desconexión entre lo que realmente se observó y lo que finalmente aparece en el expediente del reclamo.' }
+        ]},
+        { heading: 'Cómo Revisamos un Reclamo Denegado', type: 'para', body: [
+          'Generalmente comenzamos con la póliza, la carta de denegación, fotografías y estimados, y los documentos disponibles del reclamo.',
+          'Primero, identificamos exactamente por qué la aseguradora dice que el reclamo no está cubierto. Luego comparamos esa explicación con el lenguaje de la póliza y la evidencia.',
+          'Dependiendo del reclamo, eso puede significar revisar informes de inspección, fotografías, datos climáticos, opiniones de ingeniería, estimados de reparación, comunicaciones con el ajustador, y la cronología de la pérdida.',
+          'Si se necesita evidencia adicional, podemos trabajar con contratistas, ingenieros u otros profesionales para documentar el daño y abordar problemas en disputa como la causa o el costo de reparación.',
+          'Una vez que entendemos el reclamo y la base de la denegación, podemos determinar el siguiente paso apropiado. Eso puede implicar más negociación con la aseguradora, un proceso de tasación (appraisal) cuando corresponda, mediación, o litigio.',
+          'Una carta de denegación es importante. No siempre es la última palabra.'
+        ]}
+      ],
+      stepsHeading: 'Qué Hacer Después de que su Reclamo Sea Denegado',
+      steps: [
+        '<strong style="color:var(--color-ink);font-weight:700">Guarde la carta de denegación y todo lo que vino con ella.</strong> La carta debe identificar las razones de la denegación y las disposiciones de la póliza en las que se basa la aseguradora.',
+        '<strong style="color:var(--color-ink);font-weight:700">Preserve la evidencia del daño.</strong> Antes de hacer reparaciones permanentes, fotografíe y documente la propiedad lo más completamente que pueda razonablemente. Haga las reparaciones necesarias para prevenir daños adicionales, y guarde los recibos.',
+        '<strong style="color:var(--color-ink);font-weight:700">Guarde los registros de su reclamo.</strong> Conserve fotografías, estimados, facturas, correos electrónicos, mensajes de texto, informes y otras comunicaciones relacionadas con la pérdida.',
+        '<strong style="color:var(--color-ink);font-weight:700">Tenga cuidado con declaraciones grabadas adicionales.</strong> Si la aseguradora solicita otra declaración grabada o examen, considere hablar con un abogado antes de proceder.',
+        '<strong style="color:var(--color-ink);font-weight:700">Haga que revisen la denegación con prontitud.</strong> Los reclamos de seguro pueden estar sujetos a plazos de la póliza y legales. Envíenos la carta de denegación y podemos revisar el reclamo con usted.'
+      ],
+      faqs: [
+        { q: '¿Se puede reabrir o impugnar un reclamo de seguro denegado?', a: 'Sí. Una denegación no siempre termina el reclamo. Dependiendo de la póliza, la evidencia y la razón dada para la denegación, puede haber fundamentos para impugnar la decisión de la aseguradora. Eso puede implicar presentar documentación adicional, disputar la interpretación que hace la aseguradora de la póliza, obtener una opinión de experto independiente, o iniciar un proceso formal de disputa. Revisamos la denegación y el reclamo subyacente para determinar qué opciones pueden seguir disponibles.' },
+        { q: '¿Cuánto tiempo tengo para impugnar la denegación de un reclamo de seguro?', a: 'Depende del estado, la póliza y el tipo de reclamo. Las pólizas de seguro y la ley estatal pueden imponer plazos para presentar una demanda, exigir tasación (appraisal), proporcionar documentos, o tomar otras acciones. Algunos plazos pueden seguir corriendo incluso mientras usted se comunica con la aseguradora. Si su reclamo ha sido denegado, es mejor que la denegación se revise con prontitud en lugar de asumir que todavía tiene tiempo.' },
+        { q: '¿Cuánto cuesta contratar a su firma?', a: 'No hay costo por la revisión inicial del reclamo. Si creemos que podemos ayudar y usted decide contratarnos, explicaremos el acuerdo de honorarios antes de comenzar cualquier trabajo. La estructura puede depender del reclamo, el tipo de disputa, y la ley del estado donde ocurrió la pérdida. Usted tendrá la oportunidad de revisar y discutir los términos antes de decidir si continuar.' },
+        { q: '¿Debo aceptar otra inspección por parte de la aseguradora?', a: 'Posiblemente. Su póliza puede requerir que coopere con solicitudes razonables de inspección, pero eso no significa que cada solicitud deba manejarse sin preparación. Una nueva inspección puede afectar cómo la aseguradora evalúa el reclamo y puede involucrar problemas en disputa sobre la causa, el alcance, o la extensión del daño. Antes de aceptar otra inspección después de una denegación, considere que la solicitud y su póliza sean revisadas para que entienda sus obligaciones y cómo proteger el reclamo.' }
+      ],
+      disclaimer: claimsEsDisclaimer,
+      related: [ { label: 'Reclamos Subpagados', page: 'esclaim:reclamos-subpagados' }, { label: 'Reclamos Retrasados', page: 'esclaim:reclamos-retrasados' } ]
+    },
+
+    'reclamos-retrasados': {
+      eyebrow: 'Reclamos Retrasados',
+      h1: 'Reclamos de Seguro Retrasados',
+      metaTitle: 'Reclamos de Seguro Retrasados | Abogado de Seguros en Florida - propertyinsurance.law',
+      tagline: 'Si su reclamo de seguro ha estado pendiente durante semanas o meses sin una decisión clara, es posible que tenga opciones para hacerlo avanzar.',
+      intro: [
+        'Usted presentó el reclamo. Proporcionó documentos. Permitió inspecciones. Y todavía está esperando.',
+        'Tal vez el reclamo ha sido reasignado a otro ajustador. Tal vez la aseguradora sigue pidiendo información que usted ya proporcionó. O tal vez cada actualización es alguna versión de "el reclamo todavía está bajo revisión."',
+        'Mientras tanto, la propiedad todavía necesita repararse y los costos asociados con la pérdida no se detienen.',
+        'Las aseguradoras tienen derecho a investigar los reclamos, y algunos reclamos legítimamente toman más tiempo que otros. Pero una investigación no debería continuar indefinidamente sin una explicación razonable. Las pólizas de seguro y la ley estatal pueden imponer requisitos sobre cómo se reconocen, investigan y manejan los reclamos.',
+        'Cuando un reclamo parece estar estancado, revisamos qué ha sucedido, qué sigue pidiendo la aseguradora, y si hay pasos disponibles para que el reclamo avance de nuevo.'
+      ],
+      sections: [
+        { heading: 'Por Qué se Retrasan los Reclamos de Seguro', type: 'named', body: [
+          { term: 'Cambios repetidos de ajustador.', desc: 'Un reclamo puede transferirse de un ajustador a otro, obligándole a explicar la pérdida de nuevo o volver a presentar información que ya está en el expediente.' },
+          { term: 'Solicitudes continuas de documentos.', desc: 'La aseguradora puede seguir pidiendo registros, estimados, fotografías u otra información. Algunas solicitudes son necesarias. Otras pueden repetir información que ya se proporcionó o dejarlo sin saber qué está realmente impidiendo una decisión.' },
+          { term: 'Retrasos en las inspecciones.', desc: 'Las inspecciones pueden programarse con semanas de anticipación, posponerse, o ser seguidas de solicitudes de inspecciones adicionales o evaluaciones de expertos.' },
+          { term: 'Ninguna decisión clara de cobertura.', desc: 'A veces el mayor problema es simplemente la falta de una respuesta. El reclamo no ha sido aprobado ni denegado, y la aseguradora no le dará una explicación significativa de qué queda pendiente.' }
+        ]},
+        { heading: 'Cómo Manejamos un Reclamo Retrasado', type: 'para', body: [
+          'Comenzamos construyendo una cronología clara del reclamo.',
+          'Revisamos cuándo se reportó la pérdida, qué documentos se presentaron, cuándo ocurrieron las inspecciones, qué solicitó la aseguradora, y qué explicaciones ha dado para el retraso.',
+          'A partir de ahí, determinamos si algo legítimamente queda pendiente y qué obligaciones pueden aplicar bajo la póliza y la ley estatal.',
+          'Cuando es apropiado, nos comunicamos directamente con la aseguradora, respondemos a los problemas pendientes, documentamos el historial del reclamo, y solicitamos una posición clara sobre qué está impidiendo una decisión.',
+          'Si la aseguradora aún no actúa, evaluamos las opciones legales disponibles para hacer avanzar el reclamo.',
+          'El objetivo es simple: obtener una respuesta clara y evitar que una investigación abierta se convierta en el status quo.'
+        ]}
+      ],
+      stepsHeading: 'Qué Hacer Si su Reclamo Está Retrasado',
+      steps: [
+        '<strong style="color:var(--color-ink);font-weight:700">Mantenga una cronología del reclamo.</strong> Anote las fechas de llamadas, inspecciones, solicitudes de documentos, cambios de ajustador, y cualquier promesa sobre cuándo recibiría una respuesta.',
+        '<strong style="color:var(--color-ink);font-weight:700">Mantenga las comunicaciones importantes por escrito.</strong> El correo electrónico puede crear un registro útil de lo que se solicitó, lo que usted proporcionó, y lo que la aseguradora le dijo.',
+        '<strong style="color:var(--color-ink);font-weight:700">Pregunte qué está impidiendo una decisión.</strong> Solicite una actualización de estado por escrito y pregunte específicamente si la aseguradora necesita algo más de usted antes de poder tomar una decisión de cobertura.',
+        '<strong style="color:var(--color-ink);font-weight:700">Continúe protegiendo la propiedad.</strong> Tome medidas razonables para prevenir daños adicionales y conserve fotografías, facturas y recibos del trabajo relacionado con la pérdida.',
+        '<strong style="color:var(--color-ink);font-weight:700">Haga que revisen el retraso.</strong> Si ha proporcionado lo que la aseguradora solicitó y aún no puede obtener una respuesta clara, envíenos la cronología del reclamo y la correspondencia. Podemos revisar lo que ha sucedido y ayudar a determinar el siguiente paso.'
+      ],
+      faqs: [
+        { q: '¿Cuánto tiempo es demasiado para que una aseguradora decida mi reclamo?', a: 'No existe un plazo único que aplique a todos los reclamos de seguro de propiedad. La respuesta depende del estado, la póliza, las circunstancias de la pérdida, y si la aseguradora razonablemente necesita información adicional para completar su investigación. Si han pasado semanas o meses y todavía no puede obtener una explicación clara de qué está impidiendo una decisión, puede valer la pena que revisen el reclamo.' },
+        { q: '¿Contratar a un abogado retrasará mi reclamo de seguro?', a: 'No necesariamente. Cuando un reclamo ya está retrasado, un abogado puede ayudar a identificar qué lo está deteniendo, organizar los problemas pendientes, comunicarse directamente con la aseguradora, y crear un registro escrito claro de lo que ya se ha proporcionado. Si la aseguradora tiene todo lo que razonablemente necesita pero aún no toma una decisión, un abogado también puede evaluar qué opciones legales están disponibles.' },
+        { q: 'La aseguradora sigue pidiendo más documentos. ¿Tengo que proporcionarlos?', a: 'Su póliza puede requerir que coopere con la investigación de la aseguradora y proporcione información razonablemente solicitada. Eso no significa que cada solicitud sea necesariamente apropiada o que deba proporcionar repetidamente los mismos documentos sin aclaración. Podemos revisar las solicitudes, ayudar a determinar qué requiere su póliza, y asegurarnos de que sus respuestas queden debidamente documentadas.' },
+        { q: '¿Cuánto cuesta contratar a su firma?', a: 'No hay costo por la revisión inicial del reclamo. Si creemos que podemos ayudar y usted decide contratarnos, explicaremos el acuerdo de honorarios antes de comenzar cualquier trabajo. La estructura puede depender del reclamo y la ley del estado donde ocurrió la pérdida.' }
+      ],
+      ctaTitle: '¿Todavía esperando una respuesta?',
+      ctaBody: 'Envíenos la correspondencia de su reclamo y una breve cronología de lo que ha sucedido. Revisaremos el retraso y le daremos una evaluación clara de en qué situación se encuentra su reclamo.',
+      disclaimer: claimsEsDisclaimer,
+      related: [ { label: 'Reclamos Denegados', page: 'esclaim:reclamos-denegados' }, { label: 'Reclamos Subpagados', page: 'esclaim:reclamos-subpagados' } ]
+    },
+
+    'reclamos-subpagados': {
+      eyebrow: 'Reclamos Subpagados',
+      h1: 'Reclamos de Seguro Subpagados',
+      metaTitle: 'Reclamos de Seguro Subpagados | Abogado de Seguros en Florida - propertyinsurance.law',
+      tagline: 'Si el estimado de la aseguradora no se acerca al costo real de reparar su propiedad, el reclamo puede no estar terminado.',
+      intro: [
+        'A veces la aseguradora acepta que ocurrió una pérdida cubierta pero paga mucho menos de lo que realmente cuestan las reparaciones.',
+        'La diferencia puede provenir de daño faltante, medidas reducidas, precios bajos, depreciación, requisitos de código omitidos, o un alcance de reparación que no refleja lo que realmente se necesita para restaurar la propiedad.',
+        'Un pago parcial puede sentirse como si la aseguradora hubiera tomado su decisión final. A menudo, no lo ha hecho.',
+        'Revisamos el estimado de la aseguradora línea por línea y lo comparamos con el daño, la póliza, y el costo real del trabajo. Eso significa observar el alcance, las medidas, las cantidades, los precios de mano de obra y materiales, la depreciación, los gastos generales y ganancia, y cualquier otro elemento que afecte el monto del reclamo.',
+        'El objetivo es sencillo: determinar por qué pagó la aseguradora, qué dejó fuera, y si pueden deberse beneficios de seguro adicionales.'
+      ],
+      sections: [
+        { heading: 'Dónde Ocurren los Pagos Insuficientes', type: 'named', body: [
+          { term: 'Alcance faltante.', desc: 'El daño puede quedar completamente fuera del estimado. Eso podría incluir áreas adicionales del techo, daño interior por agua, estructuras exteriores, pisos, gabinetes, cercas, u otras porciones afectadas de la propiedad.' },
+          { term: 'Medidas y precios.', desc: 'Pequeñas diferencias en medidas, tarifas de mano de obra, precios de materiales, o cantidades pueden sumar rápidamente en una reparación grande.' },
+          { term: 'Depreciación.', desc: 'La depreciación puede reducir significativamente un pago inicial. Revisamos cómo se calculó, a qué elementos se aplicó, y si pueden volverse pagaderos montos adicionales a medida que se completan las reparaciones.' },
+          { term: 'Requisitos de código y emparejamiento (matching).', desc: 'La aseguradora puede estimar para una reparación limitada cuando los requisitos de construcción aplicables, las disposiciones de la póliza, o la ley estatal pueden afectar el alcance real del trabajo.' },
+          { term: 'Gastos generales y ganancia.', desc: 'Los reclamos que involucran múltiples oficios pueden requerir coordinación por parte de un contratista general. Si deben incluirse los gastos generales y la ganancia depende de la naturaleza y complejidad del trabajo y las circunstancias del reclamo.' }
+        ]},
+        { heading: 'Cómo Revisamos un Reclamo Subpagado', type: 'para', body: [
+          'Comenzamos comparando el estimado de la aseguradora con la evidencia disponible del daño y el costo de reparación.',
+          'Eso puede incluir estimados de contratistas, fotografías, medidas, facturas, informes de ingeniería, registros de inspección, y otra documentación relacionada con la pérdida.',
+          'Buscamos diferencias tanto en el alcance como en el precio. A veces la disputa se reduce a algunos elementos faltantes. En otros reclamos, la aseguradora y el contratista están estimando dos reparaciones muy diferentes.',
+          'Si se necesita documentación adicional, trabajamos con los profesionales apropiados para desarrollar el reclamo y presentar a la aseguradora una solicitud fundamentada de pago adicional.',
+          'Dependiendo de la póliza y la naturaleza de la disputa, el siguiente paso puede implicar un reclamo suplementario, más negociación, tasación (appraisal), mediación, o litigio.'
+        ]}
+      ],
+      stepsHeading: 'Qué Hacer Si Cree que su Reclamo Fue Subpagado',
+      steps: [
+        '<strong style="color:var(--color-ink);font-weight:700">Obtenga un estimado de reparación detallado.</strong> Pida a un contratista calificado que proporcione un estimado que refleje el trabajo realmente necesario para reparar la propiedad.',
+        '<strong style="color:var(--color-ink);font-weight:700">Obtenga una copia del estimado completo de la aseguradora.</strong> El estimado detallado es más útil que el resumen de pago porque muestra qué incluyó la aseguradora, qué omitió, y cómo se fijó el precio de cada elemento.',
+        '<strong style="color:var(--color-ink);font-weight:700">Revise los documentos antes de firmarlos.</strong> No firme una liberación, acuerdo de conciliación, u otro documento que no entienda completamente sin que sea revisado.',
+        '<strong style="color:var(--color-ink);font-weight:700">Conserve sus facturas y recibos.</strong> Guarde registros de reparaciones, trabajo de emergencia, mitigación, materiales, y otros gastos relacionados con la pérdida.',
+        '<strong style="color:var(--color-ink);font-weight:700">Envíenos los estimados.</strong> Comparar el estimado de la aseguradora con el estimado de su contratista suele ser el mejor punto de partida. Podemos revisar el reclamo y ayudar a identificar dónde difieren los números.'
+      ],
+      faqs: [
+        { q: 'La aseguradora ya me pagó. ¿Ha terminado el reclamo?', a: 'No necesariamente. Muchos reclamos de seguro de propiedad involucran más de un pago, particularmente cuando se documenta daño adicional, los costos de reparación se vuelven más claros, o queda pendiente depreciación recuperable. Si puede buscar un pago adicional depende de la póliza, las circunstancias del reclamo, y cualquier documento que pueda haber firmado.' },
+        { q: 'El estimado de mi contratista es mucho más alto que el de la aseguradora. ¿Por qué?', a: 'Una gran diferencia no siempre significa que un lado simplemente usó precios más altos. A menudo, los estimados incluyen alcances de trabajo diferentes. El contratista puede incluir reparaciones, materiales, mano de obra, o trabajo relacionado con el código que no aparece en el estimado de la aseguradora. Comparamos los estimados línea por línea para determinar de dónde viene la diferencia.' },
+        { q: '¿Necesito un abogado para disputar mi reclamo subpagado?', a: 'No todo reclamo subpagado requiere un abogado, pero la ayuda legal puede volverse importante cuando la aseguradora disputa la cobertura, se niega a pagar por daño documentado, se basa en exclusiones de la póliza, o no reconsidera de manera significativa su estimado. Un abogado puede revisar la póliza, identificar los problemas que causan el pago insuficiente, tratar directamente con la aseguradora, y determinar la mejor vía para buscar beneficios adicionales.' },
+        { q: '¿Cuánto cuesta contratar a su firma?', a: 'No hay costo por la revisión inicial del reclamo. Si creemos que podemos ayudar y usted decide contratarnos, explicaremos el acuerdo de honorarios antes de comenzar cualquier trabajo. La estructura puede depender del reclamo y la ley del estado donde ocurrió la pérdida.' }
+      ],
+      ctaTitle: '¿Cree que su reclamo fue subpagado?',
+      ctaBody: 'Envíenos el estimado de la aseguradora y el estimado de su contratista. Revisaremos el reclamo y le daremos una evaluación clara de la situación.',
+      disclaimer: claimsEsDisclaimer,
+      related: [ { label: 'Reclamos Denegados', page: 'esclaim:reclamos-denegados' }, { label: 'Reclamos Retrasados', page: 'esclaim:reclamos-retrasados' } ]
+    }
+  };
+
   // ---- Other Practice Areas ----
   var practices = {
     'personal-injury': {
@@ -2857,6 +3006,7 @@
 
   window.PIL_CONTENT = {
     claims: claims,
+    claimsEs: claimsEs,
     practices: practices,
     process: process,
     attorneys: attorneys,

@@ -28,6 +28,18 @@ module.exports = function (PIL_CONTENT, ICON, opts) {
     'Thank you for reaching out. We look forward to speaking with you soon.';
   var CONSULT_MAILTO = 'mailto:info@propertyinsurance.law?subject=' + encodeURIComponent(CONSULT_SUBJECT) + '&body=' + encodeURIComponent(CONSULT_BODY);
 
+  // Same intake template, translated, for the "Get a Free Claim Review" -> mailto
+  // CTAs on the Spanish-language pages (/es and the translated claim pages).
+  var CONSULT_SUBJECT_ES = 'Solicitud de Consulta Inicial';
+  var CONSULT_BODY_ES = 'Esperamos conocer más sobre su caso y cómo podemos ayudarle.\r\n\r\n' +
+    'Por favor proporcione la siguiente información lo mejor que pueda. Si no sabe una respuesta, simplemente déjela en blanco.\r\n\r\n' +
+    'Nombre: \r\n\r\nNúmero de Teléfono: \r\n\r\nCorreo Electrónico: \r\n\r\nDirección: \r\n\r\nTipo de Asunto: \r\n\r\nFecha del Incidente, Pérdida o Disputa: \r\n\r\n' +
+    'Ubicación del Incidente, Pérdida o Disputa: \r\n\r\nBreve Descripción de lo que Sucedió: \r\n\r\nInformación Adicional que Desea que Sepamos: \r\n\r\n' +
+    'Gracias por contactar a propertyinsurance.law. Un miembro de nuestro equipo responderá dentro de un día hábil.\r\n\r\n' +
+    'Tenga en cuenta que comunicarse con nuestra firma, enviar esta información, o comunicarse con nuestra oficina no crea una relación de abogado-cliente. Una relación de abogado-cliente se establece únicamente después de que un acuerdo de representación haya sido completamente firmado por usted y la firma.\r\n\r\n' +
+    'Gracias por contactarnos. Esperamos hablar con usted pronto.';
+  var CONSULT_MAILTO_ES = 'mailto:info@propertyinsurance.law?subject=' + encodeURIComponent(CONSULT_SUBJECT_ES) + '&body=' + encodeURIComponent(CONSULT_BODY_ES);
+
   // Same intake template, routed to info@ + intake@ with an urgency-flagged
   // subject line — used by the hurricane readiness page's red CTA buttons.
   var HURRICANE_MAILTO = 'mailto:info@propertyinsurance.law?cc=intake@propertyinsurance.law&subject=' +
@@ -119,6 +131,11 @@ module.exports = function (PIL_CONTENT, ICON, opts) {
     return '<a href="' + TEL + '" class="' + cls + '"><span style="display:flex">' + I('phone', 17) + '</span><span>Call ' + PHONE + '</span></a>';
   }
 
+  function callBtnEs(size, block) {
+    var cls = 'pil-btn pil-btn--secondary pil-btn--' + (size || 'md') + (block ? ' pil-btn--block' : '');
+    return '<a href="' + TEL + '" class="' + cls + '"><span style="display:flex">' + I('phone', 17) + '</span><span>Llamar ' + PHONE + '</span></a>';
+  }
+
   function badge(variant, label) { return '<span class="pil-badge pil-badge--' + variant + '">' + label + '</span>'; }
 
   function statBlock(s) {
@@ -157,6 +174,7 @@ module.exports = function (PIL_CONTENT, ICON, opts) {
   function buildVM(state) {
     var C = PIL_CONTENT || {};
     var claims = C.claims || {}, practices = C.practices || {}, process = C.process || {}, locations = C.locations || {};
+    var claimsEs = C.claimsEs || {};
     var attorneys = C.attorneys || [];
     var page = state.page;
 
@@ -167,6 +185,7 @@ module.exports = function (PIL_CONTENT, ICON, opts) {
     else if (kind === 'practice') article = practices[slug];
     else if (kind === 'process') article = process[slug];
     else if (kind === 'location') article = locations[slug];
+    else if (kind === 'esclaim') article = claimsEs[slug];
 
     var vm = {
       C: C, claims: claims, practices: practices, locations: locations, attorneys: attorneys,
@@ -176,7 +195,7 @@ module.exports = function (PIL_CONTENT, ICON, opts) {
       isAbout: page === 'about', isAttorneys: page === 'attorneys', isStaff: page === 'staff',
       isFaq: page === 'faq', isBlog: page === 'blog',
       isPolicies: page === 'policies', isContact: page === 'contact', isBioPage: kind === 'bio',
-      isEs: page === 'es'
+      isEs: page === 'es' || kind === 'esclaim'
     };
 
     // article view
@@ -544,25 +563,20 @@ module.exports = function (PIL_CONTENT, ICON, opts) {
     var trustEs = '<a href="' + GOOGLE_REVIEWS_URL + '" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:8px;font-family:var(--font-sans);font-size:14.5px;font-weight:600;color:var(--color-body);text-decoration:none"><span style="color:var(--color-primary);display:flex">' + I('star', 18) + '</span>5.0 en Google de nuestros clientes</a>' +
       '<a href="' + href('home') + '" style="display:flex;align-items:center;gap:8px;font-family:var(--font-sans);font-size:14.5px;font-weight:700;color:var(--color-primary);text-decoration:underline;text-underline-offset:3px">In English</a>';
 
-    var callBtnEs = function (size, block) {
-      var cls = 'pil-btn pil-btn--secondary pil-btn--' + (size || 'md') + (block ? ' pil-btn--block' : '');
-      return '<a href="' + TEL + '" class="' + cls + '"><span style="display:flex">' + I('phone', 17) + '</span><span>Llamar ' + PHONE + '</span></a>';
-    };
-
     var hero = '<section class="pil-hero" style="position:relative;overflow:hidden;background:radial-gradient(640px 480px at 6% 8%, rgba(255,204,82,0.13), transparent 55%), radial-gradient(520px 440px at 4% 100%, rgba(82,112,255,0.06), transparent 60%), #fff">' +
       '<div class="pil-hero-inner" style="position:relative;z-index:2;max-width:1240px;margin:0 auto;padding:clamp(48px,6vw,84px) 24px;min-height:min(84vh,680px);display:flex;align-items:center">' +
       '<div class="pil-hero-copy" style="max-width:512px">' + badge('accent', 'Sin Honorarios A Menos Que Ganemos') +
       '<h1 style="font-family:var(--font-display);font-weight:600;font-size:clamp(44px,5.2vw,68px);line-height:1.02;letter-spacing:-0.025em;color:var(--color-ink);margin:22px 0 0">Sus Abogados de Daños a la Propiedad.</h1>' +
       '<p style="font-family:var(--font-sans);font-size:20px;line-height:1.6;color:var(--color-muted);margin:22px 0 0">En <b style="color:var(--color-body);font-weight:600">propertyinsurance<span style="color:var(--color-primary)">.law</span></b>, defendemos a los asegurados cuando las aseguradoras no lo hacen.&nbsp;</p>' +
       '<div style="display:flex;flex-direction:column;align-items:flex-start;gap:12px;margin-top:32px">' +
-      '<a href="' + href('contact') + '" class="pil-btn pil-btn--accent pil-btn--lg">Revisión Gratuita de su Reclamo</a>' + callBtnEs('lg', false) + '</div>' +
+      '<a href="' + CONSULT_MAILTO_ES + '" class="pil-btn pil-btn--accent pil-btn--lg">Revisión Gratuita de su Reclamo</a>' + callBtnEs('lg', false) + '</div>' +
       '<div style="display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:28px;padding-top:26px;border-top:1px solid var(--color-hairline-soft)">' + trustEs + '</div>' +
       '</div></div>' +
       '<div class="pil-hero-media" style="position:absolute;top:0;right:0;bottom:0;width:53%;z-index:1">' +
       imageSlot('pil-hero', { style: 'position:absolute;inset:0;width:100%;height:100%', position: '50% 50%', fit: 'contain', ph: 'Los abogados' }) +
       '<div class="pil-hero-fade" style="position:absolute;inset:0;z-index:2;pointer-events:none;background:linear-gradient(to right, #fff 0%, rgba(255,255,255,0) 6%, rgba(255,255,255,0) 94%, #fff 100%)"></div>' +
-      winCardEs('pil-hero-win', '$693,539', 'Reclamo comercial denegado, revertido', 'left:-30px;bottom:44px') +
-      winCardEs('pil-hero-win2', '$165,000', 'Reclamo de techo denegado, revertido', 'right:24px;bottom:44px') +
+      winCardEs('pil-hero-win', vm.heroWins[0].amt, capEs(vm.heroWins[0].cap), 'left:-30px;bottom:44px') +
+      winCardEs('pil-hero-win2', vm.heroWins[1].amt, capEs(vm.heroWins[1].cap), 'right:24px;bottom:44px') +
       '</div></section>';
 
     var statsEs = (vm.stats || []).map(function (s) {
@@ -572,9 +586,9 @@ module.exports = function (PIL_CONTENT, ICON, opts) {
     var statsBand = '<section style="background:var(--color-primary)"><div style="max-width:1240px;margin:0 auto;padding:clamp(40px,5vw,60px) 24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:32px">' + statsEs + '</div></section>';
 
     var problemsEs = [
-      { key: 'claim:denied', icon: 'shield-x', kicker: 'Me denegaron el reclamo', desc: 'La carta de denegación es la postura inicial de la aseguradora, no la última palabra. Revisamos en qué se basaron y qué ignoraron.', cta: 'Reclamos Denegados' },
-      { key: 'claim:underpaid', icon: 'banknote', kicker: 'El pago no cubre las reparaciones', desc: 'Cuando el cheque y el estimado de su contratista muestran una gran diferencia, luchamos por un pago justo basado en los hechos.', cta: 'Reclamos Subpagados' },
-      { key: 'claim:delayed', icon: 'clock', kicker: 'Mi reclamo se ha estancado', desc: 'Semanas o meses de silencio son parte de su estrategia. Perseguimos agresivamente los beneficios a los que usted tiene derecho.', cta: 'Reclamos Retrasados' }
+      { key: 'esclaim:reclamos-denegados', icon: 'shield-x', kicker: 'Me denegaron el reclamo', desc: 'La carta de denegación es la postura inicial de la aseguradora, no la última palabra. Revisamos en qué se basaron y qué ignoraron.', cta: 'Reclamos Denegados' },
+      { key: 'esclaim:reclamos-subpagados', icon: 'banknote', kicker: 'El pago no cubre las reparaciones', desc: 'Cuando el cheque y el estimado de su contratista muestran una gran diferencia, luchamos por un pago justo basado en los hechos.', cta: 'Reclamos Subpagados' },
+      { key: 'esclaim:reclamos-retrasados', icon: 'clock', kicker: 'Mi reclamo se ha estancado', desc: 'Semanas o meses de silencio son parte de su estrategia. Perseguimos agresivamente los beneficios a los que usted tiene derecho.', cta: 'Reclamos Retrasados' }
     ];
     var problems = '<section style="background:var(--color-surface-soft);padding:clamp(32px,3.6vw,52px) 0"><div style="max-width:1240px;margin:0 auto;padding:0 24px">' +
       '<div style="max-width:640px;margin:0 auto clamp(36px,4vw,52px);text-align:center">' + eyebrow('¿La aseguradora ya tomó una decisión?') +
@@ -588,7 +602,7 @@ module.exports = function (PIL_CONTENT, ICON, opts) {
           '<p style="font-family:var(--font-sans);font-size:15.5px;line-height:1.62;color:var(--color-muted);margin:0 0 22px;flex:1">' + p.desc + '</p>' +
           '<span style="display:inline-flex;align-items:center;gap:7px;font-family:var(--font-sans);font-size:14.5px;font-weight:700;color:var(--color-primary)">' + p.cta + I('arrow-right', 16) + '</span></a>';
       }).join('') + '</div>' +
-      '<p style="font-family:var(--font-sans);font-size:16px;line-height:1.6;color:var(--color-muted);margin:26px 0 0;text-align:center">¿Todavía no ha presentado un reclamo? <a href="' + href('contact') + '" style="color:var(--color-primary);font-weight:600;text-decoration:underline;text-underline-offset:3px">Llame a nuestra oficina</a> y le guiaremos durante todo el proceso, desde el primer aviso hasta el pago final.</p>' +
+      '<p style="font-family:var(--font-sans);font-size:16px;line-height:1.6;color:var(--color-muted);margin:26px 0 0;text-align:center">¿Todavía no ha presentado un reclamo? <a href="' + TEL + '" style="color:var(--color-primary);font-weight:600;text-decoration:underline;text-underline-offset:3px">Llame a nuestra oficina</a> y le guiaremos durante todo el proceso, desde el primer aviso hasta el pago final.</p>' +
       '</div></section>';
 
     var whyPointsEs = [
@@ -612,9 +626,10 @@ module.exports = function (PIL_CONTENT, ICON, opts) {
       theft: 'Robo y Vandalismo', sinkhole: 'Hundimiento de Terreno', commercial: 'Comercial y Grandes Pérdidas',
       'construction-defect': 'Defectos de Construcción'
     };
+    var esClaimPage = { denied: 'esclaim:reclamos-denegados', delayed: 'esclaim:reclamos-retrasados', underpaid: 'esclaim:reclamos-subpagados' };
     var damageTilesEs = (vm.damageTiles || []).map(function (d) {
       var slug = d.page.indexOf(':') >= 0 ? d.page.split(':')[1] : d.page;
-      return { label: dmgLabelEs[slug] || d.label, icon: d.icon, page: d.page };
+      return { label: dmgLabelEs[slug] || d.label, icon: d.icon, page: esClaimPage[slug] || d.page };
     });
     var losses = '<section style="background:var(--color-surface-soft);padding:clamp(32px,3.6vw,52px) 0"><div style="max-width:1240px;margin:0 auto;padding:0 24px">' +
       '<div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:20px;margin-bottom:clamp(28px,3vw,40px)">' +
@@ -629,11 +644,24 @@ module.exports = function (PIL_CONTENT, ICON, opts) {
       '<p style="font-family:var(--font-sans);font-size:18px;line-height:1.6;color:rgba(255,255,255,0.72);margin:14px 0 0">Envíenos la carta de denegación, el estimado, o simplemente cuéntenos su historia. Un abogado de <b>propertyinsurance<span style="color:var(--color-primary)">.law</span></b> revisará su reclamo gratis y le dirá claramente en qué situación se encuentra. Sin honorarios ni costos a menos que recuperemos para usted.</p>' +
       '<p style="font-family:var(--font-sans);font-size:12.5px;color:rgba(255,255,255,0.45);margin:16px 0 0">Publicidad de abogados. Los resultados previos no garantizan un resultado similar.</p></div>' +
       '<div style="display:flex;flex-direction:column;align-items:stretch;gap:12px;min-width:240px">' +
-      btn({ variant: 'accent', size: 'lg', block: true, href: href('contact'), label: 'Revisión Gratuita de su Reclamo' }) + callBtnEs('lg', true) +
+      btn({ variant: 'accent', size: 'lg', block: true, href: CONSULT_MAILTO_ES, label: 'Revisión Gratuita de su Reclamo' }) + callBtnEs('lg', true) +
       '</div></div></section>';
 
     return '<div style="animation:pilFade .4s var(--ease-out) both">' + hero + statsBand + problems + why + losses + closing + '</div>';
   }
+
+  // Translates a caseResults caption (English, from content.js) for use on /es.
+  // Falls back to the English text itself for any caption not in the map, so a
+  // future addition to caseResults never breaks the build — it just shows untranslated.
+  var CASE_CAPTION_ES = {
+    'Denied roof claim, reversed': 'Reclamo de techo denegado, revertido',
+    'Under deductible decision to full payment': 'De decisión bajo el deducible a pago completo',
+    'Under-deductible decision to full payment': 'De decisión bajo el deducible a pago completo',
+    'Commercial claim denied, reversed': 'Reclamo comercial denegado, revertido',
+    'Underpaid residential claim to fully paid': 'Reclamo residencial subpagado, pagado en su totalidad',
+    'Delayed residential claim fully paid': 'Reclamo residencial retrasado, pagado en su totalidad'
+  };
+  function capEs(cap) { return CASE_CAPTION_ES[cap] || cap; }
 
   function winCardEs(tone, amt, cap, pos) {
     return '<div class="' + tone + '" style="position:absolute;z-index:3;' + pos + ';background:#fff;border:1px solid var(--color-hairline);border-radius:16px;box-shadow:var(--shadow-xl);padding:15px 20px;display:flex;align-items:center;gap:14px">' +
@@ -676,30 +704,34 @@ module.exports = function (PIL_CONTENT, ICON, opts) {
 
     var faqs = '';
     if (av.hasFaqs) {
-      faqs = '<div style="margin-top:40px"><h2 style="font-family:var(--font-display);font-weight:600;font-size:clamp(23px,3vw,30px);line-height:1.2;color:var(--color-ink);margin:0 0 18px">Frequently Asked Questions</h2><div style="display:flex;flex-direction:column;gap:12px">' +
+      faqs = '<div style="margin-top:40px"><h2 style="font-family:var(--font-display);font-weight:600;font-size:clamp(23px,3vw,30px);line-height:1.2;color:var(--color-ink);margin:0 0 18px">' + (vm.isEs ? 'Preguntas Frecuentes' : 'Frequently Asked Questions') + '</h2><div style="display:flex;flex-direction:column;gap:12px">' +
         av.faqs.map(faqItem).join('') + '</div></div>';
     }
 
     var related = '';
     if (av.hasRelated) {
-      related = '<div style="background:#fff;border:1px solid var(--color-hairline);border-radius:16px;padding:22px;box-shadow:var(--shadow-sm)"><div style="font-family:var(--font-sans);font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-muted);margin-bottom:12px">Related reading</div><div style="display:flex;flex-direction:column;gap:2px">' +
+      related = '<div style="background:#fff;border:1px solid var(--color-hairline);border-radius:16px;padding:22px;box-shadow:var(--shadow-sm)"><div style="font-family:var(--font-sans);font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-muted);margin-bottom:12px">' + (vm.isEs ? 'Lectura relacionada' : 'Related reading') + '</div><div style="display:flex;flex-direction:column;gap:2px">' +
         av.related.map(function (r) {
           return '<a href="' + href(r.page) + '" class="pil-underline" style="display:flex;align-items:center;justify-content:space-between;gap:10px;padding:9px 0;font-family:var(--font-sans);font-size:15px;font-weight:600;color:var(--color-ink);text-decoration:none;border-bottom:1px solid var(--color-hairline-soft)">' + r.label + '<span style="color:var(--color-primary);display:flex">' + I('arrow-right', 16) + '</span></a>';
         }).join('') + '</div></div>';
     }
 
+    var heroCta = vm.isEs
+      ? btn({ variant: 'accent', href: CONSULT_MAILTO_ES, label: 'Revisión Gratuita de su Reclamo' }) + callBtnEs()
+      : btn({ variant: 'accent', href: href('contact'), label: 'Get a Free Claim Review' }) + callBtn();
+
     return '<div style="animation:pilFade .4s var(--ease-out) both">' +
       '<section style="background:var(--color-surface-soft);border-bottom:1px solid var(--color-hairline-soft)"><div style="max-width:1100px;margin:0 auto;padding:clamp(40px,5vw,68px) 24px">' +
-      '<div style="display:flex;align-items:center;gap:8px;font-family:var(--font-sans);font-size:13px;color:var(--color-muted);margin-bottom:16px"><a href="' + href('home') + '" class="pil-underline" style="color:var(--color-muted);text-decoration:none">Home</a>' + I('chevron-right', 13) + '<span style="color:var(--color-ink);font-weight:600">' + av.eyebrow + '</span></div>' +
+      '<div style="display:flex;align-items:center;gap:8px;font-family:var(--font-sans);font-size:13px;color:var(--color-muted);margin-bottom:16px"><a href="' + href(vm.isEs ? 'es' : 'home') + '" class="pil-underline" style="color:var(--color-muted);text-decoration:none">' + (vm.isEs ? 'Inicio' : 'Home') + '</a>' + I('chevron-right', 13) + '<span style="color:var(--color-ink);font-weight:600">' + av.eyebrow + '</span></div>' +
       eyebrowPlain(av.eyebrow) +
       '<h1 style="font-family:var(--font-display);font-weight:600;font-size:clamp(32px,4.6vw,52px);line-height:1.08;letter-spacing:-0.02em;color:var(--color-ink);margin:12px 0 0;max-width:820px">' + av.h1 + '</h1>' +
       '<p style="font-family:var(--font-sans);font-size:20px;line-height:1.5;color:var(--color-muted);margin:16px 0 0;max-width:720px">' + av.tagline + '</p>' +
-      '<div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:26px">' + btn({ variant: 'accent', href: href('contact'), label: 'Get a Free Claim Review' }) + callBtn() + '</div>' +
+      '<div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:26px">' + heroCta + '</div>' +
       '</div></section>' +
       '<section style="padding:clamp(48px,6vw,80px) 0"><div class="pil-collapse" style="max-width:1100px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:52px;align-items:start">' +
       '<article>' + intro + urgentCta(av.urgentCtaTop, '16px') + sections + steps + urgentCta(av.urgentCtaBottom, '38px') + faqs +
       '<div style="margin-top:36px;padding:18px 22px;background:#fff;border:1px solid var(--color-hairline);border-left:3px solid var(--color-primary);border-radius:12px;font-family:var(--font-sans);font-size:14px;line-height:1.6;color:var(--color-muted)">' + av.disclaimer + '</div></article>' +
-      '<aside style="position:sticky;top:96px;display:flex;flex-direction:column;gap:18px">' + sidebarCta(av.ctaTitle, av.ctaBody) + related + '</aside>' +
+      '<aside style="position:sticky;top:96px;display:flex;flex-direction:column;gap:18px">' + sidebarCta(av.ctaTitle, av.ctaBody, vm.isEs) + related + '</aside>' +
       '</div></section></div>';
   }
 
@@ -722,10 +754,14 @@ module.exports = function (PIL_CONTENT, ICON, opts) {
       '<a href="' + TEL + '" class="pil-btn pil-btn--danger pil-btn--md"><span style="display:flex">' + I('phone', 17) + '</span><span>Call ' + PHONE + ' Now</span></a></div></div>';
   }
 
-  function sidebarCta(title, body) {
-    return '<div style="background:var(--color-ink);border-radius:18px;padding:26px;color:#fff"><h3 style="font-family:var(--font-display);font-size:22px;font-weight:600;line-height:1.2;color:#fff;margin:0 0 8px">' + (title || 'Send us the letter.') + '</h3>' +
-      '<p style="font-family:var(--font-sans);font-size:14.5px;line-height:1.6;color:rgba(255,255,255,0.72);margin:0 0 18px">' + (body || 'A free review by an attorney, and a plain answer on where your claim stands.') + '</p>' +
-      '<div style="display:flex;flex-direction:column;gap:10px">' + btn({ variant: 'accent', block: true, href: href('contact'), label: 'Get a Free Claim Review' }) + '</div>' +
+  function sidebarCta(title, body, isEs) {
+    var ctaHref = isEs ? CONSULT_MAILTO_ES : href('contact');
+    var ctaLabel = isEs ? 'Revisión Gratuita de su Reclamo' : 'Get a Free Claim Review';
+    var defaultTitle = isEs ? 'Envíenos la carta.' : 'Send us the letter.';
+    var defaultBody = isEs ? 'Una revisión gratuita por un abogado, y una respuesta clara sobre en qué situación está su reclamo.' : 'A free review by an attorney, and a plain answer on where your claim stands.';
+    return '<div style="background:var(--color-ink);border-radius:18px;padding:26px;color:#fff"><h3 style="font-family:var(--font-display);font-size:22px;font-weight:600;line-height:1.2;color:#fff;margin:0 0 8px">' + (title || defaultTitle) + '</h3>' +
+      '<p style="font-family:var(--font-sans);font-size:14.5px;line-height:1.6;color:rgba(255,255,255,0.72);margin:0 0 18px">' + (body || defaultBody) + '</p>' +
+      '<div style="display:flex;flex-direction:column;gap:10px">' + btn({ variant: 'accent', block: true, href: ctaHref, label: ctaLabel }) + '</div>' +
       '<a href="' + TEL + '" style="display:flex;align-items:center;justify-content:center;gap:8px;margin-top:14px;font-family:var(--font-mono);font-size:15px;font-weight:500;color:#fff;text-decoration:none">' + I('phone', 17) + PHONE + '</a></div>';
   }
 
@@ -1008,8 +1044,8 @@ module.exports = function (PIL_CONTENT, ICON, opts) {
   // ---------------- render dispatch ----------------
   function renderPage(vm) {
     if (vm.isHome) return pageHome(vm);
-    if (vm.isEs) return pageHomeEs(vm);
     if (vm.isArticle) return pageArticle(vm);
+    if (vm.page === 'es') return pageHomeEs(vm);
     if (vm.isClaimsHub) return pageClaimsHub(vm);
     if (vm.isPracticeHub) return pagePracticeHub(vm);
     if (vm.isAbout) return pageAbout(vm);
@@ -1137,7 +1173,7 @@ module.exports = function (PIL_CONTENT, ICON, opts) {
 
     if (vm.isArticle) {
       blocks.push(breadcrumbJsonLd([
-        { name: 'Home', url: absUrl('home') },
+        { name: vm.isEs ? 'Inicio' : 'Home', url: absUrl(vm.isEs ? 'es' : 'home') },
         { name: vm.av.h1, url: absUrl(vm.page) }
       ]));
     } else if (vm.isBio) {

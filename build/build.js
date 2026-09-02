@@ -194,9 +194,12 @@ function build() {
 
   var sitemapEntries = [];
 
-  // Homepage <-> /es reciprocal hreflang (the only pair of pages with a translated counterpart).
+  // Reciprocal hreflang for every page that has an actual translated counterpart:
+  // the homepage <-> /es, and the 3 translated claim pages <-> their English original.
   var homeUrl = config.SITE_URL + config.href('home');
   var esUrl = config.SITE_URL + config.href('es');
+  var ES_CLAIM_COUNTERPART = { 'claim:denied': 'esclaim:reclamos-denegados', 'claim:delayed': 'esclaim:reclamos-retrasados', 'claim:underpaid': 'esclaim:reclamos-subpagados' };
+  var EN_CLAIM_COUNTERPART = { 'esclaim:reclamos-denegados': 'claim:denied', 'esclaim:reclamos-retrasados': 'claim:delayed', 'esclaim:reclamos-subpagados': 'claim:underpaid' };
 
   routes.forEach(function (r) {
     var state = { page: r.page, tShuffleKey: TSHUFFLE_SEED, winShuffleKey: WSHUFFLE_SEED };
@@ -205,6 +208,8 @@ function build() {
     var alternates = [];
     if (r.page === 'home') alternates = [{ hreflang: 'es', href: esUrl }, { hreflang: 'x-default', href: homeUrl }];
     else if (r.page === 'es') alternates = [{ hreflang: 'en', href: homeUrl }, { hreflang: 'es', href: esUrl }];
+    else if (ES_CLAIM_COUNTERPART[r.page]) alternates = [{ hreflang: 'es', href: config.SITE_URL + config.href(ES_CLAIM_COUNTERPART[r.page]) }, { hreflang: 'en', href: canonical }];
+    else if (EN_CLAIM_COUNTERPART[r.page]) alternates = [{ hreflang: 'en', href: config.SITE_URL + config.href(EN_CLAIM_COUNTERPART[r.page]) }, { hreflang: 'es', href: canonical }];
     var html = wrapDocument(assemblePage(T, vmObj), {
       title: T.pageTitle(vmObj),
       description: T.pageDescription(vmObj),
