@@ -75,19 +75,21 @@ function escAttr(s) {
     .replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 }
 
-// opts: { title, description, canonical, ogType, ogImage, jsonLd, noindex }
+// opts: { title, description, canonical, ogType, ogImage, jsonLd, noindex, lang, alternates }
 function wrapDocument(bodyHtml, opts) {
   var title = opts.title;
   var description = opts.description || DESCRIPTION;
   var canonical = opts.canonical;
   var ogType = opts.ogType || 'website';
   var ogImage = opts.ogImage;
-  return '<!DOCTYPE html>\n<html lang="en">\n<head>\n' +
+  var alternates = opts.alternates || [];
+  return '<!DOCTYPE html>\n<html lang="' + (opts.lang || 'en') + '">\n<head>\n' +
     '<meta charset="utf-8">\n<meta name="viewport" content="width=device-width, initial-scale=1">\n' +
     '<title>' + escAttr(title) + '</title>\n' +
     '<meta name="description" content="' + escAttr(description) + '">\n' +
     (opts.noindex ? '<meta name="robots" content="noindex">\n' : '') +
     (canonical ? '<link rel="canonical" href="' + escAttr(canonical) + '">\n' : '') +
+    alternates.map(function (a) { return '<link rel="alternate" hreflang="' + escAttr(a.hreflang) + '" href="' + escAttr(a.href) + '">\n'; }).join('') +
     '<link rel="icon" href="' + FAVICON + '">\n' +
     '<link rel="stylesheet" href="' + config.BASE_PATH + 'styles.css">\n' +
     '<meta property="og:site_name" content="propertyinsurance.law">\n' +
@@ -190,10 +192,17 @@ function build() {
 
   var sitemapEntries = [];
 
+  // Homepage <-> /es reciprocal hreflang (the only pair of pages with a translated counterpart).
+  var homeUrl = config.SITE_URL + config.href('home');
+  var esUrl = config.SITE_URL + config.href('es');
+
   routes.forEach(function (r) {
     var state = { page: r.page, tShuffleKey: TSHUFFLE_SEED, winShuffleKey: WSHUFFLE_SEED };
     var vmObj = T.buildVM(state);
     var canonical = config.SITE_URL + config.href(r.page);
+    var alternates = [];
+    if (r.page === 'home') alternates = [{ hreflang: 'es', href: esUrl }, { hreflang: 'x-default', href: homeUrl }];
+    else if (r.page === 'es') alternates = [{ hreflang: 'en', href: homeUrl }, { hreflang: 'es', href: esUrl }];
     var html = wrapDocument(assemblePage(T, vmObj), {
       title: T.pageTitle(vmObj),
       description: T.pageDescription(vmObj),
@@ -201,7 +210,9 @@ function build() {
       ogType: vmObj.isPost ? 'article' : 'website',
       ogImage: T.pageOgImage(vmObj),
       jsonLd: T.pageJsonLd(vmObj),
-      noindex: NOINDEX_ALL
+      noindex: NOINDEX_ALL,
+      lang: vmObj.isEs ? 'es' : 'en',
+      alternates: alternates
     });
     writeFile(path.join(DOCS, r.outDir, 'index.html'), html);
     sitemapEntries.push(canonical);
