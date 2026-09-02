@@ -93,6 +93,8 @@ function wrapDocument(bodyHtml, opts) {
     '<link rel="icon" href="' + FAVICON + '">\n' +
     '<link rel="stylesheet" href="' + config.BASE_PATH + 'styles.css">\n' +
     '<meta property="og:site_name" content="propertyinsurance.law">\n' +
+    '<meta property="og:locale" content="' + (opts.lang === 'es' ? 'es_US' : 'en_US') + '">\n' +
+    (alternates.length ? '<meta property="og:locale:alternate" content="' + (opts.lang === 'es' ? 'en_US' : 'es_US') + '">\n' : '') +
     '<meta property="og:type" content="' + escAttr(ogType) + '">\n' +
     '<meta property="og:title" content="' + escAttr(title) + '">\n' +
     '<meta property="og:description" content="' + escAttr(description) + '">\n' +
