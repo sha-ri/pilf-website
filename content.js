@@ -842,7 +842,7 @@
       ],
       sections: [
         { heading: 'Dónde Ocurren los Pagos Insuficientes', type: 'named', body: [
-          { term: 'Alcance faltante.', desc: 'El daño puede quedar completamente fuera del estimado. Eso podría incluir áreas adicionales del techo, daño interior por agua, estructuras exteriores, pisos, gabinetes, cercas, u otras porciones afectadas de la propiedad.' },
+          { term: 'Estimación minimizada.', desc: 'El daño puede quedar completamente fuera del estimado. Eso podría incluir áreas adicionales del techo, daño interior por agua, estructuras exteriores, pisos, gabinetes, cercas, u otras porciones afectadas de la propiedad.' },
           { term: 'Medidas y precios.', desc: 'Pequeñas diferencias en medidas, tarifas de mano de obra, precios de materiales, o cantidades pueden sumar rápidamente en una reparación grande.' },
           { term: 'Depreciación.', desc: 'La depreciación puede reducir significativamente un pago inicial. Revisamos cómo se calculó, a qué elementos se aplicó, y si pueden volverse pagaderos montos adicionales a medida que se completan las reparaciones.' },
           { term: 'Requisitos de código y emparejamiento (matching).', desc: 'La aseguradora puede estimar para una reparación limitada cuando los requisitos de construcción aplicables, las disposiciones de la póliza, o la ley estatal pueden afectar el alcance real del trabajo.' },
