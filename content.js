@@ -832,7 +832,7 @@
       eyebrow: 'Reclamos Subpagados',
       h1: 'Reclamos de Seguro Subpagados',
       metaTitle: 'Reclamos de Seguro Subpagados | Abogado de Seguros en Florida - propertyinsurance.law',
-      tagline: 'Si la estimación de la aseguradora no se acerca al costo real de reparar tu propiedad, la reclamación aún se puede volver a examinar.',
+      tagline: 'Si la estimación de la aseguradora no se acerca al costo real de reparar su propiedad, la reclamación aún se puede volver a examinar.',
       intro: [
         'A veces la aseguradora acepta que ocurrió una pérdida cubierta pero paga mucho menos de lo que realmente cuestan las reparaciones.',
         'La diferencia puede ser por daño faltante, dimensiones reducidas, precios bajos, depreciación, requisitos del código de construcción omitidos, o un estimado de reparación que no refleja lo que realmente se necesita para restaurar la propiedad.',
