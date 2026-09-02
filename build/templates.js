@@ -369,6 +369,7 @@ module.exports = function (PIL_CONTENT, ICON, opts) {
       '<div style="display:flex;align-items:center;gap:10px;flex:none">' +
       '<a href="' + TEL + '" class="pil-headcta" style="display:flex;align-items:center;gap:7px;font-family:var(--font-mono);font-size:13.5px;font-weight:500;color:var(--color-ink);text-decoration:none;white-space:nowrap"><span style="display:flex;color:var(--color-primary)">' + I('phone', 16) + '</span>' + PHONE + '</a>' +
       '<div class="pil-headcta" style="display:flex;align-items:center;gap:9px">' + btn({ variant: 'accent', size: 'sm', href: href('contact'), label: 'Get a Free Claim Review' }) + '</div>' +
+      '<a href="' + (vm.isEs ? href('home') : href('es')) + '" aria-label="' + (vm.isEs ? 'Switch to English' : 'Cambiar a español') + '" style="display:inline-flex;align-items:center;justify-content:center;height:36px;min-width:36px;padding:0 11px;border:1px solid var(--color-hairline);background:#fff;border-radius:999px;font-family:var(--font-sans);font-size:12.5px;font-weight:700;letter-spacing:0.02em;color:var(--color-ink);text-decoration:none;flex:none">' + (vm.isEs ? 'EN' : 'ES') + '</a>' +
       '<button class="pil-hamb" data-action="toggleMobile" aria-label="Menu" style="align-items:center;justify-content:center;width:42px;height:42px;border:1px solid var(--color-hairline);background:#fff;border-radius:11px;cursor:pointer;color:var(--color-ink)">' + I('menu', 22) + '</button>' +
       '</div></div></header>';
   }
