@@ -739,7 +739,7 @@
       metaTitle: 'Reclamos de Seguro Denegados | Abogado de Seguros en Florida - propertyinsurance.law',
       tagline: 'Una carta de denegación no significa necesariamente que su reclamo haya terminado.',
       intro: [
-        'Usted pagó sus primas, reportó la pérdida y cooperó con la investigación de la aseguradora. Luego recibió una carta diciendo que el reclamo no estaba cubierto.',
+        'Usted pagó su prima de seguro, reportó la pérdida y cooperó con la investigación de la aseguradora. Luego recibió una carta diciendo que el reclamo no estaba cubierto.',
         'Tal vez la aseguradora culpó al desgaste normal. Tal vez llamó al daño preexistente. Tal vez se basó en una exclusión de la póliza.',
         'Cualquiera que sea la razón, una denegación es la postura de la aseguradora sobre su reclamo. Debe revisarse contra la póliza, los hechos y la evidencia en la que se basó la aseguradora.',
         'Hemos revisado cientos de expedientes de reclamos de seguro de propiedad. Sabemos qué buscar: inspecciones que pasaron por alto áreas importantes de daño, conclusiones basadas en información incompleta, opiniones de ingeniería que no coinciden con el estado de la propiedad, y exclusiones aplicadas más ampliamente de lo que permite el lenguaje de la póliza.',
@@ -748,7 +748,7 @@
       sections: [
         { heading: 'Cómo se Deniegan los Reclamos de Seguro', type: 'named', body: [
           { term: 'Una inspección incompleta.', desc: 'Una inspección breve puede convertirse en la base de toda la decisión de la aseguradora. Si un área nunca fue examinada adecuadamente, un daño importante puede pasarse por alto o descartarse.' },
-          { term: 'Una disputa sobre la causa del daño.', desc: 'La causa de la pérdida a menudo determina si hay cobertura. Una aseguradora puede caracterizar el daño por tormenta como desgaste normal, o una falla repentina de plomería como filtración de largo plazo. Esas distinciones importan.' },
+          { term: 'Una disputa sobre la causa del daño.', desc: 'La causa de la pérdida puede determinar si hay cobertura. Una aseguradora puede caracterizar el daño por tormenta como desgaste normal, o una falla repentina de plomería como filtración de largo plazo. Esas distinciones importan.' },
           { term: 'Una exclusión en la póliza.', desc: 'Las pólizas de seguro contienen exclusiones, pero la redacción importa. Una denegación debe evaluarse contra el lenguaje real de la póliza, no simplemente el resumen que hace la aseguradora de ella.' },
           { term: 'Un presunto incumplimiento de los requisitos de la póliza.', desc: 'Las aseguradoras pueden plantear problemas como aviso tardío, documentación insuficiente, falta de protección de la propiedad, o inspecciones no realizadas. Si esos problemas justifican una denegación depende de la póliza, los hechos y la ley estatal aplicable.' },
           { term: 'Una decisión tomada desde el escritorio.', desc: 'En algunos reclamos, la decisión final de cobertura o el estimado provienen de alguien que nunca inspeccionó la propiedad. Eso puede crear una desconexión entre lo que realmente se observó y lo que finalmente aparece en el expediente del reclamo.' }
@@ -832,10 +832,10 @@
       eyebrow: 'Reclamos Subpagados',
       h1: 'Reclamos de Seguro Subpagados',
       metaTitle: 'Reclamos de Seguro Subpagados | Abogado de Seguros en Florida - propertyinsurance.law',
-      tagline: 'Si el estimado de la aseguradora no se acerca al costo real de reparar su propiedad, el reclamo puede no estar terminado.',
+      tagline: 'Si la estimación de la aseguradora no se acerca al costo real de reparar tu propiedad, la reclamación aún se puede volver a examinar.',
       intro: [
         'A veces la aseguradora acepta que ocurrió una pérdida cubierta pero paga mucho menos de lo que realmente cuestan las reparaciones.',
-        'La diferencia puede provenir de daño faltante, medidas reducidas, precios bajos, depreciación, requisitos de código omitidos, o un alcance de reparación que no refleja lo que realmente se necesita para restaurar la propiedad.',
+        'La diferencia puede ser por daño faltante, dimensiones reducidas, precios bajos, depreciación, requisitos del código de construcción omitidos, o un estimado de reparación que no refleja lo que realmente se necesita para restaurar la propiedad.',
         'Un pago parcial puede sentirse como si la aseguradora hubiera tomado su decisión final. A menudo, no lo ha hecho.',
         'Revisamos el estimado de la aseguradora línea por línea y lo comparamos con el daño, la póliza, y el costo real del trabajo. Eso significa observar el alcance, las medidas, las cantidades, los precios de mano de obra y materiales, la depreciación, los gastos generales y ganancia, y cualquier otro elemento que afecte el monto del reclamo.',
         'El objetivo es sencillo: determinar por qué pagó la aseguradora, qué dejó fuera, y si pueden deberse beneficios de seguro adicionales.'
