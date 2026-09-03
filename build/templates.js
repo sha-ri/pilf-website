@@ -121,9 +121,10 @@ module.exports = function (PIL_CONTENT, ICON, opts) {
   // Button (DS recreation). opts: {variant,size,block,label,href,action,leftIconName}
   function btn(o) {
     var cls = ['pil-btn', 'pil-btn--' + (o.variant || 'primary'), 'pil-btn--' + (o.size || 'md'), o.block ? 'pil-btn--block' : ''].filter(Boolean).join(' ');
+    var styleAttr = o.style ? ' style="' + o.style + '"' : '';
     var inner = (o.leftIconName ? '<span class="pil-btn__icon">' + I(o.leftIconName, o.iconSize || 18) + '</span>' : '') + '<span>' + o.label + '</span>';
-    if (o.href) return '<a href="' + o.href + '" class="' + cls + '">' + inner + '</a>';
-    return '<button type="button" class="' + cls + '" data-action="' + (o.action || '') + '">' + inner + '</button>';
+    if (o.href) return '<a href="' + o.href + '" class="' + cls + '"' + styleAttr + '>' + inner + '</a>';
+    return '<button type="button" class="' + cls + '"' + styleAttr + ' data-action="' + (o.action || '') + '">' + inner + '</button>';
   }
 
   function callBtn(size, block) {
@@ -761,7 +762,7 @@ module.exports = function (PIL_CONTENT, ICON, opts) {
     var defaultBody = isEs ? 'Una revisión gratuita por un abogado, y una respuesta clara sobre en qué situación está su reclamo.' : 'A free review by an attorney, and a plain answer on where your claim stands.';
     return '<div style="background:var(--color-ink);border-radius:18px;padding:26px;color:#fff"><h3 style="font-family:var(--font-display);font-size:22px;font-weight:600;line-height:1.2;color:#fff;margin:0 0 8px">' + (title || defaultTitle) + '</h3>' +
       '<p style="font-family:var(--font-sans);font-size:14.5px;line-height:1.6;color:rgba(255,255,255,0.72);margin:0 0 18px">' + (body || defaultBody) + '</p>' +
-      '<div style="display:flex;flex-direction:column;gap:10px">' + btn({ variant: 'accent', block: true, href: ctaHref, label: ctaLabel }) + '</div>' +
+      '<div style="display:flex;flex-direction:column;gap:10px">' + btn({ variant: 'accent', block: true, href: ctaHref, label: ctaLabel, style: isEs ? 'font-size:14px;padding-left:0.9rem;padding-right:0.9rem' : '' }) + '</div>' +
       '<a href="' + TEL + '" style="display:flex;align-items:center;justify-content:center;gap:8px;margin-top:14px;font-family:var(--font-mono);font-size:15px;font-weight:500;color:#fff;text-decoration:none">' + I('phone', 17) + PHONE + '</a></div>';
   }
 
