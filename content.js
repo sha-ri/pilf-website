@@ -1225,7 +1225,7 @@
       role: 'Shareholder, CEO',
       focus: 'Claim valuation, litigation strategy',
       ctaLabel: 'Contact Zaf', ctaHref: 'mailto:zg@propertyinsurance.law?cc=info@propertyinsurance.law',
-      practiceAreas: ['First Party Property Insurance Litigation', 'Coverage Disputes', 'Complex Civil Litigation', 'Business Litigation'],
+      practiceAreas: ['First Party Property Insurance Litigation', 'Coverage Disputes', 'Complex Civil Litigation', 'Business Litigation', 'Personal Injury'],
       positioning: 'Zaf Goss has spent his entire legal career representing policyholders in first-party property insurance disputes.',
       bio: [
         'A Florida native from Clearwater, Zaf has represented homeowners whose insurance claims were denied, delayed, or underpaid since he began practicing law in 2016. Over the course of his career, he has helped lead and develop first-party property practices at multiple law firms, building teams and litigation strategies around one goal: holding insurance companies to the coverage promised by their policies.',
@@ -1252,7 +1252,7 @@
       role: 'Shareholder, COO',
       focus: 'Property insurance litigation, bilingual counsel',
       ctaLabel: 'Contact Shari', ctaHref: 'mailto:sf@propertyinsurance.law?cc=info@propertyinsurance.law',
-      practiceAreas: ['First Party Property Insurance Litigation', 'Coverage Disputes', 'Complex Civil Litigation', 'Construction Litigation'],
+      practiceAreas: ['First Party Property Insurance Litigation', 'Coverage Disputes', 'Complex Civil Litigation', 'Construction Litigation', 'Business Litigation'],
       positioning: 'Shari Freeman represents homeowners and business owners in first-party property insurance disputes involving denied, delayed, and underpaid claims.',
       bio: [
         'A Florida native who attended law school in Chicago, Shari began her legal career in insurance defense before moving into construction litigation. That experience gave her a firsthand understanding of how complex property disputes are investigated, defended, and litigated before she turned her practice toward representing policyholders.',
@@ -1281,7 +1281,7 @@
       role: 'Shareholder, CSO',
       focus: 'Post-loss disputes, repair accountability',
       ctaLabel: 'Contact Alex', ctaHref: 'mailto:ac@propertyinsurance.law?cc=info@propertyinsurance.law',
-      practiceAreas: ['First Party Property Insurance Litigation', 'Coverage Disputes', 'Complex Civil Litigation'],
+      practiceAreas: ['First Party Property Insurance Litigation', 'Coverage Disputes', 'Complex Civil Litigation', 'Personal Injury'],
       positioning: 'J. Alex Couture represents homeowners and business owners in first-party property insurance disputes involving denied, delayed, and underpaid claims.',
       bio: [
         'Alex began his career on the insurance defense side, where he gained firsthand experience with how insurance disputes are evaluated, defended, negotiated, and litigated. He now uses that perspective to represent policyholders in disputes with their insurance companies.',
