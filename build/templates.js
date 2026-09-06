@@ -72,6 +72,16 @@ module.exports = function (PIL_CONTENT, ICON, opts) {
   function I(name, size, sw) { return ICON(name, size, sw); }
   function escAttr(s) { return String(s == null ? '' : s).replace(/"/g, '&quot;'); }
 
+  // In-body internal links: content.js copy writes {{link:page-token|Anchor text}}
+  // (e.g. {{link:claim:roof|roof damage insurance claims}}) instead of a raw <a href>,
+  // so cross-links go through the same href()/route table as every other link on the
+  // site and never hardcode a URL that could drift if a route ever moves.
+  function inlineLinks(s) {
+    return String(s == null ? '' : s).replace(/\{\{link:([a-zA-Z0-9:_-]+)\|([^}]+)\}\}/g, function (m, page, label) {
+      return '<a href="' + href(page) + '" style="color:var(--color-primary);font-weight:600;text-decoration:underline;text-underline-offset:3px">' + label + '</a>';
+    });
+  }
+
   function imgUrl(id) {
     if (IMAGES[id]) return basePath + IMAGES[id];
     var m = id.match(/^pil-(?:att|bio)-(.+)$/);
@@ -682,15 +692,15 @@ module.exports = function (PIL_CONTENT, ICON, opts) {
 
   function pageArticle(vm) {
     var av = vm.av;
-    var intro = av.intro.map(function (p) { return '<p style="font-family:var(--font-sans);font-size:18px;line-height:1.7;color:var(--color-body);margin:0 0 18px">' + p + '</p>'; }).join('');
+    var intro = av.intro.map(function (p) { return '<p style="font-family:var(--font-sans);font-size:18px;line-height:1.7;color:var(--color-body);margin:0 0 18px">' + inlineLinks(p) + '</p>'; }).join('');
     var sections = av.sections.map(function (sec) {
       var body = '';
       if (sec.isNamed) {
         body = '<div style="display:flex;flex-direction:column;gap:14px;margin-top:18px">' + sec.named.map(function (row) {
-          return '<p style="font-family:var(--font-sans);font-size:16px;line-height:1.65;color:var(--color-muted);margin:0"><strong style="color:var(--color-ink);font-weight:700">' + row.term + '</strong> ' + row.desc + '</p>';
+          return '<p style="font-family:var(--font-sans);font-size:16px;line-height:1.65;color:var(--color-muted);margin:0"><strong style="color:var(--color-ink);font-weight:700">' + row.term + '</strong> ' + inlineLinks(row.desc) + '</p>';
         }).join('') + '</div>';
       } else if (sec.isPara) {
-        body = '<div style="margin-top:16px">' + sec.paras.map(function (p) { return '<p style="font-family:var(--font-sans);font-size:17px;line-height:1.7;color:var(--color-body);margin:0 0 16px">' + p + '</p>'; }).join('') + '</div>';
+        body = '<div style="margin-top:16px">' + sec.paras.map(function (p) { return '<p style="font-family:var(--font-sans);font-size:17px;line-height:1.7;color:var(--color-body);margin:0 0 16px">' + inlineLinks(p) + '</p>'; }).join('') + '</div>';
       }
       return '<div style="margin-top:34px"><h2 style="font-family:var(--font-display);font-weight:600;font-size:clamp(23px,3vw,30px);line-height:1.2;letter-spacing:-0.01em;color:var(--color-ink);margin:0">' + sec.heading + '</h2>' + body + '</div>';
     }).join('');
@@ -740,7 +750,7 @@ module.exports = function (PIL_CONTENT, ICON, opts) {
     return '<details class="pil-faq" style="border:1px solid var(--color-hairline);border-radius:14px;background:#fff;box-shadow:var(--shadow-sm);overflow:hidden">' +
       '<summary style="cursor:pointer;list-style:none;padding:18px 22px;font-family:var(--font-sans);font-size:16.5px;font-weight:700;color:var(--color-ink);display:flex;align-items:center;justify-content:space-between;gap:16px">' + f.q +
       '<span class="pil-faqchev" style="color:var(--color-primary);display:flex;flex:none;transition:transform .2s var(--ease-out)">' + I('chevron-right', 20) + '</span></summary>' +
-      '<div style="padding:0 22px 20px;font-family:var(--font-sans);font-size:16px;line-height:1.65;color:var(--color-muted)">' + f.a + '</div></details>';
+      '<div style="padding:0 22px 20px;font-family:var(--font-sans);font-size:16px;line-height:1.65;color:var(--color-muted)">' + inlineLinks(f.a) + '</div></details>';
   }
 
   // Red, high-urgency CTA block (distinct from the standard accent sidebarCta)
@@ -943,8 +953,8 @@ module.exports = function (PIL_CONTENT, ICON, opts) {
   function pagePost(vm) {
     var p = vm.post;
     var blocks = (p.blocks || []).map(function (b) {
-      if (b.isHeading) return '<h2 style="font-family:var(--font-display);font-weight:600;font-size:clamp(23px,3vw,30px);line-height:1.2;letter-spacing:-0.01em;color:var(--color-ink);margin:34px 0 14px">' + b.text + '</h2>';
-      return '<p style="font-family:var(--font-sans);font-size:18px;line-height:1.75;color:var(--color-body);margin:0 0 18px">' + b.text + '</p>';
+      if (b.isHeading) return '<h2 style="font-family:var(--font-display);font-weight:600;font-size:clamp(23px,3vw,30px);line-height:1.2;letter-spacing:-0.01em;color:var(--color-ink);margin:34px 0 14px">' + inlineLinks(b.text) + '</h2>';
+      return '<p style="font-family:var(--font-sans);font-size:18px;line-height:1.75;color:var(--color-body);margin:0 0 18px">' + inlineLinks(b.text) + '</p>';
     }).join('');
     var related = (p.related || []).map(function (r) {
       return '<a href="' + href(r.page) + '" class="pil-underline" style="display:block;padding:10px 0;font-family:var(--font-sans);font-size:14.5px;font-weight:600;line-height:1.4;color:var(--color-ink);text-decoration:none;border-bottom:1px solid var(--color-hairline-soft)">' + r.title + '</a>';
@@ -1204,7 +1214,7 @@ module.exports = function (PIL_CONTENT, ICON, opts) {
           mainEntity.push({
             '@type': 'Question',
             name: it.q,
-            acceptedAnswer: { '@type': 'Answer', text: String(it.a || '').replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim() }
+            acceptedAnswer: { '@type': 'Answer', text: inlineLinks(String(it.a || '')).replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim() }
           });
         });
       });
