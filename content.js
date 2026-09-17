@@ -1296,7 +1296,8 @@
         '<strong style="color:var(--color-ink);font-weight:700">Keep the strategy practical.</strong> Every case has different pressure points. The objective is to identify them early and move the claim toward the strongest available resolution.'
       ],
       credentials: [
-        { heading: 'Education', items: ['University of Florida Fredric G. Levin College of Law, J.D., 2022', 'University of Florida, B.S.'] }
+        { heading: 'Education', items: ['University of Florida Fredric G. Levin College of Law, J.D., 2022', 'University of Florida, B.S.'] },
+        { heading: 'Admitted to Practice', items: ['The Florida Bar, 2022'] }
       ],
       personal: ''
     },
