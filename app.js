@@ -164,6 +164,10 @@
     else if (kind === 'process') article = process[slug];
     else if (kind === 'location') article = locations[slug];
 
+    // Chicago/Illinois page: header + phone buttons show the Illinois office number.
+    if (kind === 'location' && slug === 'chicago') { PHONE = '(618) 440-3088'; TEL = 'tel:16184403088'; }
+    else { PHONE = '(407) 502-8068'; TEL = 'tel:14075028068'; }
+
     var vm = {
       C: C, claims: claims, practices: practices, locations: locations, attorneys: attorneys,
       page: page, kind: kind, slug: slug,

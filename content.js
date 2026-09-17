@@ -2848,7 +2848,7 @@
     },
     {
       state: 'Illinois',
-      phone: '618-440-3088', tel: 'tel:16184403088',
+      phone: '(618) 440-3088', tel: 'tel:16184403088',
       email: 'info@propertyinsurance.law',
       addressLines: ['203 N LaSalle Street', 'Ste. 2100', 'Chicago, IL 60601'],
       hours: 'Mon–Fri, 8:00 AM–4:00 PM CT',
