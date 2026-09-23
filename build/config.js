@@ -75,18 +75,24 @@ function outDirFor(page) {
 // docs/, not in the sitemap, not linked anywhere — for content that's ready
 // but shouldn't go live until explicitly flipped (e.g. a hurricane-readiness
 // page prepared ahead of storm season).
+// `unlisted: true` is the softer version: the page IS built and reachable at its
+// real URL (so it can be reviewed on the live site), but it's kept out of the nav
+// menus, the sitemap and llms.txt, and is marked noindex — for a page that's
+// finished but not yet announced.
 function enumerateRoutes(C) {
   var routes = [];
-  Object.keys(FLAT_PAGE_DIRS).forEach(function (p) {
-    routes.push({ page: p, outDir: outDirFor(p) });
-  });
-  Object.keys(C.claims || {}).forEach(function (k) { if (!C.claims[k].draft) routes.push({ page: 'claim:' + k, outDir: outDirFor('claim:' + k) }); });
-  Object.keys(C.practices || {}).forEach(function (k) { if (!C.practices[k].draft) routes.push({ page: 'practice:' + k, outDir: outDirFor('practice:' + k) }); });
-  Object.keys(C.process || {}).forEach(function (k) { if (!C.process[k].draft) routes.push({ page: 'process:' + k, outDir: outDirFor('process:' + k) }); });
-  Object.keys(C.locations || {}).forEach(function (k) { if (!C.locations[k].draft) routes.push({ page: 'location:' + k, outDir: outDirFor('location:' + k) }); });
-  Object.keys(C.claimsEs || {}).forEach(function (k) { if (!C.claimsEs[k].draft) routes.push({ page: 'esclaim:' + k, outDir: outDirFor('esclaim:' + k) }); });
-  (C.attorneys || []).forEach(function (a) { if (!a.draft) routes.push({ page: 'bio:' + a.slug, outDir: outDirFor('bio:' + a.slug) }); });
-  ((C.blog && C.blog.posts) || []).forEach(function (p) { if (!p.draft) routes.push({ page: 'post:' + p.slug, outDir: outDirFor('post:' + p.slug) }); });
+  function push(page, entry) {
+    if (entry && entry.draft) return;
+    routes.push({ page: page, outDir: outDirFor(page), unlisted: !!(entry && entry.unlisted) });
+  }
+  Object.keys(FLAT_PAGE_DIRS).forEach(function (p) { push(p, null); });
+  Object.keys(C.claims || {}).forEach(function (k) { push('claim:' + k, C.claims[k]); });
+  Object.keys(C.practices || {}).forEach(function (k) { push('practice:' + k, C.practices[k]); });
+  Object.keys(C.process || {}).forEach(function (k) { push('process:' + k, C.process[k]); });
+  Object.keys(C.locations || {}).forEach(function (k) { push('location:' + k, C.locations[k]); });
+  Object.keys(C.claimsEs || {}).forEach(function (k) { push('esclaim:' + k, C.claimsEs[k]); });
+  (C.attorneys || []).forEach(function (a) { push('bio:' + a.slug, a); });
+  ((C.blog && C.blog.posts) || []).forEach(function (p) { push('post:' + p.slug, p); });
   return routes;
 }
 

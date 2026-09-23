@@ -128,6 +128,7 @@ function buildLlmsTxt(C) {
   lines.push('## Property Claims We Handle');
   Object.keys(C.claims || {}).forEach(function (k) {
     var c = C.claims[k];
+    if (c.draft || c.unlisted) return;
     lines.push('- [' + c.nav + '](' + config.SITE_URL + config.href('claim:' + k) + '): ' + (c.tagline || ''));
   });
   lines.push('');
@@ -217,12 +218,13 @@ function build() {
       ogType: vmObj.isPost ? 'article' : 'website',
       ogImage: T.pageOgImage(vmObj),
       jsonLd: T.pageJsonLd(vmObj),
-      noindex: NOINDEX_ALL,
+      noindex: NOINDEX_ALL || r.unlisted,
       lang: vmObj.isEs ? 'es' : 'en',
       alternates: alternates
     });
     writeFile(path.join(DOCS, r.outDir, 'index.html'), html);
-    sitemapEntries.push(canonical);
+    // Unlisted pages are built and reachable, but stay out of the sitemap.
+    if (!r.unlisted) sitemapEntries.push(canonical);
   });
 
   // 404 — a real page now that real URLs exist, instead of the old SPA's silent fallback to home

@@ -210,7 +210,11 @@
     vm.isBio = kind === 'bio' && !!vm.bio;
 
     // nav groups
-    function navItems(obj, kd) { return Object.keys(obj).map(function (k) { return { label: obj[k].nav, icon: obj[k].icon, page: kd + ':' + k }; }); }
+    // draft/unlisted entries never appear in the header or mobile nav.
+    function navItems(obj, kd) {
+      return Object.keys(obj).filter(function (k) { return !obj[k].draft && !obj[k].unlisted; })
+        .map(function (k) { return { label: obj[k].nav, icon: obj[k].icon, page: kd + ':' + k }; });
+    }
     vm.navGroups = [
       { label: 'Home', hasChildren: false, page: 'home' },
       { label: 'Property Claims', hasChildren: true, page: 'claims-hub', items: navItems(claims, 'claim'), panelWidth: '640px', panelCols: 'repeat(2, minmax(0,1fr))' },
