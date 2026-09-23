@@ -24,6 +24,7 @@
 - [Commercial & Large Loss](https://www.propertyinsurance.law/commercial-property-insurance-claims/): Commercial property losses can affect more than the building. They can disrupt operations, reduce revenue, damage inventory and equipment, and create expenses that continue long after the initial loss.
 - [Lightning](https://www.propertyinsurance.law/claims/lightning/): Lightning damage is not always obvious, and problems with electrical systems and equipment may not appear immediately after the storm.
 - [Tornado](https://www.propertyinsurance.law/claims/tornado/): Tornado damage can extend well beyond what is immediately visible, and an incomplete inspection can leave major parts of the loss unpaid.
+- [El Niño Storms](https://www.propertyinsurance.law/claims/el-nino/): An El Niño season can send several damaging storms across the same property in a matter of months, and that is exactly when an insurance company starts calling the damage old, excluded, or already paid.
 - [Theft & Vandalism](https://www.propertyinsurance.law/claims/theft/): Theft and vandalism claims can become complicated quickly, especially when the insurance company questions ownership, value, occupancy, or how the loss occurred.
 - [Sinkhole & Ground Collapse](https://www.propertyinsurance.law/claims/sinkhole/): Ground movement claims can be highly technical, and coverage often depends on exactly what caused the movement and how the policy defines it.
 

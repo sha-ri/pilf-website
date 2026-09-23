@@ -632,12 +632,7 @@
       related: [ { label: 'Hurricane & Tropical Storm', page: 'claim:hurricane' }, { label: 'Wind & Hail', page: 'claim:wind-hail' }, { label: 'Roof Damage', page: 'claim:roof' } ]
     },
 
-    // Not listed in the nav, home page, claims hub, sitemap or llms.txt while it is
-    // under review (see `unlisted` handling in build/config.js). The page itself still
-    // builds and is reachable at /claims/el-nino/. To go live: delete the `unlisted`
-    // line below and add 'el-nino' to damageOrder near the bottom of this file.
     'el-nino': {
-      unlisted: true,
       nav: 'El Ni\u00f1o Storms', icon: 'sun-waves',
       eyebrow: 'El Ni\u00f1o Storms',
       h1: 'El Ni\u00f1o Storm Damage Insurance Claims',
@@ -2981,7 +2976,7 @@
   ];
 
   // Damage grid (home + Property Claims hub) — order per nav
-  var damageOrder = ['hurricane','wind-hail','roof','water','fire','mold','frozen-pipe','lightning','tornado','theft','sinkhole','commercial'];
+  var damageOrder = ['hurricane','wind-hail','roof','water','fire','mold','frozen-pipe','lightning','tornado','el-nino','theft','sinkhole','commercial'];
 
   var samplePost = {
     tag: 'Denied',

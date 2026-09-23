@@ -642,6 +642,7 @@ module.exports = function (PIL_CONTENT, ICON, opts) {
       hurricane: 'Huracán y Tormenta Tropical', 'wind-hail': 'Viento y Granizo', roof: 'Daños al Techo',
       water: 'Daños por Agua', fire: 'Incendio y Humo', mold: 'Moho y Biopeligro',
       'frozen-pipe': 'Tuberías Congeladas y Rotas', lightning: 'Rayos', tornado: 'Tornado',
+      'el-nino': 'Tormentas de El Niño',
       theft: 'Robo y Vandalismo', sinkhole: 'Hundimiento de Terreno', commercial: 'Comercial y Grandes Pérdidas',
       'construction-defect': 'Defectos de Construcción'
     };
