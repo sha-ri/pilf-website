@@ -1081,14 +1081,14 @@ module.exports = function (PIL_CONTENT, ICON, opts) {
       return '<div style="display:flex;flex-direction:column;gap:14px' + (i ? ';border-top:1px solid var(--color-hairline-soft);padding-top:24px' : '') + '">' +
         '<div style="display:flex;align-items:center;justify-content:space-between;gap:12px">' +
         '<h2 style="font-family:var(--font-display);font-weight:600;font-size:24px;color:var(--color-ink);margin:0">' + o.state + '</h2>' +
-        (shapeSrc ? '<img src="' + shapeSrc + '" alt="" aria-hidden="true" style="width:40px;height:40px;object-fit:contain">' : '') + '</div>' +
+        (shapeSrc ? '<img src="' + shapeSrc + '" alt="" aria-hidden="true" style="width:60px;height:60px;object-fit:contain">' : '') + '</div>' +
         officeInfoRow('phone', 'Call us', o.phone, o.tel) +
         officeInfoRow('map-pin', 'Office', o.addressLines.join('<br>'), null) +
         '<div style="font-family:var(--font-sans);font-size:14.5px;color:var(--color-ink)">' + o.hours +
         '<div style="font-size:13.5px;color:var(--color-muted);margin-top:2px">' + o.appointment + '</div></div>' +
-        '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px">' +
-        btn({ variant: 'primary', block: true, href: o.tel, label: 'Call Now' }) +
-        btn({ variant: 'accent', block: true, href: o.retainHref, label: 'Retain Our Firm' }) +
+        '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px">' +
+        btn({ variant: 'secondary', size: 'sm', block: true, href: o.tel, label: 'Call Now' }) +
+        btn({ variant: 'accent', size: 'sm', block: true, href: o.retainHref, label: 'Retain Our Firm' }) +
         '</div></div>';
     }).join('');
     return '<div style="background:#fff;border:1px solid var(--color-hairline);border-radius:18px;padding:clamp(22px,3vw,30px);box-shadow:var(--shadow-md);display:flex;flex-direction:column;gap:24px">' +
