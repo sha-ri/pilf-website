@@ -1081,7 +1081,7 @@ module.exports = function (PIL_CONTENT, ICON, opts) {
       return '<div style="display:flex;flex-direction:column;gap:14px' + (i ? ';border-top:1px solid var(--color-hairline-soft);padding-top:24px' : '') + '">' +
         '<div style="display:flex;align-items:center;justify-content:space-between;gap:12px">' +
         '<h2 style="font-family:var(--font-display);font-weight:600;font-size:24px;color:var(--color-ink);margin:0">' + o.state + '</h2>' +
-        (shapeSrc ? '<img src="' + shapeSrc + '" alt="" aria-hidden="true" style="width:60px;height:60px;object-fit:contain">' : '') + '</div>' +
+        (shapeSrc ? '<img src="' + shapeSrc + '" alt="" aria-hidden="true" style="width:90px;height:90px;object-fit:contain;flex:none">' : '') + '</div>' +
         officeInfoRow('phone', 'Call us', o.phone, o.tel) +
         officeInfoRow('mail', 'Email', 'info@<b>propertyinsurance<span style="color:var(--color-primary)">.law</span></b>', CONSULT_MAILTO) +
         officeInfoRow('map-pin', 'Office', o.addressLines.join('<br>'), null) +
