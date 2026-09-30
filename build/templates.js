@@ -1081,22 +1081,19 @@ module.exports = function (PIL_CONTENT, ICON, opts) {
       return '<div style="display:flex;flex-direction:column;gap:14px' + (i ? ';border-top:1px solid var(--color-hairline-soft);padding-top:24px' : '') + '">' +
         '<div style="display:flex;align-items:center;justify-content:space-between;gap:12px">' +
         '<h2 style="font-family:var(--font-display);font-weight:600;font-size:24px;color:var(--color-ink);margin:0">' + o.state + '</h2>' +
-        (shapeSrc ? '<img src="' + shapeSrc + '" alt="" aria-hidden="true" style="width:90px;height:90px;object-fit:contain;flex:none">' : '') + '</div>' +
+        (shapeSrc ? '<img src="' + shapeSrc + '" alt="" aria-hidden="true" style="width:75px;height:75px;object-fit:contain;flex:none">' : '') + '</div>' +
         officeInfoRow('phone', 'Call us', o.phone, o.tel) +
         officeInfoRow('mail', 'Email', 'info@<b>propertyinsurance<span style="color:var(--color-primary)">.law</span></b>', CONSULT_MAILTO) +
         officeInfoRow('map-pin', 'Office', o.addressLines.join('<br>'), null) +
         '<div style="font-family:var(--font-sans);font-size:14.5px;color:var(--color-ink)">' + o.hours +
-        '<div style="font-size:13.5px;color:var(--color-muted);margin-top:2px">' + o.appointment + '</div></div>' +
+        '<div style="font-size:13.5px;color:var(--color-muted);margin-top:2px">' + o.appointment + '. <a href="' + href('es') + '" style="color:inherit;text-decoration:underline;text-underline-offset:3px">Hablamos español.</a></div></div>' +
         '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px">' +
         btn({ variant: 'secondary', size: 'sm', block: true, href: o.tel, label: 'Call Now' }) +
         btn({ variant: 'accent', size: 'sm', block: true, href: o.retainHref, label: 'Retain Our Firm' }) +
         '</div></div>';
     }).join('');
     return '<div style="background:#fff;border:1px solid var(--color-hairline);border-radius:18px;padding:clamp(22px,3vw,30px);box-shadow:var(--shadow-md);display:flex;flex-direction:column;gap:24px">' +
-      sections +
-      '<div style="border-top:1px solid var(--color-hairline-soft);padding-top:22px">' +
-      '<div style="font-family:var(--font-sans);font-size:14.5px;color:var(--color-muted)"><a href="' + href('es') + '" style="color:inherit;text-decoration:underline;text-underline-offset:3px">Hablamos español.</a></div>' +
-      '</div></div>';
+      sections + '</div>';
   }
 
   // ---------------- render dispatch ----------------
