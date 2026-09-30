@@ -1051,27 +1051,52 @@ module.exports = function (PIL_CONTENT, ICON, opts) {
   }
 
   function pageContact(vm) {
-    var offices = vm.offices.map(officeCard).join('');
+    var body = vm.isContactTest
+      ? '<div class="pil-collapse" style="max-width:1100px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:1.4fr 1fr;gap:28px;align-items:start">' + myCaseForm() + combinedOfficeCard(vm.offices) + '</div>'
+      : '<div class="pil-collapse" style="max-width:1000px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start">' + vm.offices.map(officeCard).join('') + '</div>';
 
     return '<div style="animation:pilFade .4s var(--ease-out) both">' +
       '<section style="background:var(--color-surface-soft);border-bottom:1px solid var(--color-hairline-soft)"><div style="max-width:1100px;margin:0 auto;padding:clamp(40px,5vw,68px) 24px;text-align:center">' +
       badge('accent', 'No Fee Unless We Win') +
       '<h1 style="font-family:var(--font-display);font-weight:600;font-size:clamp(32px,4.6vw,52px);line-height:1.08;letter-spacing:-0.02em;color:var(--color-ink);margin:14px 0 0">Get your free claim review</h1>' +
       '<p style="font-family:var(--font-sans);font-size:19px;line-height:1.6;color:var(--color-muted);margin:16px auto 0;max-width:620px">Send the denial letter, the estimate, or just the story so far. An attorney reviews it at no cost and tells you plainly where the claim stands.</p></div></section>' +
-      (vm.isContactTest ? myCaseForm() : '') +
-      '<section style="padding:clamp(48px,6vw,84px) 0"><div class="pil-collapse" style="max-width:1000px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start">' + offices + '</div></section></div>';
+      '<section style="padding:clamp(48px,6vw,84px) 0">' + body + '</section></div>';
   }
 
   // MyCase-hosted contact form (submissions go straight into MyCase as leads).
   var MYCASE_FORM_SRC = 'https://property-insurance-law-pllc.mycase.com/contact_us/VtRaV1A5cWz4GjpmRd2d9mkz';
 
   function myCaseForm() {
-    return '<section style="padding:clamp(48px,6vw,84px) 0 0"><div style="max-width:680px;margin:0 auto;padding:0 24px">' +
-      '<div style="background:#fff;border:1px solid var(--color-hairline);border-radius:18px;padding:clamp(18px,3vw,30px);box-shadow:var(--shadow-md)">' +
+    return '<div style="background:#fff;border:1px solid var(--color-hairline);border-radius:18px;padding:clamp(18px,3vw,30px);box-shadow:var(--shadow-md)">' +
       '<h2 style="font-family:var(--font-display);font-weight:600;font-size:26px;color:var(--color-ink);margin:0 0 6px">Tell us about your claim</h2>' +
       '<p style="font-family:var(--font-sans);font-size:15.5px;line-height:1.6;color:var(--color-muted);margin:0 0 18px">Fill out the form below and a member of our team will follow up.</p>' +
       '<iframe src="' + MYCASE_FORM_SRC + '" title="Contact Us Form" loading="lazy" style="display:block;width:100%;height:800px;border:none"></iframe>' +
-      '</div></div></section>';
+      '</div>';
+  }
+
+  // Both offices stacked in one card, sized to sit beside the MyCase form.
+  function combinedOfficeCard(offices) {
+    var sections = offices.map(function (o, i) {
+      var shapeSrc = stateShapeSrc(o.state);
+      return '<div style="display:flex;flex-direction:column;gap:14px' + (i ? ';border-top:1px solid var(--color-hairline-soft);padding-top:24px' : '') + '">' +
+        '<div style="display:flex;align-items:center;justify-content:space-between;gap:12px">' +
+        '<h2 style="font-family:var(--font-display);font-weight:600;font-size:24px;color:var(--color-ink);margin:0">' + o.state + '</h2>' +
+        (shapeSrc ? '<img src="' + shapeSrc + '" alt="" aria-hidden="true" style="width:40px;height:40px;object-fit:contain">' : '') + '</div>' +
+        officeInfoRow('phone', 'Call us', o.phone, o.tel) +
+        officeInfoRow('map-pin', 'Office', o.addressLines.join('<br>'), null) +
+        '<div style="font-family:var(--font-sans);font-size:14.5px;color:var(--color-ink)">' + o.hours +
+        '<div style="font-size:13.5px;color:var(--color-muted);margin-top:2px">' + o.appointment + '</div></div>' +
+        '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px">' +
+        btn({ variant: 'primary', block: true, href: o.tel, label: 'Call Now' }) +
+        btn({ variant: 'accent', block: true, href: o.retainHref, label: 'Retain Our Firm' }) +
+        '</div></div>';
+    }).join('');
+    return '<div style="background:#fff;border:1px solid var(--color-hairline);border-radius:18px;padding:clamp(22px,3vw,30px);box-shadow:var(--shadow-md);display:flex;flex-direction:column;gap:24px">' +
+      sections +
+      '<div style="border-top:1px solid var(--color-hairline-soft);padding-top:22px;display:flex;flex-direction:column;gap:12px">' +
+      officeInfoRow('mail', 'Email', 'info@<b>propertyinsurance<span style="color:var(--color-primary)">.law</span></b>', CONSULT_MAILTO) +
+      '<div style="font-family:var(--font-sans);font-size:14.5px;color:var(--color-muted)"><a href="' + href('es') + '" style="color:inherit;text-decoration:underline;text-underline-offset:3px">Hablamos español.</a></div>' +
+      '</div></div>';
   }
 
   // ---------------- render dispatch ----------------
