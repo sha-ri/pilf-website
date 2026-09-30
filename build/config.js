@@ -27,14 +27,8 @@ var FLAT_PAGE_DIRS = {
   blog: 'blog',
   policies: 'privacy-policy-and-terms',
   contact: 'contact-us',
-  // Unlisted test copy of the Contact page with the embedded MyCase contact form.
-  'contact-test': 'contact-us-test',
   es: 'es'
 };
-
-// Flat pages that are built and reachable but unlisted (noindex, no sitemap/nav),
-// the flat-page equivalent of a content entry's `unlisted: true`.
-var UNLISTED_FLAT_PAGES = { 'contact-test': true };
 
 // Pages that already rank on the live Wix site keep their exact old URL
 // (flat, no kind-prefix) instead of the new /kind/slug/ pattern, so the
@@ -91,7 +85,7 @@ function enumerateRoutes(C) {
     if (entry && entry.draft) return;
     routes.push({ page: page, outDir: outDirFor(page), unlisted: !!(entry && entry.unlisted) });
   }
-  Object.keys(FLAT_PAGE_DIRS).forEach(function (p) { push(p, UNLISTED_FLAT_PAGES[p] ? { unlisted: true } : null); });
+  Object.keys(FLAT_PAGE_DIRS).forEach(function (p) { push(p, null); });
   Object.keys(C.claims || {}).forEach(function (k) { push('claim:' + k, C.claims[k]); });
   Object.keys(C.practices || {}).forEach(function (k) { push('practice:' + k, C.practices[k]); });
   Object.keys(C.process || {}).forEach(function (k) { push('process:' + k, C.process[k]); });

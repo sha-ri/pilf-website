@@ -209,7 +209,7 @@ module.exports = function (PIL_CONTENT, ICON, opts) {
       isHome: page === 'home', isClaimsHub: page === 'claims-hub', isPracticeHub: page === 'practice-hub',
       isAbout: page === 'about', isAttorneys: page === 'attorneys', isStaff: page === 'staff',
       isFaq: page === 'faq', isBlog: page === 'blog',
-      isPolicies: page === 'policies', isContact: page === 'contact' || page === 'contact-test', isContactTest: page === 'contact-test', isBioPage: kind === 'bio',
+      isPolicies: page === 'policies', isContact: page === 'contact', isBioPage: kind === 'bio',
       isEs: page === 'es' || kind === 'esclaim'
     };
 
@@ -1029,31 +1029,8 @@ module.exports = function (PIL_CONTENT, ICON, opts) {
     return '';
   }
 
-  function officeCard(o) {
-    var shapeSrc = stateShapeSrc(o.state);
-    return '<div style="background:#fff;border:1px solid var(--color-hairline);border-radius:18px;padding:clamp(26px,3vw,34px);box-shadow:var(--shadow-md);display:flex;flex-direction:column;gap:22px;position:relative">' +
-      (shapeSrc ? '<img src="' + shapeSrc + '" alt="" aria-hidden="true" style="position:absolute;top:clamp(22px,3vw,30px);right:clamp(22px,3vw,30px);width:60px;height:60px;object-fit:contain">' : '') +
-      '<h2 style="font-family:var(--font-display);font-weight:600;font-size:26px;color:var(--color-ink);margin:0">' + o.state + '</h2>' +
-      '<div style="display:flex;flex-direction:column;gap:14px">' +
-      officeInfoRow('phone', 'Call us', o.phone, o.tel) +
-      officeInfoRow('mail', 'Email', 'info@<b>propertyinsurance<span style="color:var(--color-primary)">.law</span></b>', CONSULT_MAILTO) +
-      officeInfoRow('map-pin', 'Office', o.addressLines.join('<br>'), null) +
-      '</div>' +
-      '<div><div style="font-family:var(--font-sans);font-size:12px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--color-muted);margin-bottom:6px">Hours</div>' +
-      '<div style="font-family:var(--font-sans);font-size:15px;color:var(--color-ink)">' + o.hours + '</div>' +
-      '<div style="font-family:var(--font-sans);font-size:14px;color:var(--color-muted);margin-top:3px">' + o.appointment + '</div></div>' +
-      '<div style="font-family:var(--font-sans);font-size:14.5px;color:var(--color-muted)"><a href="' + href('es') + '" style="color:inherit;text-decoration:underline;text-underline-offset:3px">Hablamos español.</a></div>' +
-      '<div style="display:flex;flex-direction:column;gap:10px">' +
-      btn({ variant: 'accent', block: true, href: o.tel, label: 'Call Now' }) +
-      btn({ variant: 'secondary', block: true, href: CONSULT_MAILTO, label: 'Get a Free Claim Review' }) +
-      btn({ variant: 'accent', block: true, href: o.retainHref, label: 'Retain Our Firm' }) +
-      '</div></div>';
-  }
-
   function pageContact(vm) {
-    var body = vm.isContactTest
-      ? '<div class="pil-collapse" style="max-width:1100px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:1.4fr 1fr;gap:28px;align-items:start">' + myCaseForm() + combinedOfficeCard(vm.offices) + '</div>'
-      : '<div class="pil-collapse" style="max-width:1000px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start">' + vm.offices.map(officeCard).join('') + '</div>';
+    var body = '<div class="pil-collapse" style="max-width:1100px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:1.4fr 1fr;gap:28px;align-items:start">' + myCaseForm() + combinedOfficeCard(vm.offices) + '</div>';
 
     return '<div style="animation:pilFade .4s var(--ease-out) both">' +
       '<section style="background:var(--color-surface-soft);border-bottom:1px solid var(--color-hairline-soft)"><div style="max-width:1100px;margin:0 auto;padding:clamp(40px,5vw,68px) 24px;text-align:center">' +
@@ -1125,7 +1102,7 @@ module.exports = function (PIL_CONTENT, ICON, opts) {
     var m = {
       'claims-hub': 'Property Claims', 'practice-hub': 'Other Practice Areas', about: 'About the Firm',
       attorneys: 'Our Attorneys', staff: 'Our Staff', faq: 'FAQ', blog: 'Blog',
-      policies: 'Law Firm Policies', contact: 'Free Claim Review', 'contact-test': 'Free Claim Review'
+      policies: 'Law Firm Policies', contact: 'Free Claim Review'
     };
     return m[vm.page] ? m[vm.page] + ' | propertyinsurance.law' : base;
   }
