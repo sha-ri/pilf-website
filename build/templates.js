@@ -209,7 +209,7 @@ module.exports = function (PIL_CONTENT, ICON, opts) {
       isHome: page === 'home', isClaimsHub: page === 'claims-hub', isPracticeHub: page === 'practice-hub',
       isAbout: page === 'about', isAttorneys: page === 'attorneys', isStaff: page === 'staff',
       isFaq: page === 'faq', isBlog: page === 'blog',
-      isPolicies: page === 'policies', isContact: page === 'contact', isBioPage: kind === 'bio',
+      isPolicies: page === 'policies', isContact: page === 'contact' || page === 'contact-test', isContactTest: page === 'contact-test', isBioPage: kind === 'bio',
       isEs: page === 'es' || kind === 'esclaim'
     };
 
@@ -1058,7 +1058,20 @@ module.exports = function (PIL_CONTENT, ICON, opts) {
       badge('accent', 'No Fee Unless We Win') +
       '<h1 style="font-family:var(--font-display);font-weight:600;font-size:clamp(32px,4.6vw,52px);line-height:1.08;letter-spacing:-0.02em;color:var(--color-ink);margin:14px 0 0">Get your free claim review</h1>' +
       '<p style="font-family:var(--font-sans);font-size:19px;line-height:1.6;color:var(--color-muted);margin:16px auto 0;max-width:620px">Send the denial letter, the estimate, or just the story so far. An attorney reviews it at no cost and tells you plainly where the claim stands.</p></div></section>' +
+      (vm.isContactTest ? myCaseForm() : '') +
       '<section style="padding:clamp(48px,6vw,84px) 0"><div class="pil-collapse" style="max-width:1000px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start">' + offices + '</div></section></div>';
+  }
+
+  // MyCase-hosted contact form (submissions go straight into MyCase as leads).
+  var MYCASE_FORM_SRC = 'https://property-insurance-law-pllc.mycase.com/contact_us/VtRaV1A5cWz4GjpmRd2d9mkz';
+
+  function myCaseForm() {
+    return '<section style="padding:clamp(48px,6vw,84px) 0 0"><div style="max-width:680px;margin:0 auto;padding:0 24px">' +
+      '<div style="background:#fff;border:1px solid var(--color-hairline);border-radius:18px;padding:clamp(18px,3vw,30px);box-shadow:var(--shadow-md)">' +
+      '<h2 style="font-family:var(--font-display);font-weight:600;font-size:26px;color:var(--color-ink);margin:0 0 6px">Tell us about your claim</h2>' +
+      '<p style="font-family:var(--font-sans);font-size:15.5px;line-height:1.6;color:var(--color-muted);margin:0 0 18px">Fill out the form below and a member of our team will follow up.</p>' +
+      '<iframe src="' + MYCASE_FORM_SRC + '" title="Contact Us Form" loading="lazy" style="display:block;width:100%;height:800px;border:none"></iframe>' +
+      '</div></div></section>';
   }
 
   // ---------------- render dispatch ----------------
@@ -1090,7 +1103,7 @@ module.exports = function (PIL_CONTENT, ICON, opts) {
     var m = {
       'claims-hub': 'Property Claims', 'practice-hub': 'Other Practice Areas', about: 'About the Firm',
       attorneys: 'Our Attorneys', staff: 'Our Staff', faq: 'FAQ', blog: 'Blog',
-      policies: 'Law Firm Policies', contact: 'Free Claim Review'
+      policies: 'Law Firm Policies', contact: 'Free Claim Review', 'contact-test': 'Free Claim Review'
     };
     return m[vm.page] ? m[vm.page] + ' | propertyinsurance.law' : base;
   }
