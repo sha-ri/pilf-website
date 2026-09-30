@@ -1059,7 +1059,7 @@ module.exports = function (PIL_CONTENT, ICON, opts) {
       '<section style="background:var(--color-surface-soft);border-bottom:1px solid var(--color-hairline-soft)"><div style="max-width:1100px;margin:0 auto;padding:clamp(40px,5vw,68px) 24px;text-align:center">' +
       badge('accent', 'No Fee Unless We Win') +
       '<h1 style="font-family:var(--font-display);font-weight:600;font-size:clamp(32px,4.6vw,52px);line-height:1.08;letter-spacing:-0.02em;color:var(--color-ink);margin:14px 0 0">Get your free claim review</h1>' +
-      '<p style="font-family:var(--font-sans);font-size:19px;line-height:1.6;color:var(--color-muted);margin:16px auto 0;max-width:620px">Send the denial letter, the estimate, or just the story so far. An attorney reviews it at no cost and tells you plainly where the claim stands.</p></div></section>' +
+      '<p style="font-family:var(--font-sans);font-size:19px;line-height:1.6;color:var(--color-muted);margin:16px auto 0;max-width:620px">One of our skilled attorneys will review your claim at no cost to you.</p></div></section>' +
       '<section style="padding:clamp(48px,6vw,84px) 0">' + body + '</section></div>';
   }
 
