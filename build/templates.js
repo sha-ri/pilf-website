@@ -252,8 +252,10 @@ module.exports = function (PIL_CONTENT, ICON, opts) {
     // nav groups
     // draft/unlisted entries never appear in the header or mobile nav.
     function navItems(obj, kd) {
-      return Object.keys(obj).filter(function (k) { return !obj[k].draft && !obj[k].unlisted; })
-        .map(function (k) { return { label: obj[k].nav, icon: obj[k].icon, page: kd + ':' + k }; });
+      var keys = Object.keys(obj).filter(function (k) { return !obj[k].draft && !obj[k].unlisted; });
+      // navFeatured entries (e.g. an active storm page) lead the menu and render in red.
+      keys = keys.filter(function (k) { return obj[k].navFeatured; }).concat(keys.filter(function (k) { return !obj[k].navFeatured; }));
+      return keys.map(function (k) { return { label: obj[k].nav, icon: obj[k].icon, page: kd + ':' + k, featured: !!obj[k].navFeatured }; });
     }
     vm.navGroups = [
       { label: 'Home', hasChildren: false, page: 'home' },
@@ -394,8 +396,8 @@ module.exports = function (PIL_CONTENT, ICON, opts) {
       var panel = '';
       if (g.hasChildren && g.items && g.items.length) {
         var items = g.items.map(function (it) {
-          return '<a href="' + href(it.page) + '" class="pil-panitem" style="display:flex;align-items:center;gap:10px;padding:9px 11px;border-radius:10px;font-family:var(--font-sans);font-size:14px;font-weight:500;color:var(--color-body);text-decoration:none">' +
-            '<span style="display:flex;color:var(--color-primary);flex:none">' + I(it.icon, 17) + '</span>' + it.label + '</a>';
+          return '<a href="' + href(it.page) + '" class="pil-panitem" style="display:flex;align-items:center;gap:10px;padding:9px 11px;border-radius:10px;font-family:var(--font-sans);font-size:14px;font-weight:' + (it.featured ? '700' : '500') + ';color:' + (it.featured ? 'var(--color-danger)' : 'var(--color-body)') + ';text-decoration:none">' +
+            '<span style="display:flex;color:' + (it.featured ? 'var(--color-danger)' : 'var(--color-primary)') + ';flex:none">' + I(it.icon, 17) + '</span>' + it.label + '</a>';
         }).join('');
         panel = '<div class="pil-navpanel" style="position:absolute;top:calc(100% + 8px);left:50%;transform-origin:top;margin-left:-160px;background:#fff;border:1px solid var(--color-hairline);border-radius:16px;box-shadow:var(--shadow-lg);padding:12px;z-index:70;width:' + g.panelWidth + '">' +
           '<div style="display:grid;grid-template-columns:' + g.panelCols + ';gap:2px">' + items + '</div></div>';
@@ -423,7 +425,7 @@ module.exports = function (PIL_CONTENT, ICON, opts) {
       if (g.hasChildren && g.items && g.items.length) {
         sub = '<div style="display:flex;flex-direction:column;gap:1px;padding:4px 0 10px">' +
           g.items.map(function (it) {
-            return '<a href="' + href(it.page) + '" style="display:flex;align-items:center;gap:9px;padding:8px 10px;font-family:var(--font-sans);font-size:14.5px;font-weight:500;color:var(--color-body);text-decoration:none"><span style="display:flex;color:var(--color-primary)">' + I(it.icon, 16) + '</span>' + it.label + '</a>';
+            return '<a href="' + href(it.page) + '" style="display:flex;align-items:center;gap:9px;padding:8px 10px;font-family:var(--font-sans);font-size:14.5px;font-weight:' + (it.featured ? '700' : '500') + ';color:' + (it.featured ? 'var(--color-danger)' : 'var(--color-body)') + ';text-decoration:none"><span style="display:flex;color:' + (it.featured ? 'var(--color-danger)' : 'var(--color-primary)') + '">' + I(it.icon, 16) + '</span>' + it.label + '</a>';
           }).join('') + '</div>';
       }
       return '<a href="' + href(g.page) + '" style="padding:11px 8px;font-family:var(--font-sans);font-size:16px;font-weight:700;color:var(--color-ink);text-decoration:none;border-bottom:1px solid var(--color-hairline-soft)">' + g.label + '</a>' + sub;

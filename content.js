@@ -690,12 +690,11 @@
     },
 
     // Storm-specific landing page for the October 2026 Panhandle landfall.
-    // unlisted: built and reachable at /claims/hurricane-isaias/, but noindex and
-    // out of the nav, sitemap and llms.txt until the firm approves it.
+    // navFeatured: listed first in the Property Claims menu, in red.
     'hurricane-isaias': {
-      unlisted: true,
+      navFeatured: true,
       es: 'esclaim:reclamaciones-huracan-isaias',
-      nav: 'Hurricane Isaias', icon: 'hurricane',
+      nav: 'Hurricane Isaias Claim', icon: 'hurricane',
       eyebrow: 'Hurricane Isaias Property Damage Claims',
       h1: 'Hurricane Isaias Insurance Claims in the Florida Panhandle',
       metaTitle: 'Hurricane Isaias Panhandle Claims | Florida Insurance Attorneys',
@@ -1024,9 +1023,8 @@
     },
 
     // Spanish version of claims['hurricane-isaias']. `en` / `es` pair the two pages
-    // so the header language button switches between them. Unlisted until approved.
+    // so the header language button switches between them.
     'reclamaciones-huracan-isaias': {
-      unlisted: true,
       en: 'claim:hurricane-isaias',
       eyebrow: 'Reclamaciones de Seguros por Daños del Huracán Isaias',
       h1: 'Abogados de Reclamaciones de Seguros por el Huracán Isaias en el Panhandle de Florida',
