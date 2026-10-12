@@ -689,6 +689,96 @@
       related: [ { label: 'Hurricane & Tropical Storm', page: 'claim:hurricane' }, { label: 'Tornado', page: 'claim:tornado' }, { label: 'Water Damage', page: 'claim:water' } ]
     },
 
+    // Storm-specific landing page for the October 2026 Panhandle landfall.
+    // unlisted: built and reachable at /claims/hurricane-isaias/, but noindex and
+    // out of the nav, sitemap and llms.txt until the firm approves it.
+    'hurricane-isaias': {
+      unlisted: true,
+      es: 'esclaim:reclamaciones-huracan-isaias',
+      nav: 'Hurricane Isaias', icon: 'hurricane',
+      eyebrow: 'Hurricane Isaias Property Damage Claims',
+      h1: 'Hurricane Isaias Insurance Claims in the Florida Panhandle',
+      metaTitle: 'Hurricane Isaias Panhandle Claims | Florida Insurance Attorneys',
+      metaDescription: 'Hurricane Isaias damaged your Florida Panhandle property? Our attorneys help with denied, delayed, and underpaid insurance claims. Get a free claim review.',
+      tagline: 'Hurricane Isaias brought damaging winds, heavy rain, and storm surge to Florida’s Panhandle on October 9, 2026. If your home or business suffered damage, understanding your insurance coverage and documenting the full extent of your loss are important first steps toward recovery.',
+      intro: [
+        'You do not have to wait until your insurance company denies or underpays your claim to get an attorney involved. We represent Florida policyholders from the initial claim through final resolution.'
+      ],
+      urgentCtaEnd: {
+        heading: 'Hurricane Isaias Damaged Your Property. We’re Here to Help.',
+        body: 'A hurricane can leave property owners dealing with extensive repairs, unexpected expenses, and an insurance claim that is difficult to navigate.<br><br>You should not have to guess whether the insurance company’s estimate accounts for the full loss or whether its coverage decision is supported by the evidence.<br><br>Send us your insurance company’s estimate or coverage letter, photographs, contractor documentation, or simply tell us what happened. We’ll review your claim for free and give you a straightforward assessment of where things stand.<br><br><strong style="color:var(--color-ink);font-weight:700">Your policy is a promise. We make carriers keep it.</strong>'
+      },
+      sections: [
+        { heading: 'Hurricane Isaias Damage in the Florida Panhandle', type: 'para', body: [
+          'On October 9, 2026, Hurricane Isaias made landfall near Destin, Florida, as a Category 2 hurricane with maximum sustained winds of approximately 105 mph. The storm brought significant wind damage, heavy rainfall, coastal flooding, and widespread power outages across the western Florida Panhandle.',
+          '<img src="/assets/propertyinsurance.law-isaias_landfall_2026-10-09.webp" alt="Satellite loop of Hurricane Isaias making landfall near Destin, Florida, on October 9, 2026" width="700" height="613" style="display:block;width:100%;max-width:700px;height:auto;border-radius:14px;border:1px solid var(--color-hairline);box-shadow:var(--shadow-sm);margin-top:4px" loading="lazy">' +
+          '<span style="display:block;font-family:var(--font-sans);font-size:13px;color:var(--color-muted);margin-top:8px">Satellite loop of Hurricane Isaias approaching the Gulf Coast and making landfall near Destin on October 9, 2026. Imagery: NOAA / CIRA RAMMB SLIDER, GOES-19 GeoColor.</span>',
+          'The National Hurricane Center reported wind gusts reaching 116 mph near Santa Rosa Sound and 100 mph near Pensacola. Homes and businesses throughout the region experienced {{link:claim:roof|damage to roofs}}, exterior structures, windows, and interiors, with some properties also affected by storm surge and flooding.',
+          'Communities impacted by Hurricane Isaias include:',
+          '<strong style="color:var(--color-ink);font-weight:700">Escambia County:</strong> Pensacola, Pensacola Beach, and surrounding communities.<br>' +
+          '<strong style="color:var(--color-ink);font-weight:700">Santa Rosa County:</strong> Milton, Gulf Breeze, Navarre, and East Milton.<br>' +
+          '<strong style="color:var(--color-ink);font-weight:700">Okaloosa County:</strong> Destin, Fort Walton Beach, Niceville, and Crestview.<br>' +
+          '<strong style="color:var(--color-ink);font-weight:700">Walton County:</strong> Miramar Beach, Santa Rosa Beach, and communities along 30A.<br>' +
+          '<strong style="color:var(--color-ink);font-weight:700">Bay County:</strong> Panama City, Panama City Beach, and Lynn Haven.',
+          'Not all storm damage is immediately visible. Wind can damage roofing materials, compromise building components, and create openings that allow water into a property. The full extent of the loss may not become apparent until additional inspections are performed or repairs begin.',
+          'If your property was in the path of Hurricane Isaias, a careful inspection and thorough documentation can help establish what the storm damaged and what repairs may be necessary.'
+        ]},
+        { heading: 'What to Do After Hurricane Isaias Damages Your Property', type: 'para', body: [
+          'The first days following a hurricane can be overwhelming. Between securing your property, arranging emergency repairs, and communicating with the insurance company, it can be difficult to know where to begin.',
+          'A few important steps can help protect your property and preserve the evidence needed to support your insurance claim.',
+          '<strong style="color:var(--color-ink);font-weight:700">Document the damage.</strong> Photograph and video the affected areas before cleanup or repairs whenever it is safe to do so. Include the roof, exterior walls, windows, interior rooms, personal property, and any detached structures. Keep copies of photographs taken by contractors or mitigation companies.',
+          '<strong style="color:var(--color-ink);font-weight:700">Protect the property from further damage.</strong> Most insurance policies require reasonable steps to prevent additional damage following a loss. Depending on the circumstances, this may include emergency roof tarping, boarding damaged openings, extracting water, or arranging professional drying services. Do not attempt work that puts your safety at risk.',
+          '<strong style="color:var(--color-ink);font-weight:700">Keep your receipts and records.</strong> Save invoices, estimates, contracts, photographs, and records of expenses related to the storm. This may include emergency repairs, temporary accommodations, storage, and other costs associated with the damage.',
+          '<strong style="color:var(--color-ink);font-weight:700">Report the claim promptly.</strong> Notify your insurance company as soon as reasonably possible, even if you do not yet know the full extent of the loss. Keep a record of when the claim was reported, the claim number, and any correspondence you receive.',
+          '<strong style="color:var(--color-ink);font-weight:700">Review the insurance company’s findings.</strong> Once the property has been inspected, compare the insurance company’s estimate with the damage documented by your contractor or other professionals. The initial estimate may not account for every affected area or the full cost of necessary repairs.',
+          'You can also have an attorney assist with the claim from the beginning, including before the insurance company’s first inspection.'
+        ]},
+        { heading: 'Common Insurance Disputes After Hurricane Isaias', type: 'para', body: [
+          '{{link:claim:hurricane|Hurricane and tropical storm claims}} can involve several types of damage at once. That makes the insurance company’s investigation particularly important, especially when the cause of damage or extent of necessary repairs is disputed.',
+          '<strong style="color:var(--color-ink);font-weight:700">Roof Damage Attributed to Wear and Tear.</strong> After a hurricane, insurance companies may attribute missing shingles, damaged tiles, or roof leaks to age, deterioration, improper installation, or conditions that existed before the storm. An older roof can still sustain new damage from hurricane-force winds. We examine the insurance company’s findings alongside photographs, available storm information, inspection reports, and other evidence to determine whether the carrier properly evaluated the damage.',
+          '<strong style="color:var(--color-ink);font-weight:700">Wind Damage Versus Flood Damage.</strong> Hurricane Isaias brought both damaging winds and storm surge to the Panhandle. For properties affected by water, determining how that water entered the building can be critical. Homeowners insurance policies generally treat water entering through a storm-created opening differently from storm surge or rising surface water. Flood damage is commonly excluded under homeowners policies and may require separate flood insurance. When the insurance company attributes {{link:claim:water|water damage}} to an excluded cause, we review the physical evidence, policy provisions, and available storm information to evaluate that determination.',
+          '<strong style="color:var(--color-ink);font-weight:700">Incomplete Damage Estimates.</strong> A hurricane loss can extend well beyond the roof. Wind and water may damage ceilings, insulation, drywall, flooring, cabinetry, windows, fencing, screen enclosures, detached structures, and personal property. The insurance company’s initial estimate may address the most obvious areas while overlooking other damage or necessary repairs. We compare the carrier’s estimate with the documented property damage, contractor findings, and applicable policy provisions to identify what may have been missed.',
+          '<strong style="color:var(--color-ink);font-weight:700">Repair Versus Replacement Disputes.</strong> An insurance company may estimate for limited repairs when a contractor believes replacement of a larger area is necessary. These disagreements can involve the condition of existing materials, whether repairs are reasonably feasible, applicable building requirements, and the scope of coverage provided by the policy. The question is not simply whether something can be patched. It is whether the proposed repairs adequately address the covered damage.',
+          '<strong style="color:var(--color-ink);font-weight:700">Hurricane Deductibles.</strong> Many Florida property insurance policies contain a separate hurricane deductible, often calculated as a percentage of the insured dwelling’s coverage limit. Depending on the policy, that deductible may be substantially higher than the deductible applicable to other types of property damage. We review the policy and the insurance company’s calculations to determine whether the appropriate deductible has been applied.'
+        ]},
+        { heading: 'How We Handle Hurricane Isaias Insurance Claims', type: 'para', body: [
+          '<strong style="color:var(--color-ink);font-weight:700">The insurance company’s first estimate is not necessarily the final word.</strong>',
+          'A strong hurricane claim depends on the evidence supporting it. That includes the condition of the property, the cause of damage, the scope of necessary repairs, and the coverage provided by the policy.',
+          'At propertyinsurance.law, we review the insurance company’s investigation to understand how the carrier reached its conclusions and whether the available evidence supports them.',
+          'We examine photographs, estimates, inspection reports, engineering findings, contractor documentation, and relevant storm information. When necessary, we work with qualified professionals to evaluate disputed damage and repair costs.',
+          'We also handle communications with the insurance company, address claim-related requests, and pursue available remedies when the carrier {{link:claim:denied|denies}}, {{link:claim:delayed|delays}}, or {{link:claim:underpaid|underpays}} a valid claim.',
+          'Our goal is straightforward: to make sure the loss is properly evaluated and pursue the insurance benefits owed under the policy.'
+        ]},
+        { heading: 'You Don’t Have to Wait for a Denial to Hire an Attorney', type: 'para', ctaAfter: {}, body: [
+          'Many property owners assume they should contact an attorney only after receiving a denial or an insufficient payment. But some of the most important decisions in an insurance claim happen much earlier.',
+          'The initial inspection, documentation of damaged areas, recorded statements, and information provided to the insurance company can all influence how the claim is evaluated.',
+          'Having an attorney involved early can help establish a complete record of the loss and address issues before they turn into larger disputes.',
+          'Whether you have not yet reported the damage, are waiting for an inspection, or have already received an insurance company decision, our attorneys can review your claim and explain your options.'
+        ]},
+        { heading: 'How Long Do You Have to File a Hurricane Isaias Insurance Claim?', type: 'para', body: [
+          'Florida law generally requires an initial or reopened property insurance claim to be reported within one year after the date of loss. Supplemental claims generally must be reported within 18 months.',
+          'For Hurricane Isaias, which made landfall on October 9, 2026, those statutory deadlines would generally fall on October 9, 2027, for an initial or reopened claim and April 9, 2028, for a supplemental claim, subject to applicable law and any circumstances affecting the deadline.',
+          'Those deadlines should not be treated as a reason to delay reporting damage.',
+          'Insurance policies also impose prompt notice obligations. The longer a claim goes unreported, the more difficult it may become to document the property’s condition immediately following the storm and distinguish hurricane damage from subsequent events.',
+          'If you discovered damage after the storm or have questions about an existing claim, we can review the circumstances and explain what deadlines may apply.'
+        ]}
+      ],
+      faqs: [
+        { q: 'Can I hire a lawyer before the insurance company inspects my property?', a: 'Yes. You can retain an attorney before reporting the claim or before the insurance company’s first inspection. Early representation can help ensure the loss is properly documented, the relevant policy provisions are reviewed, and communications with the insurance company are handled from the beginning.' },
+        { q: 'What if my insurance company says Hurricane Isaias did not damage my roof?', a: 'A denial based on age, wear and tear, or pre-existing conditions does not necessarily resolve whether the hurricane caused covered damage. We review the inspection findings, available storm information, photographs, and supporting documentation to determine whether the insurance company’s conclusions are consistent with the evidence.' },
+        { q: 'What if my insurance company only paid for part of the damage?', a: 'A partial payment does not necessarily mean the entire loss was properly evaluated. We review the carrier’s estimate and compare it with the actual damage, contractor findings, and necessary repairs to determine whether additional insurance benefits may be owed.' },
+        { q: 'Can I make emergency repairs before the insurance adjuster visits?', a: 'Yes. Reasonable temporary repairs may be necessary to protect the property from additional damage. Document the condition before and after the work whenever possible, keep damaged materials when practical, and save all invoices and receipts. Avoid permanent repairs that could eliminate important evidence before the damage has been thoroughly documented.' },
+        { q: 'Is water damage from Hurricane Isaias covered by homeowners insurance?', a: 'It depends on the source of the water, the cause of the damage, and the policy language. Water entering through a wind-created opening may be treated differently from storm surge or rising surface water. Some losses may involve both wind and flood damage, making a careful investigation particularly important.' },
+        { q: 'Does my hurricane deductible apply to damage from Isaias?', a: 'A hurricane deductible may apply depending on the policy, the type of coverage, and the circumstances of the storm. We review the policy declarations, deductible provisions, and the insurance company’s calculations to determine whether the deductible was properly applied.' },
+        { q: 'Do you represent Hurricane Isaias policyholders in the Florida Panhandle?', a: 'Yes. Although our Florida office is located in Winter Park, we represent policyholders throughout Florida, including Escambia, Santa Rosa, Okaloosa, Walton, and Bay counties. Claim reviews and consultations can be handled remotely, and supporting documentation can be submitted electronically.' },
+        { q: 'How much does it cost to have my Hurricane Isaias claim reviewed?', a: 'Our initial claim review is free. An attorney will review the information you provide, evaluate the available documentation, and explain where your claim stands and what options may be available.' }
+      ],
+      disclaimer: 'Representing policyholders throughout Florida and Illinois. Property insurance laws and deadlines vary by state and policy. Attorney advertising. Prior results do not guarantee a similar outcome.',
+      ctaTitle: 'Hurricane Isaias damaged your property. We’re here to help.',
+      ctaBody: 'Send us your insurance company’s estimate or coverage letter, photographs, contractor documentation, or simply tell us what happened. We’ll review your claim for free.',
+      related: [ { label: 'Hurricane & Tropical Storm', page: 'claim:hurricane' }, { label: 'Roof Damage', page: 'claim:roof' }, { label: 'Water Damage', page: 'claim:water' }, { label: 'Denied Claims', page: 'claim:denied' }, { label: 'Delayed Claims', page: 'claim:delayed' }, { label: 'Underpaid Claims', page: 'claim:underpaid' }, { label: 'Storm Resource Center', page: 'process:hurricane-readiness' } ]
+    },
+
     'theft': {
       nav: 'Theft & Vandalism', icon: 'mask',
       eyebrow: 'Theft & Vandalism',
@@ -931,6 +1021,94 @@
       ctaBody: 'Envíenos el estimado de la aseguradora y el estimado de su contratista. Revisaremos el reclamo y le daremos una evaluación clara de la situación.',
       disclaimer: claimsEsDisclaimer,
       related: [ { label: 'Reclamos Denegados', page: 'esclaim:reclamos-denegados' }, { label: 'Reclamos Retrasados', page: 'esclaim:reclamos-retrasados' } ]
+    },
+
+    // Spanish version of claims['hurricane-isaias']. `en` / `es` pair the two pages
+    // so the header language button switches between them. Unlisted until approved.
+    'reclamaciones-huracan-isaias': {
+      unlisted: true,
+      en: 'claim:hurricane-isaias',
+      eyebrow: 'Reclamaciones de Seguros por Daños del Huracán Isaias',
+      h1: 'Abogados de Reclamaciones de Seguros por el Huracán Isaias en el Panhandle de Florida',
+      metaTitle: 'Abogados de Seguros por Huracán Isaias | Florida',
+      metaDescription: '¿El huracán Isaias dañó su propiedad en Florida? Nuestros abogados ayudan con reclamaciones de seguros rechazadas, retrasadas o mal pagadas. Consulta gratuita.',
+      tagline: 'El huracán Isaias azotó el Panhandle de Florida el 9 de octubre de 2026, provocando fuertes vientos, lluvias intensas y marejadas ciclónicas. Si su vivienda o propiedad comercial sufrió daños, conocer la cobertura de su póliza y documentar todas las pérdidas son pasos importantes para comenzar el proceso de recuperación.',
+      intro: [
+        'No tiene que esperar a que su compañía de seguros rechace su reclamación o le ofrezca una indemnización insuficiente para buscar representación legal. Representamos a asegurados en Florida desde la presentación inicial de su reclamación hasta su resolución.'
+      ],
+      urgentCtaEnd: {
+        heading: '¿El Huracán Isaias Dañó su Propiedad? Estamos Aquí para Ayudarle.',
+        body: 'Un huracán puede dejar a los propietarios enfrentando reparaciones extensas, gastos inesperados y una reclamación de seguros difícil de manejar.<br><br>No debería tener que adivinar si la estimación de su compañía de seguros incluye todos los daños o si su decisión de cobertura está respaldada por las pruebas.<br><br>Envíenos el presupuesto o la carta de cobertura de su aseguradora, fotografías, documentación de contratistas o simplemente cuéntenos qué sucedió. Revisaremos su reclamación gratuitamente y le ofreceremos una evaluación clara y directa de su situación.<br><br><strong style="color:var(--color-ink);font-weight:700">Su póliza es una promesa. Nosotros hacemos que las aseguradoras la cumplan.</strong>'
+      },
+      sections: [
+        { heading: 'Daños Causados por el Huracán Isaias en el Panhandle de Florida', type: 'para', body: [
+          'El 9 de octubre de 2026, el huracán Isaias tocó tierra cerca de Destin, Florida, como un huracán de categoría 2, con vientos máximos sostenidos de aproximadamente 105 millas por hora. La tormenta provocó daños significativos por viento, lluvias intensas, inundaciones costeras y cortes generalizados de electricidad en el oeste del Panhandle de Florida.',
+          '<img src="/assets/propertyinsurance.law-isaias_landfall_2026-10-09.webp" alt="Secuencia satelital del huracán Isaias tocando tierra cerca de Destin, Florida, el 9 de octubre de 2026" width="700" height="613" style="display:block;width:100%;max-width:700px;height:auto;border-radius:14px;border:1px solid var(--color-hairline);box-shadow:var(--shadow-sm);margin-top:4px" loading="lazy">' +
+          '<span style="display:block;font-family:var(--font-sans);font-size:13px;color:var(--color-muted);margin-top:8px">Secuencia satelital del huracán Isaias al acercarse a la costa del Golfo y tocar tierra cerca de Destin el 9 de octubre de 2026. Imágenes: NOAA / CIRA RAMMB SLIDER, GOES-19 GeoColor.</span>',
+          'El Centro Nacional de Huracanes reportó ráfagas de viento de hasta 116 millas por hora cerca de Santa Rosa Sound y 100 millas por hora cerca de Pensacola. Viviendas y negocios en toda la región sufrieron daños en techos, estructuras exteriores, ventanas e interiores. Algunas propiedades también resultaron afectadas por marejadas ciclónicas e inundaciones.',
+          'Entre las comunidades afectadas por el huracán Isaias se encuentran:',
+          '<strong style="color:var(--color-ink);font-weight:700">Condado de Escambia:</strong> Pensacola, Pensacola Beach y comunidades cercanas.<br>' +
+          '<strong style="color:var(--color-ink);font-weight:700">Condado de Santa Rosa:</strong> Milton, Gulf Breeze, Navarre y East Milton.<br>' +
+          '<strong style="color:var(--color-ink);font-weight:700">Condado de Okaloosa:</strong> Destin, Fort Walton Beach, Niceville y Crestview.<br>' +
+          '<strong style="color:var(--color-ink);font-weight:700">Condado de Walton:</strong> Miramar Beach, Santa Rosa Beach y las comunidades a lo largo de la carretera 30A.<br>' +
+          '<strong style="color:var(--color-ink);font-weight:700">Condado de Bay:</strong> Panama City, Panama City Beach y Lynn Haven.',
+          'No todos los daños causados por una tormenta son visibles de inmediato. Los fuertes vientos pueden dañar los materiales del techo, afectar componentes estructurales y crear aberturas que permitan la entrada de agua. Es posible que la magnitud total de los daños no se descubra hasta que se realicen inspecciones adicionales o comiencen las reparaciones.',
+          'Si su propiedad se encontraba en la trayectoria del huracán Isaias, una inspección cuidadosa y una documentación detallada pueden ayudar a establecer qué daños causó la tormenta y cuáles son las reparaciones necesarias.'
+        ]},
+        { heading: 'Qué Hacer si el Huracán Isaias Dañó su Propiedad', type: 'para', body: [
+          'Los primeros días después de un huracán pueden ser abrumadores. Entre proteger su propiedad, coordinar reparaciones de emergencia y comunicarse con la compañía de seguros, puede resultar difícil saber por dónde comenzar.',
+          'Algunas medidas importantes pueden ayudarle a proteger su propiedad y conservar las pruebas necesarias para respaldar su reclamación.',
+          '<strong style="color:var(--color-ink);font-weight:700">Documente los daños.</strong> Tome fotografías y videos de las áreas afectadas antes de comenzar la limpieza o las reparaciones, siempre que sea seguro hacerlo. Incluya el techo, las paredes exteriores, las ventanas, las habitaciones interiores, las pertenencias personales y cualquier estructura independiente. Conserve también las fotografías tomadas por contratistas o empresas de mitigación de daños.',
+          '<strong style="color:var(--color-ink);font-weight:700">Proteja la propiedad contra daños adicionales.</strong> La mayoría de las pólizas de seguros exigen que el asegurado tome medidas razonables para evitar que los daños empeoren después de una pérdida. Dependiendo de las circunstancias, esto puede incluir colocar lonas temporales en el techo, cubrir aberturas, extraer el agua acumulada o contratar servicios profesionales de secado. No realice trabajos que pongan en riesgo su seguridad.',
+          '<strong style="color:var(--color-ink);font-weight:700">Guarde sus recibos y documentos.</strong> Conserve facturas, presupuestos, contratos, fotografías y comprobantes de gastos relacionados con la tormenta. Esto puede incluir reparaciones de emergencia, alojamiento temporal, almacenamiento y otros gastos derivados de los daños.',
+          '<strong style="color:var(--color-ink);font-weight:700">Reporte los daños lo antes posible.</strong> Notifique a su compañía de seguros tan pronto como sea razonablemente posible, incluso si todavía desconoce la magnitud total de los daños. Anote la fecha en que reportó la pérdida, el número de reclamación y conserve todas las comunicaciones que reciba.',
+          '<strong style="color:var(--color-ink);font-weight:700">Revise las conclusiones de la compañía de seguros.</strong> Después de la inspección, compare el presupuesto de la aseguradora con los daños documentados por su contratista u otros profesionales. Es posible que la estimación inicial no incluya todas las áreas afectadas ni el costo total de las reparaciones necesarias.',
+          'También puede contar con la asistencia de un abogado desde el inicio de la reclamación, incluso antes de la primera inspección de la compañía de seguros.'
+        ]},
+        { heading: 'Disputas Comunes con las Compañías de Seguros Después del Huracán Isaias', type: 'para', body: [
+          'Los daños causados por un huracán pueden afectar distintas partes de una propiedad al mismo tiempo. Por eso, la investigación de la compañía de seguros es especialmente importante cuando existe una disputa sobre la causa de los daños o el alcance de las reparaciones necesarias.',
+          '<strong style="color:var(--color-ink);font-weight:700">Daños en el Techo Atribuidos al Desgaste o Deterioro.</strong> Después de un huracán, algunas compañías de seguros atribuyen las tejas faltantes, las tejas dañadas o las filtraciones a la antigüedad del techo, el desgaste, la instalación incorrecta o condiciones que existían antes de la tormenta. Sin embargo, un techo antiguo también puede sufrir daños nuevos como consecuencia de los vientos de un huracán. Examinamos las conclusiones de la aseguradora junto con fotografías, información meteorológica disponible, informes de inspección y otras pruebas para determinar si los daños fueron evaluados correctamente.',
+          '<strong style="color:var(--color-ink);font-weight:700">Daños por Viento frente a Daños por Inundación.</strong> El huracán Isaias provocó tanto fuertes vientos como marejadas ciclónicas en el Panhandle. En las propiedades afectadas por agua, determinar cómo ingresó puede ser fundamental para establecer la cobertura. Las pólizas de seguros para propietarios de viviendas generalmente tratan de manera diferente el agua que entra por una abertura causada por el viento y el agua proveniente de marejadas ciclónicas o inundaciones. Los daños por inundación suelen estar excluidos de las pólizas de vivienda y pueden requerir un seguro contra inundaciones por separado. Cuando una compañía de seguros atribuye los daños por agua a una causa excluida de cobertura, revisamos las pruebas físicas, las disposiciones de la póliza y la información disponible sobre la tormenta para evaluar esa determinación.',
+          '<strong style="color:var(--color-ink);font-weight:700">Presupuestos que No Incluyen Todos los Daños.</strong> Los daños causados por un huracán pueden extenderse mucho más allá del techo. El viento y el agua pueden afectar cielorrasos, aislamiento, paredes de yeso, pisos, gabinetes, ventanas, cercas, cerramientos de piscinas, estructuras independientes y pertenencias personales. El presupuesto inicial de la compañía de seguros puede incluir los daños más evidentes, pero omitir otras áreas afectadas o reparaciones necesarias. Comparamos la estimación de la aseguradora con los daños documentados, las conclusiones de los contratistas y las disposiciones aplicables de la póliza para identificar posibles omisiones.',
+          '<strong style="color:var(--color-ink);font-weight:700">Disputas sobre Reparación o Reemplazo.</strong> Una compañía de seguros puede presupuestar reparaciones limitadas cuando un contratista considera que es necesario reemplazar una sección más amplia. Estas diferencias pueden involucrar el estado de los materiales existentes, la viabilidad de realizar reparaciones adecuadas, los requisitos de construcción aplicables y el alcance de la cobertura de la póliza. La pregunta no es simplemente si algo puede repararse de manera parcial. Lo importante es determinar si las reparaciones propuestas realmente solucionan los daños cubiertos.',
+          '<strong style="color:var(--color-ink);font-weight:700">Deducibles por Huracán.</strong> Muchas pólizas de seguros de propiedad en Florida contienen un deducible específico para huracanes, que generalmente se calcula como un porcentaje del límite de cobertura de la vivienda asegurada. Dependiendo de la póliza, este deducible puede ser considerablemente mayor que el aplicable a otros tipos de daños. Revisamos la póliza y los cálculos de la compañía de seguros para determinar si se ha aplicado el deducible correspondiente.'
+        ]},
+        { heading: 'Cómo Manejamos las Reclamaciones por Daños del Huracán Isaias', type: 'para', body: [
+          '<strong style="color:var(--color-ink);font-weight:700">La primera estimación de la compañía de seguros no necesariamente es la definitiva.</strong>',
+          'Una reclamación sólida por daños de huracán depende de las pruebas que la respaldan. Esto incluye el estado de la propiedad, la causa de los daños, el alcance de las reparaciones necesarias y la cobertura establecida en la póliza.',
+          'En propertyinsurance.law, revisamos la investigación de la compañía de seguros para comprender cómo llegó a sus conclusiones y determinar si las pruebas disponibles las respaldan.',
+          'Examinamos fotografías, presupuestos, informes de inspección, evaluaciones de ingeniería, documentación de contratistas e información meteorológica relevante. Cuando es necesario, trabajamos con profesionales calificados para evaluar daños en disputa y costos de reparación.',
+          'También manejamos las comunicaciones con la compañía de seguros, atendemos las solicitudes relacionadas con la reclamación y utilizamos los recursos legales disponibles cuando una aseguradora {{link:esclaim:reclamos-denegados|rechaza}}, {{link:esclaim:reclamos-retrasados|retrasa}} o {{link:esclaim:reclamos-subpagados|paga menos de lo debido}} por una reclamación válida.',
+          'Nuestro objetivo es sencillo: asegurar que los daños se evalúen correctamente y reclamar los beneficios que corresponden conforme a la póliza.'
+        ]},
+        { heading: 'No Tiene que Esperar a que Rechacen su Reclamación para Contratar a un Abogado', type: 'para', ctaAfter: {}, body: [
+          'Muchos propietarios creen que deben consultar con un abogado únicamente después de recibir una denegación o un pago insuficiente. Sin embargo, algunas de las decisiones más importantes de una reclamación ocurren mucho antes.',
+          'La inspección inicial, la documentación de las áreas dañadas, las declaraciones grabadas y la información proporcionada a la compañía de seguros pueden influir en la manera en que se evalúa la reclamación.',
+          'Contar con representación legal desde el principio puede ayudar a crear un expediente completo de los daños y atender posibles problemas antes de que se conviertan en disputas mayores.',
+          'Ya sea que todavía no haya reportado los daños, esté esperando una inspección o haya recibido una decisión de la aseguradora, nuestros abogados pueden revisar su reclamación y explicarle sus opciones.'
+        ]},
+        { heading: '¿Cuánto Tiempo Tiene para Presentar una Reclamación por el Huracán Isaias?', type: 'para', body: [
+          'La ley de Florida generalmente exige que una reclamación inicial o reabierta por daños a la propiedad se reporte dentro del plazo de un año desde la fecha de la pérdida. Las reclamaciones suplementarias generalmente deben reportarse dentro de los 18 meses.',
+          'En el caso del huracán Isaias, que tocó tierra el 9 de octubre de 2026, estos plazos legales generalmente vencerían el 9 de octubre de 2027 para una reclamación inicial o reabierta y el 9 de abril de 2028 para una reclamación suplementaria, sujetos a la ley aplicable y cualquier circunstancia que pudiera afectar el plazo.',
+          'Estos plazos no deben considerarse una razón para retrasar la notificación de los daños.',
+          'Las pólizas también establecen obligaciones de notificación oportuna. Cuanto más tiempo transcurra sin reportar una pérdida, más difícil puede resultar documentar el estado de la propiedad inmediatamente después del huracán y distinguir los daños de la tormenta de aquellos causados por eventos posteriores.',
+          'Si descubrió daños después del huracán o tiene preguntas sobre una reclamación existente, podemos revisar las circunstancias y explicarle qué plazos podrían aplicarse.'
+        ]}
+      ],
+      faqs: [
+        { q: '¿Puedo contratar a un abogado antes de que la compañía de seguros inspeccione mi propiedad?', a: 'Sí. Puede contratar a un abogado antes de reportar la reclamación o antes de la primera inspección de la aseguradora. Contar con representación legal desde el principio puede ayudar a documentar adecuadamente los daños, revisar las disposiciones de la póliza y manejar las comunicaciones con la compañía de seguros desde el inicio.' },
+        { q: '¿Qué sucede si mi compañía de seguros afirma que el huracán Isaias no dañó mi techo?', a: 'Una denegación basada en la antigüedad, el desgaste o condiciones preexistentes no necesariamente determina si el huracán causó daños cubiertos. Revisamos las conclusiones de la inspección, la información meteorológica disponible, las fotografías y la documentación de respaldo para determinar si la decisión de la aseguradora es consistente con las pruebas.' },
+        { q: '¿Qué sucede si mi compañía de seguros solo pagó una parte de los daños?', a: 'Un pago parcial no significa necesariamente que todos los daños hayan sido evaluados correctamente. Revisamos la estimación de la compañía de seguros y la comparamos con los daños reales, las conclusiones de los contratistas y las reparaciones necesarias para determinar si podrían corresponder beneficios adicionales.' },
+        { q: '¿Puedo realizar reparaciones de emergencia antes de que llegue el ajustador?', a: 'Sí. Puede ser necesario realizar reparaciones temporales razonables para evitar daños adicionales. Documente el estado de la propiedad antes y después de los trabajos siempre que sea posible, conserve los materiales dañados cuando sea práctico y guarde todas las facturas y recibos. Evite realizar reparaciones permanentes que puedan eliminar pruebas importantes antes de documentar completamente los daños.' },
+        { q: '¿Los daños por agua causados por el huracán Isaias están cubiertos por mi seguro de vivienda?', a: 'Depende de dónde provino el agua, qué causó los daños y las disposiciones de la póliza. El agua que entra por una abertura creada por el viento puede recibir un tratamiento diferente al de las marejadas ciclónicas o las inundaciones. Algunas pérdidas pueden involucrar tanto daños por viento como por inundación, por lo que una investigación cuidadosa es especialmente importante.' },
+        { q: '¿Se aplica el deducible por huracán a mi reclamación por Isaias?', a: 'Puede aplicarse un deducible por huracán dependiendo de la póliza, el tipo de cobertura y las circunstancias de la tormenta. Revisamos la página de declaraciones, las disposiciones sobre deducibles y los cálculos de la aseguradora para determinar si el deducible fue aplicado correctamente.' },
+        { q: '¿Representan a asegurados afectados por el huracán Isaias en el Panhandle de Florida?', a: 'Sí. Aunque nuestra oficina de Florida está ubicada en Winter Park, representamos a asegurados en todo el estado, incluidos los condados de Escambia, Santa Rosa, Okaloosa, Walton y Bay. Las evaluaciones y consultas pueden realizarse de manera remota, y los documentos pueden enviarse electrónicamente.' },
+        { q: '¿Cuánto cuesta una evaluación de mi reclamación por el huracán Isaias?', a: 'Nuestra evaluación inicial es gratuita. Un abogado revisará la información que nos proporcione, evaluará la documentación disponible y le explicará el estado de su reclamación y las opciones que podrían estar a su alcance.' }
+      ],
+      disclaimer: 'Representamos a asegurados en Florida e Illinois. Las leyes y los plazos relacionados con seguros de propiedad varían según el estado y la póliza. Publicidad de servicios legales. Los resultados anteriores no garantizan resultados similares.',
+      ctaTitle: '¿El huracán Isaias dañó su propiedad? Estamos aquí para ayudarle.',
+      ctaBody: 'Envíenos el presupuesto o la carta de cobertura de su aseguradora, fotografías, documentación de contratistas o simplemente cuéntenos qué sucedió. Revisaremos su reclamación gratuitamente.',
+      related: [ { label: 'Reclamos Denegados', page: 'esclaim:reclamos-denegados' }, { label: 'Reclamos Retrasados', page: 'esclaim:reclamos-retrasados' }, { label: 'Reclamos Subpagados', page: 'esclaim:reclamos-subpagados' } ]
     }
   };
 
@@ -1215,6 +1393,10 @@
         body: 'If you have already reported the claim, send us what you have. If you have not reported it yet and are unsure where to start, we can walk you through the process.'
       },
       sections: [
+        { heading: 'Hurricane Isaias: Florida Panhandle', type: 'para', body: [
+          'Hurricane Isaias made landfall near Destin on October 9, 2026, bringing damaging winds, heavy rain, and storm surge to Escambia, Santa Rosa, Okaloosa, Walton, and Bay counties.',
+          'If your home or business was damaged, see our {{link:claim:hurricane-isaias|Hurricane Isaias insurance claims page}} for what to do now, the disputes to expect, and the deadlines that apply. You do not have to wait for a denial to get an attorney involved.'
+        ]},
         { heading: 'Track the Storm', type: 'para', body: [
           'This graphic from the National Hurricane Center shows the current tropical weather outlook for the Atlantic basin and updates automatically as conditions change.',
           '<img src="https://www.nhc.noaa.gov/xgtwo/two_atl_7d0.png" alt="NOAA National Hurricane Center 7-day Atlantic tropical weather outlook" style="width:100%;max-width:720px;border-radius:14px;border:1px solid var(--color-hairline);box-shadow:var(--shadow-sm);margin-top:4px" loading="lazy">',

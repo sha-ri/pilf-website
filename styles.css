@@ -334,3 +334,13 @@ details.pil-faq[open] summary .pil-faqchev { transform: rotate(90deg); }
   .pil-hero-win > div:first-child, .pil-hero-win2 > div:first-child { width: 36px !important; height: 36px !important; }
   .pil-hero-win2 { bottom: 82px !important; }
 }
+
+/* Homepage storm alert bar: red banner linking to the active storm page. */
+.pil-stormbar { display: block; position: relative; color: #fff; text-decoration: none; background: linear-gradient(180deg, #e25a5a 0%, var(--color-danger) 48%, var(--color-danger-hover) 100%); box-shadow: inset 0 1px 0 rgba(255,255,255,0.28), inset 0 -1px 0 rgba(0,0,0,0.14), 0 10px 22px -12px rgba(172,47,47,0.7); }
+.pil-stormbar:hover, .pil-stormbar:focus-visible { background: linear-gradient(180deg, #e66464 0%, #db4d4d 48%, var(--color-danger) 100%); }
+.pil-stormbar__inner { max-width: 1240px; margin: 0 auto; padding: 11px 20px; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 10px 14px; text-align: center; }
+.pil-stormbar__icon { display: flex; align-items: center; justify-content: center; flex: none; width: 30px; height: 30px; border-radius: 999px; background: rgba(255,255,255,0.18); box-shadow: inset 0 0 0 1px rgba(255,255,255,0.3), 0 1px 2px rgba(0,0,0,0.12); }
+/* The triangle glyph sits low in its 24px box, so nudge it up to look centred in the chip. */
+.pil-stormbar__icon svg { display: block; transform: translateY(-1.5px); }
+.pil-stormbar__title { font-family: var(--font-display); font-size: 18px; font-weight: 600; letter-spacing: -0.005em; line-height: 1.2; text-shadow: 0 1px 1px rgba(0,0,0,0.18); }
+.pil-stormbar__more { display: inline-flex; align-items: center; gap: 6px; padding: 6px 13px; border-radius: 999px; background: var(--color-danger-soft); color: var(--color-danger-active); font-family: var(--font-sans); font-size: 13px; font-weight: 700; white-space: nowrap; box-shadow: 0 1px 2px rgba(0,0,0,0.16), 0 4px 10px -4px rgba(0,0,0,0.3); }

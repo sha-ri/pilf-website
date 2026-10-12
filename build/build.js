@@ -35,6 +35,13 @@ var LEGACY_REDIRECTS = [
   { from: 'blog/categories/insurance-dispute-advice', to: 'blog' }
 ];
 
+// Short content hash appended to the styles.css / client.js URLs, so a browser that
+// cached the old file fetches the new one as soon as either file changes.
+var ASSET_VERSION = require('crypto').createHash('md5')
+  .update(fs.readFileSync(path.join(ROOT, 'styles.css')))
+  .update(fs.readFileSync(path.join(__dirname, 'client.js')))
+  .digest('hex').slice(0, 8);
+
 function loadWindowScript(relPath) {
   var sandbox = { window: {} };
   vm.createContext(sandbox);
@@ -91,7 +98,7 @@ function wrapDocument(bodyHtml, opts) {
     (canonical ? '<link rel="canonical" href="' + escAttr(canonical) + '">\n' : '') +
     alternates.map(function (a) { return '<link rel="alternate" hreflang="' + escAttr(a.hreflang) + '" href="' + escAttr(a.href) + '">\n'; }).join('') +
     '<link rel="icon" href="' + FAVICON + '">\n' +
-    '<link rel="stylesheet" href="' + config.BASE_PATH + 'styles.css">\n' +
+    '<link rel="stylesheet" href="' + config.BASE_PATH + 'styles.css?v=' + ASSET_VERSION + '">\n' +
     '<meta property="og:site_name" content="propertyinsurance.law">\n' +
     '<meta property="og:locale" content="' + (opts.lang === 'es' ? 'es_US' : 'en_US') + '">\n' +
     (alternates.length ? '<meta property="og:locale:alternate" content="' + (opts.lang === 'es' ? 'en_US' : 'es_US') + '">\n' : '') +
@@ -105,7 +112,7 @@ function wrapDocument(bodyHtml, opts) {
     '<meta name="twitter:description" content="' + escAttr(description) + '">\n' +
     (ogImage ? '<meta name="twitter:image" content="' + escAttr(ogImage) + '">\n' : '') +
     (opts.jsonLd || '') +
-    '</head>\n<body>\n' + bodyHtml + '\n<script src="' + config.BASE_PATH + 'client.js"></script>\n</body>\n</html>\n';
+    '</head>\n<body>\n' + bodyHtml + '\n<script src="' + config.BASE_PATH + 'client.js?v=' + ASSET_VERSION + '"></script>\n</body>\n</html>\n';
 }
 
 // llms.txt — a plain-text guide for AI/LLM crawlers, per the emerging
@@ -199,8 +206,8 @@ function build() {
   // the homepage <-> /es, and the 3 translated claim pages <-> their English original.
   var homeUrl = config.SITE_URL + config.href('home');
   var esUrl = config.SITE_URL + config.href('es');
-  var ES_CLAIM_COUNTERPART = { 'claim:denied': 'esclaim:reclamos-denegados', 'claim:delayed': 'esclaim:reclamos-retrasados', 'claim:underpaid': 'esclaim:reclamos-subpagados' };
-  var EN_CLAIM_COUNTERPART = { 'esclaim:reclamos-denegados': 'claim:denied', 'esclaim:reclamos-retrasados': 'claim:delayed', 'esclaim:reclamos-subpagados': 'claim:underpaid' };
+  var ES_CLAIM_COUNTERPART = { 'claim:denied': 'esclaim:reclamos-denegados', 'claim:delayed': 'esclaim:reclamos-retrasados', 'claim:underpaid': 'esclaim:reclamos-subpagados', 'claim:hurricane-isaias': 'esclaim:reclamaciones-huracan-isaias' };
+  var EN_CLAIM_COUNTERPART = { 'esclaim:reclamaciones-huracan-isaias': 'claim:hurricane-isaias', 'esclaim:reclamos-denegados': 'claim:denied', 'esclaim:reclamos-retrasados': 'claim:delayed', 'esclaim:reclamos-subpagados': 'claim:underpaid' };
 
   routes.forEach(function (r) {
     var state = { page: r.page, tShuffleKey: TSHUFFLE_SEED, winShuffleKey: WSHUFFLE_SEED };

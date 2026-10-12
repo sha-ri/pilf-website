@@ -44,6 +44,8 @@ module.exports = function (PIL_CONTENT, ICON, opts) {
   // subject line — used by the hurricane readiness page's red CTA buttons.
   var HURRICANE_MAILTO = 'mailto:info@propertyinsurance.law?cc=intake@propertyinsurance.law&subject=' +
     encodeURIComponent('URGENT Request - Hurricane / Tropical Storm') + '&body=' + encodeURIComponent(CONSULT_BODY);
+  var HURRICANE_MAILTO_ES = 'mailto:info@propertyinsurance.law?cc=intake@propertyinsurance.law&subject=' +
+    encodeURIComponent('URGENTE - Huracán / Tormenta Tropical') + '&body=' + encodeURIComponent(CONSULT_BODY_ES);
 
   // Conceptual paths used in blog-post SEO notes -> real site routes.
   var SEO_LINK_MAP = {
@@ -212,14 +214,17 @@ module.exports = function (PIL_CONTENT, ICON, opts) {
       isPolicies: page === 'policies', isContact: page === 'contact', isBioPage: kind === 'bio',
       isEs: page === 'es' || kind === 'esclaim'
     };
+    // Header language button: a page with its own translation (article.es / article.en)
+    // switches to that page; everything else falls back to the other language's homepage.
+    vm.langSwitchPage = (article && (vm.isEs ? article.en : article.es)) || (vm.isEs ? 'home' : 'es');
 
     // article view
     if (article) {
       vm.av = {
-        eyebrow: article.eyebrow, h1: article.h1, metaTitle: article.metaTitle || null, tagline: article.tagline, intro: article.intro || [],
-        urgentCtaTop: article.urgentCtaTop || null, urgentCtaBottom: article.urgentCtaBottom || null,
+        eyebrow: article.eyebrow, h1: article.h1, metaTitle: article.metaTitle || null, metaDescription: article.metaDescription || null, tagline: article.tagline, intro: article.intro || [],
+        urgentCtaTop: article.urgentCtaTop || null, urgentCtaBottom: article.urgentCtaBottom || null, urgentCtaEnd: article.urgentCtaEnd || null,
         sections: (article.sections || []).map(function (s) {
-          return { heading: s.heading, isNamed: s.type === 'named', isPara: s.type === 'para', named: s.type === 'named' ? s.body : [], paras: s.type === 'para' ? s.body : [] };
+          return { heading: s.heading, isNamed: s.type === 'named', isPara: s.type === 'para', named: s.type === 'named' ? s.body : [], paras: s.type === 'para' ? s.body : [], ctaAfter: s.ctaAfter || null };
         }),
         steps: (article.steps || []).map(function (t, i) { return { n: i + 1, text: t }; }),
         hasSteps: !!(article.steps && article.steps.length),
@@ -407,7 +412,7 @@ module.exports = function (PIL_CONTENT, ICON, opts) {
       '<div style="display:flex;align-items:center;gap:10px;flex:none">' +
       '<a href="' + TEL + '" class="pil-headcta" style="display:flex;align-items:center;gap:7px;font-family:var(--font-mono);font-size:13.5px;font-weight:500;color:var(--color-ink);text-decoration:none;white-space:nowrap"><span style="display:flex;color:var(--color-primary)">' + I('phone', 16) + '</span>' + PHONE + '</a>' +
       '<div class="pil-headcta" style="display:flex;align-items:center;gap:9px">' + btn({ variant: 'accent', size: 'sm', href: href('contact'), label: 'Get a Free Claim Review' }) + '</div>' +
-      '<a href="' + (vm.isEs ? href('home') : href('es')) + '" aria-label="' + (vm.isEs ? 'Switch to English' : 'Cambiar a español') + '" style="display:inline-flex;align-items:center;justify-content:center;height:36px;min-width:36px;padding:0 11px;border:1px solid var(--color-hairline);background:#fff;border-radius:999px;font-family:var(--font-sans);font-size:12.5px;font-weight:700;letter-spacing:0.02em;color:var(--color-ink);text-decoration:none;flex:none">' + (vm.isEs ? 'EN' : 'ES') + '</a>' +
+      '<a href="' + href(vm.langSwitchPage) + '" aria-label="' + (vm.isEs ? 'Switch to English' : 'Cambiar a español') + '" style="display:inline-flex;align-items:center;justify-content:center;height:36px;min-width:36px;padding:0 11px;border:1px solid var(--color-hairline);background:#fff;border-radius:999px;font-family:var(--font-sans);font-size:12.5px;font-weight:700;letter-spacing:0.02em;color:var(--color-ink);text-decoration:none;flex:none">' + (vm.isEs ? 'EN' : 'ES') + '</a>' +
       '<button class="pil-hamb" data-action="toggleMobile" aria-label="Menu" style="align-items:center;justify-content:center;width:42px;height:42px;border:1px solid var(--color-hairline);background:#fff;border-radius:11px;cursor:pointer;color:var(--color-ink)">' + I('menu', 22) + '</button>' +
       '</div></div></header>';
   }
@@ -479,6 +484,20 @@ module.exports = function (PIL_CONTENT, ICON, opts) {
   }
 
   // ---------------- pages ----------------
+  // Red alert bar at the top of both homepages (EN + ES), linking to the active
+  // storm's claim page (styled by .pil-stormbar in styles.css). Remove the two
+  // stormBanner() calls in pageHome / pageHomeEs to take it down.
+  function stormBanner(isEs) {
+    var title = isEs ? '¿El huracán Isaias dañó su propiedad?' : 'Damaged by Hurricane Isaias?';
+    var more = isEs ? 'Vea Qué Hacer Ahora' : 'See What to Do Now';
+    return '<a href="' + href(isEs ? 'esclaim:reclamaciones-huracan-isaias' : 'claim:hurricane-isaias') + '" class="pil-stormbar">' +
+      '<span class="pil-stormbar__inner">' +
+      '<span class="pil-stormbar__icon">' + I('triangle-alert', 17) + '</span>' +
+      '<span class="pil-stormbar__title">' + title + '</span>' +
+      '<span class="pil-stormbar__more">' + more + '<span style="display:flex">' + I('arrow-right', 15) + '</span></span>' +
+      '</span></a>';
+  }
+
   function pageHome(vm) {
     var trust = vm.trustRow.map(function (t) {
       var tag = t.href ? 'a' : 'div';
@@ -571,7 +590,7 @@ module.exports = function (PIL_CONTENT, ICON, opts) {
       caseResults: PIL_CONTENT.caseResults || []
     }).replace(/</g, '\\u003c') + '<\/script>';
 
-    return '<div style="animation:pilFade .4s var(--ease-out) both">' + hero + statsBand + problems + why + losses + testi + '</div>' + shuffleData;
+    return stormBanner(false) + '<div style="animation:pilFade .4s var(--ease-out) both">' + hero + statsBand + problems + why + losses + testi + '</div>' + shuffleData;
   }
 
   // Spanish-language homepage at /es/. Not a full site translation — a dedicated
@@ -667,7 +686,7 @@ module.exports = function (PIL_CONTENT, ICON, opts) {
       btn({ variant: 'accent', size: 'lg', block: true, href: CONSULT_MAILTO_ES, label: 'Revisión Gratuita de su Reclamo' }) + callBtnEs('lg', true) +
       '</div></div></section>';
 
-    return '<div style="animation:pilFade .4s var(--ease-out) both">' + hero + statsBand + problems + why + losses + closing + '</div>';
+    return stormBanner(true) + '<div style="animation:pilFade .4s var(--ease-out) both">' + hero + statsBand + problems + why + losses + closing + '</div>';
   }
 
   // Translates a caseResults caption (English, from content.js) for use on /es.
@@ -711,7 +730,7 @@ module.exports = function (PIL_CONTENT, ICON, opts) {
       } else if (sec.isPara) {
         body = '<div style="margin-top:16px">' + sec.paras.map(function (p) { return '<p style="font-family:var(--font-sans);font-size:17px;line-height:1.7;color:var(--color-body);margin:0 0 16px">' + inlineLinks(p) + '</p>'; }).join('') + '</div>';
       }
-      return '<div style="margin-top:34px"><h2 style="font-family:var(--font-display);font-weight:600;font-size:clamp(23px,3vw,30px);line-height:1.2;letter-spacing:-0.01em;color:var(--color-ink);margin:0">' + sec.heading + '</h2>' + body + '</div>';
+      return '<div style="margin-top:34px"><h2 style="font-family:var(--font-display);font-weight:600;font-size:clamp(23px,3vw,30px);line-height:1.2;letter-spacing:-0.01em;color:var(--color-ink);margin:0">' + sec.heading + '</h2>' + body + urgentCta(sec.ctaAfter, '6px', vm.isEs) + '</div>';
     }).join('');
 
     var steps = '';
@@ -749,7 +768,7 @@ module.exports = function (PIL_CONTENT, ICON, opts) {
       '<div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:26px">' + heroCta + '</div>' +
       '</div></section>' +
       '<section style="padding:clamp(48px,6vw,80px) 0"><div class="pil-collapse" style="max-width:1100px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:52px;align-items:start">' +
-      '<article>' + intro + urgentCta(av.urgentCtaTop, '16px') + sections + steps + urgentCta(av.urgentCtaBottom, '38px') + faqs +
+      '<article>' + intro + urgentCta(av.urgentCtaTop, '16px', vm.isEs) + sections + steps + urgentCta(av.urgentCtaBottom, '38px', vm.isEs) + faqs + urgentCta(av.urgentCtaEnd, '38px', vm.isEs) +
       '<div style="margin-top:36px;padding:18px 22px;background:#fff;border:1px solid var(--color-hairline);border-left:3px solid var(--color-primary);border-radius:12px;font-family:var(--font-sans);font-size:14px;line-height:1.6;color:var(--color-muted)">' + av.disclaimer + '</div></article>' +
       '<aside style="position:sticky;top:96px;display:flex;flex-direction:column;gap:18px">' + sidebarCta(av.ctaTitle, av.ctaBody, vm.isEs) + related + '</aside>' +
       '</div></section></div>';
@@ -764,14 +783,15 @@ module.exports = function (PIL_CONTENT, ICON, opts) {
 
   // Red, high-urgency CTA block (distinct from the standard accent sidebarCta)
   // used inline within article bodies — e.g. the hurricane readiness page —
-  // to press a time-sensitive "reach out now" moment.
-  function urgentCta(o, marginTop) {
+  // to press a time-sensitive "reach out now" moment. heading/body are optional:
+  // an empty object renders just the two red buttons.
+  function urgentCta(o, marginTop, isEs) {
     if (!o) return '';
     return '<div style="margin-top:' + marginTop + ';background:var(--color-danger-soft);border:1px solid #f3c6c6;border-left:4px solid var(--color-danger);border-radius:14px;padding:clamp(20px,3vw,28px)">' +
-      '<h3 style="font-family:var(--font-display);font-weight:600;font-size:clamp(19px,2.4vw,23px);line-height:1.25;color:var(--color-ink);margin:0 0 8px">' + o.heading + '</h3>' +
-      '<p style="font-family:var(--font-sans);font-size:15.5px;line-height:1.6;color:var(--color-body);margin:0 0 18px">' + o.body + '</p>' +
-      '<div style="display:flex;flex-wrap:wrap;gap:12px">' + btn({ variant: 'danger', href: HURRICANE_MAILTO, label: 'Email Our Team Now' }) +
-      '<a href="' + TEL + '" class="pil-btn pil-btn--danger pil-btn--md"><span style="display:flex">' + I('phone', 17) + '</span><span>Call ' + PHONE + ' Now</span></a></div></div>';
+      (o.heading ? '<h3 style="font-family:var(--font-display);font-weight:600;font-size:clamp(19px,2.4vw,23px);line-height:1.25;color:var(--color-ink);margin:0 0 8px">' + o.heading + '</h3>' : '') +
+      (o.body ? '<p style="font-family:var(--font-sans);font-size:15.5px;line-height:1.6;color:var(--color-body);margin:0 0 18px">' + o.body + '</p>' : '') +
+      '<div style="display:flex;flex-wrap:wrap;gap:12px">' + btn({ variant: 'danger', href: isEs ? HURRICANE_MAILTO_ES : HURRICANE_MAILTO, label: isEs ? 'Escríbanos Ahora' : 'Email Our Team Now' }) +
+      '<a href="' + TEL + '" class="pil-btn pil-btn--danger pil-btn--md"><span style="display:flex">' + I('phone', 17) + '</span><span>' + (isEs ? 'Llame al ' + PHONE + ' Ahora' : 'Call ' + PHONE + ' Now') + '</span></a></div></div>';
   }
 
   function sidebarCta(title, body, isEs) {
@@ -1127,8 +1147,9 @@ module.exports = function (PIL_CONTENT, ICON, opts) {
   }
 
   function pageDescription(vm) {
+    if (vm.isArticle && vm.av.metaDescription) return truncateDesc(vm.av.metaDescription, 160);
     if (vm.isEs) return 'Representamos a propietarios de vivienda con reclamos de seguro de propiedad denegados, retrasados o subpagados en Florida e Illinois. Consulta gratuita. Sin honorarios a menos que ganemos.';
-    if (vm.isArticle) return truncateDesc(vm.av.tagline, 160);
+    if (vm.isArticle) return truncateDesc(vm.av.metaDescription || vm.av.tagline, 160);
     if (vm.isBio) return truncateDesc(vm.bio.positioning, 160);
     if (vm.isFaq) return truncateDesc(vm.faqData.tagline, 160);
     if (vm.isPolicies) return truncateDesc(vm.policiesData.tagline, 160);
