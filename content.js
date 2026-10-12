@@ -694,7 +694,7 @@
     'hurricane-isaias': {
       navFeatured: true,
       es: 'esclaim:reclamaciones-huracan-isaias',
-      nav: 'Hurricane Isaias Claim', icon: 'hurricane',
+      nav: 'Hurricane Isaias Claims', icon: 'hurricane',
       eyebrow: 'Hurricane Isaias Property Damage Claims',
       h1: 'Hurricane Isaias Insurance Claims in the Florida Panhandle',
       metaTitle: 'Hurricane Isaias Panhandle Claims | Florida Insurance Attorneys',
