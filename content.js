@@ -700,14 +700,18 @@
       metaTitle: 'Hurricane Isaias Panhandle Claims | Florida Insurance Attorneys',
       metaDescription: 'Hurricane Isaias damaged your Florida Panhandle property? Our attorneys help with denied, delayed, and underpaid insurance claims. Get a free claim review.',
       tagline: 'Hurricane Isaias brought damaging winds, heavy rain, and storm surge to Florida’s Panhandle on October 9, 2026. If your home or business suffered damage, understanding your insurance coverage and documenting the full extent of your loss are important first steps toward recovery.',
-      intro: [
-        'You do not have to wait until your insurance company denies or underpays your claim to get an attorney involved. We represent Florida policyholders from the initial claim through final resolution.'
-      ],
+      intro: [],
       urgentCtaEnd: {
         heading: 'Hurricane Isaias Damaged Your Property. We’re Here to Help.',
         body: 'A hurricane can leave property owners dealing with extensive repairs, unexpected expenses, and an insurance claim that is difficult to navigate.<br><br>You should not have to guess whether the insurance company’s estimate accounts for the full loss or whether its coverage decision is supported by the evidence.<br><br>Send us your insurance company’s estimate or coverage letter, photographs, contractor documentation, or simply tell us what happened. We’ll review your claim for free and give you a straightforward assessment of where things stand.<br><br><strong style="color:var(--color-ink);font-weight:700">Your policy is a promise. We make carriers keep it.</strong>'
       },
       sections: [
+        { heading: 'You Don’t Have to Wait for a Denial to Hire an Attorney', type: 'para', ctaAfter: {}, body: [
+          'Many property owners assume they should contact an attorney only after receiving a denial or an insufficient payment. But some of the most important decisions in an insurance claim happen much earlier.',
+          'The initial inspection, documentation of damaged areas, recorded statements, and information provided to the insurance company can all influence how the claim is evaluated.',
+          'Having an attorney involved early can help establish a complete record of the loss and address issues before they turn into larger disputes.',
+          'Whether you have not yet reported the damage, are waiting for an inspection, or have already received an insurance company decision, our attorneys can review your claim and explain your options.'
+        ]},
         { heading: 'Hurricane Isaias Damage in the Florida Panhandle', type: 'para', body: [
           'On October 9, 2026, Hurricane Isaias made landfall near Destin, Florida, as a Category 2 hurricane with maximum sustained winds of approximately 105 mph. The storm brought significant wind damage, heavy rainfall, coastal flooding, and widespread power outages across the western Florida Panhandle.',
           '<img src="/assets/propertyinsurance.law-isaias_landfall_2026-10-09.webp" alt="Satellite loop of Hurricane Isaias making landfall near Destin, Florida, on October 9, 2026" width="700" height="613" style="display:block;width:100%;max-width:700px;height:auto;border-radius:14px;border:1px solid var(--color-hairline);box-shadow:var(--shadow-sm);margin-top:4px" loading="lazy">' +
@@ -747,12 +751,6 @@
           'We examine photographs, estimates, inspection reports, engineering findings, contractor documentation, and relevant storm information. When necessary, we work with qualified professionals to evaluate disputed damage and repair costs.',
           'We also handle communications with the insurance company, address claim-related requests, and pursue available remedies when the carrier {{link:claim:denied|denies}}, {{link:claim:delayed|delays}}, or {{link:claim:underpaid|underpays}} a valid claim.',
           'Our goal is straightforward: to make sure the loss is properly evaluated and pursue the insurance benefits owed under the policy.'
-        ]},
-        { heading: 'You Don’t Have to Wait for a Denial to Hire an Attorney', type: 'para', ctaAfter: {}, body: [
-          'Many property owners assume they should contact an attorney only after receiving a denial or an insufficient payment. But some of the most important decisions in an insurance claim happen much earlier.',
-          'The initial inspection, documentation of damaged areas, recorded statements, and information provided to the insurance company can all influence how the claim is evaluated.',
-          'Having an attorney involved early can help establish a complete record of the loss and address issues before they turn into larger disputes.',
-          'Whether you have not yet reported the damage, are waiting for an inspection, or have already received an insurance company decision, our attorneys can review your claim and explain your options.'
         ]},
         { heading: 'How Long Do You Have to File a Hurricane Isaias Insurance Claim?', type: 'para', body: [
           'Florida law generally requires an initial or reopened property insurance claim to be reported within one year after the date of loss. Supplemental claims generally must be reported within 18 months.',
@@ -1031,14 +1029,18 @@
       metaTitle: 'Abogados de Seguros por Huracán Isaias | Florida',
       metaDescription: '¿El huracán Isaias dañó su propiedad en Florida? Nuestros abogados ayudan con reclamaciones de seguros rechazadas, retrasadas o mal pagadas. Consulta gratuita.',
       tagline: 'El huracán Isaias azotó el Panhandle de Florida el 9 de octubre de 2026, provocando fuertes vientos, lluvias intensas y marejadas ciclónicas. Si su vivienda o propiedad comercial sufrió daños, conocer la cobertura de su póliza y documentar todas las pérdidas son pasos importantes para comenzar el proceso de recuperación.',
-      intro: [
-        'No tiene que esperar a que su compañía de seguros rechace su reclamación o le ofrezca una indemnización insuficiente para buscar representación legal. Representamos a asegurados en Florida desde la presentación inicial de su reclamación hasta su resolución.'
-      ],
+      intro: [],
       urgentCtaEnd: {
         heading: '¿El Huracán Isaias Dañó su Propiedad? Estamos Aquí para Ayudarle.',
         body: 'Un huracán puede dejar a los propietarios enfrentando reparaciones extensas, gastos inesperados y una reclamación de seguros difícil de manejar.<br><br>No debería tener que adivinar si la estimación de su compañía de seguros incluye todos los daños o si su decisión de cobertura está respaldada por las pruebas.<br><br>Envíenos el presupuesto o la carta de cobertura de su aseguradora, fotografías, documentación de contratistas o simplemente cuéntenos qué sucedió. Revisaremos su reclamación gratuitamente y le ofreceremos una evaluación clara y directa de su situación.<br><br><strong style="color:var(--color-ink);font-weight:700">Su póliza es una promesa. Nosotros hacemos que las aseguradoras la cumplan.</strong>'
       },
       sections: [
+        { heading: 'No Tiene que Esperar a que Rechacen su Reclamación para Contratar a un Abogado', type: 'para', ctaAfter: {}, body: [
+          'Muchos propietarios creen que deben consultar con un abogado únicamente después de recibir una denegación o un pago insuficiente. Sin embargo, algunas de las decisiones más importantes de una reclamación ocurren mucho antes.',
+          'La inspección inicial, la documentación de las áreas dañadas, las declaraciones grabadas y la información proporcionada a la compañía de seguros pueden influir en la manera en que se evalúa la reclamación.',
+          'Contar con representación legal desde el principio puede ayudar a crear un expediente completo de los daños y atender posibles problemas antes de que se conviertan en disputas mayores.',
+          'Ya sea que todavía no haya reportado los daños, esté esperando una inspección o haya recibido una decisión de la aseguradora, nuestros abogados pueden revisar su reclamación y explicarle sus opciones.'
+        ]},
         { heading: 'Daños Causados por el Huracán Isaias en el Panhandle de Florida', type: 'para', body: [
           'El 9 de octubre de 2026, el huracán Isaias tocó tierra cerca de Destin, Florida, como un huracán de categoría 2, con vientos máximos sostenidos de aproximadamente 105 millas por hora. La tormenta provocó daños significativos por viento, lluvias intensas, inundaciones costeras y cortes generalizados de electricidad en el oeste del Panhandle de Florida.',
           '<img src="/assets/propertyinsurance.law-isaias_landfall_2026-10-09.webp" alt="Secuencia satelital del huracán Isaias tocando tierra cerca de Destin, Florida, el 9 de octubre de 2026" width="700" height="613" style="display:block;width:100%;max-width:700px;height:auto;border-radius:14px;border:1px solid var(--color-hairline);box-shadow:var(--shadow-sm);margin-top:4px" loading="lazy">' +
@@ -1078,12 +1080,6 @@
           'Examinamos fotografías, presupuestos, informes de inspección, evaluaciones de ingeniería, documentación de contratistas e información meteorológica relevante. Cuando es necesario, trabajamos con profesionales calificados para evaluar daños en disputa y costos de reparación.',
           'También manejamos las comunicaciones con la compañía de seguros, atendemos las solicitudes relacionadas con la reclamación y utilizamos los recursos legales disponibles cuando una aseguradora {{link:esclaim:reclamos-denegados|rechaza}}, {{link:esclaim:reclamos-retrasados|retrasa}} o {{link:esclaim:reclamos-subpagados|paga menos de lo debido}} por una reclamación válida.',
           'Nuestro objetivo es sencillo: asegurar que los daños se evalúen correctamente y reclamar los beneficios que corresponden conforme a la póliza.'
-        ]},
-        { heading: 'No Tiene que Esperar a que Rechacen su Reclamación para Contratar a un Abogado', type: 'para', ctaAfter: {}, body: [
-          'Muchos propietarios creen que deben consultar con un abogado únicamente después de recibir una denegación o un pago insuficiente. Sin embargo, algunas de las decisiones más importantes de una reclamación ocurren mucho antes.',
-          'La inspección inicial, la documentación de las áreas dañadas, las declaraciones grabadas y la información proporcionada a la compañía de seguros pueden influir en la manera en que se evalúa la reclamación.',
-          'Contar con representación legal desde el principio puede ayudar a crear un expediente completo de los daños y atender posibles problemas antes de que se conviertan en disputas mayores.',
-          'Ya sea que todavía no haya reportado los daños, esté esperando una inspección o haya recibido una decisión de la aseguradora, nuestros abogados pueden revisar su reclamación y explicarle sus opciones.'
         ]},
         { heading: '¿Cuánto Tiempo Tiene para Presentar una Reclamación por el Huracán Isaias?', type: 'para', body: [
           'La ley de Florida generalmente exige que una reclamación inicial o reabierta por daños a la propiedad se reporte dentro del plazo de un año desde la fecha de la pérdida. Las reclamaciones suplementarias generalmente deben reportarse dentro de los 18 meses.',

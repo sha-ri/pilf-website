@@ -723,7 +723,7 @@ module.exports = function (PIL_CONTENT, ICON, opts) {
   function pageArticle(vm) {
     var av = vm.av;
     var intro = av.intro.map(function (p) { return '<p style="font-family:var(--font-sans);font-size:18px;line-height:1.7;color:var(--color-body);margin:0 0 18px">' + inlineLinks(p) + '</p>'; }).join('');
-    var sections = av.sections.map(function (sec) {
+    var sections = av.sections.map(function (sec, i) {
       var body = '';
       if (sec.isNamed) {
         body = '<div style="display:flex;flex-direction:column;gap:14px;margin-top:18px">' + sec.named.map(function (row) {
@@ -732,7 +732,9 @@ module.exports = function (PIL_CONTENT, ICON, opts) {
       } else if (sec.isPara) {
         body = '<div style="margin-top:16px">' + sec.paras.map(function (p) { return '<p style="font-family:var(--font-sans);font-size:17px;line-height:1.7;color:var(--color-body);margin:0 0 16px">' + inlineLinks(p) + '</p>'; }).join('') + '</div>';
       }
-      return '<div style="margin-top:34px"><h2 style="font-family:var(--font-display);font-weight:600;font-size:clamp(23px,3vw,30px);line-height:1.2;letter-spacing:-0.01em;color:var(--color-ink);margin:0">' + sec.heading + '</h2>' + body + urgentCta(sec.ctaAfter, '6px', vm.isEs) + '</div>';
+      // A page with no intro opens straight on its first section, so that one gets no top gap.
+      var gap = (i === 0 && !av.intro.length && !av.urgentCtaTop) ? '0' : '34px';
+      return '<div style="margin-top:' + gap + '"><h2 style="font-family:var(--font-display);font-weight:600;font-size:clamp(23px,3vw,30px);line-height:1.2;letter-spacing:-0.01em;color:var(--color-ink);margin:0">' + sec.heading + '</h2>' + body + urgentCta(sec.ctaAfter, '6px', vm.isEs) + '</div>';
     }).join('');
 
     var steps = '';
