@@ -9,6 +9,7 @@
   // ---- Property Claims (data-driven article pages) ----
   var claims = {
     'denied': {
+      es: 'esclaim:reclamos-denegados',
       nav: 'Denied Claims', icon: 'shield-x',
       eyebrow: 'Denied Claims',
       h1: 'Denied Insurance Claims',
@@ -56,6 +57,7 @@
     },
 
     'delayed': {
+      es: 'esclaim:reclamos-retrasados',
       nav: 'Delayed Claims', icon: 'clock',
       eyebrow: 'Delayed Claims',
       h1: 'Delayed Insurance Claims',
@@ -104,6 +106,7 @@
     },
 
     'underpaid': {
+      es: 'esclaim:reclamos-subpagados',
       nav: 'Underpaid Claims', icon: 'banknote',
       eyebrow: 'Underpaid Claims',
       h1: 'Underpaid Insurance Claims',
@@ -878,6 +881,7 @@
   var claimsEsDisclaimer = 'Las leyes de seguros de propiedad varían según el estado. Representamos a asegurados en toda Florida e Illinois. Durante su consulta, le explicaremos las reglas y plazos que puedan aplicar a su reclamo.';
   var claimsEs = {
     'reclamos-denegados': {
+      en: 'claim:denied',
       eyebrow: 'Reclamos Denegados',
       h1: 'Reclamos de Seguro Denegados',
       metaTitle: 'Reclamos de Seguro Denegados | Abogado de Seguros en Florida - propertyinsurance.law',
@@ -925,6 +929,7 @@
     },
 
     'reclamos-retrasados': {
+      en: 'claim:delayed',
       eyebrow: 'Reclamos Retrasados',
       h1: 'Reclamos de Seguro Retrasados',
       metaTitle: 'Reclamos de Seguro Retrasados | Abogado de Seguros en Florida - propertyinsurance.law',
@@ -973,6 +978,7 @@
     },
 
     'reclamos-subpagados': {
+      en: 'claim:underpaid',
       eyebrow: 'Reclamos Subpagados',
       h1: 'Reclamos de Seguro Subpagados',
       metaTitle: 'Reclamos de Seguro Subpagados | Abogado de Seguros en Florida - propertyinsurance.law',
