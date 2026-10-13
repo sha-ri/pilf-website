@@ -63,7 +63,7 @@ module.exports = function (PIL_CONTENT, ICON, opts) {
     'pil-hero': 'assets/pil-about.png', 'pil-why': 'assets/pil-why.jpg', 'pil-about': 'assets/pil-about.png',
     'pil-att-isabel-freeman': 'assets/pil-bio-isabel-freeman.png', 'pil-bio-isabel-freeman': 'assets/pil-bio-isabel-freeman.png',
     'pil-att-stefan-jose-garcia': 'assets/pil-bio-stefan-jose-garcia.png', 'pil-bio-stefan-jose-garcia': 'assets/pil-bio-stefan-jose-garcia.png',
-    'pil-staff-HP': 'assets/pil-staff-hilda-pinto.png', 'pil-staff-JC': 'assets/pil-staff-julian-calvo.png',
+    'pil-staff-HP': 'assets/pil-staff-hilda-pinto.png',
     'pil-staff-EG': 'assets/pil-staff-erik-granillo.png', 'pil-staff-MM': 'assets/pil-staff-mary-mahairas.png',
     florida: 'assets/florida.png', illinois: 'assets/illinois.png'
   };

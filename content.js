@@ -1617,7 +1617,6 @@
   // ---- Staff ----
   var staff = [
     { name: 'Hilda Pinto', initials: 'HP', role: 'Intake Manager', desc: 'Hilda is often one of the first people clients speak with at the firm. She helps gather the information and documents attorneys need to evaluate a potential case and makes sure important details are captured from the beginning. She is fluent in both English and Spanish.' },
-    { name: 'Julian Calvo', initials: 'JC', role: 'Presuit Manager', desc: 'Julian manages matters during the presuit stage, where documentation, deadlines, and communication with the insurance company can shape how a claim develops. He helps organize demands, supporting records, and other materials needed to move the claim toward resolution or litigation. He is fluent in both English and Spanish.' },
     { name: 'Erik Granillo', initials: 'EG', role: 'Litigation Manager', desc: 'Erik works closely with the firm\u2019s attorneys on the development of litigated cases. He helps organize and analyze claim files, coordinate discovery, prepare for depositions and hearings, work with experts, and keep the evidence and case strategy moving forward. He is fluent in both English and Spanish.' },
     { name: 'Mary Mahairas', initials: 'MM', role: 'Accounting Manager', desc: 'Mary oversees the firm\u2019s accounting processes and client financial records. She helps ensure that settlement funds, costs, and accountings are handled accurately and that financial questions are addressed clearly.' }
   ];
