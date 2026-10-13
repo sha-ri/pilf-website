@@ -216,6 +216,8 @@ function build() {
     var alternates = [];
     if (r.page === 'home') alternates = [{ hreflang: 'es', href: esUrl }, { hreflang: 'x-default', href: homeUrl }];
     else if (r.page === 'es') alternates = [{ hreflang: 'en', href: homeUrl }, { hreflang: 'es', href: esUrl }];
+    else if (r.page === 'claims-hub') alternates = [{ hreflang: 'es', href: config.SITE_URL + config.href('es-claims-hub') }, { hreflang: 'en', href: canonical }];
+    else if (r.page === 'es-claims-hub') alternates = [{ hreflang: 'en', href: config.SITE_URL + config.href('claims-hub') }, { hreflang: 'es', href: canonical }];
     else if (ES_CLAIM_COUNTERPART[r.page]) alternates = [{ hreflang: 'es', href: config.SITE_URL + config.href(ES_CLAIM_COUNTERPART[r.page]) }, { hreflang: 'en', href: canonical }];
     else if (EN_CLAIM_COUNTERPART[r.page]) alternates = [{ hreflang: 'en', href: config.SITE_URL + config.href(EN_CLAIM_COUNTERPART[r.page]) }, { hreflang: 'es', href: canonical }];
     var html = wrapDocument(assemblePage(T, vmObj), {

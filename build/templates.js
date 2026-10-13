@@ -212,11 +212,13 @@ module.exports = function (PIL_CONTENT, ICON, opts) {
       isAbout: page === 'about', isAttorneys: page === 'attorneys', isStaff: page === 'staff',
       isFaq: page === 'faq', isBlog: page === 'blog',
       isPolicies: page === 'policies', isContact: page === 'contact', isBioPage: kind === 'bio',
-      isEs: page === 'es' || kind === 'esclaim'
+      isClaimsHubEs: page === 'es-claims-hub',
+      isEs: page === 'es' || page === 'es-claims-hub' || kind === 'esclaim'
     };
     // Header language button: a page with its own translation (article.es / article.en)
     // switches to that page; everything else falls back to the other language's homepage.
-    vm.langSwitchPage = (article && (vm.isEs ? article.en : article.es)) || (vm.isEs ? 'home' : 'es');
+    var hubPair = { 'claims-hub': 'es-claims-hub', 'es-claims-hub': 'claims-hub' };
+    vm.langSwitchPage = (article && (vm.isEs ? article.en : article.es)) || hubPair[page] || (vm.isEs ? 'home' : 'es');
 
     // article view
     if (article) {
@@ -676,7 +678,7 @@ module.exports = function (PIL_CONTENT, ICON, opts) {
       '<div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:20px;margin-bottom:clamp(28px,3vw,40px)">' +
       '<div style="max-width:620px">' + eyebrow('Todo tipo de pérdida de propiedad') +
       '<h2 style="font-family:var(--font-display);font-weight:600;font-size:clamp(30px,4vw,42px);line-height:1.12;letter-spacing:-0.02em;color:var(--color-ink);margin:14px 0 0">Comience con su pérdida</h2></div>' +
-      btn({ variant: 'secondary', href: href('claims-hub'), label: 'Todos los reclamos de propiedad' }) + '</div>' +
+      btn({ variant: 'secondary', href: href('es-claims-hub'), label: 'Todos los reclamos de propiedad' }) + '</div>' +
       '<div class="pil-grid4">' + damageTilesEs.map(damageTile).join('') + '</div>' +
       '</div></section>';
 
@@ -830,6 +832,46 @@ module.exports = function (PIL_CONTENT, ICON, opts) {
       '<div style="font-family:var(--font-sans);font-size:13px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--color-muted);margin-bottom:18px">By type of loss</div>' +
       '<div class="pil-grid4">' + vm.damageTiles.map(damageTile).join('') + '</div>' +
       '</div></section></div>';
+  }
+
+  // Spanish version of the Property Claims hub, at /es/reclamaciones/. Tiles link to the
+  // Spanish claim page where one exists and to the English page otherwise.
+  function pageClaimsHubEs(vm) {
+    var problemsEs = [
+      { page: 'esclaim:reclamos-denegados', title: 'Reclamaciones denegadas', desc: 'La carta de denegación es la postura inicial de la aseguradora, no la última palabra. Revisamos en qué se basó y qué pasó por alto.' },
+      { page: 'esclaim:reclamos-subpagados', title: 'Reclamaciones con pagos insuficientes', desc: 'Cuando existe una diferencia importante entre el cheque de la aseguradora y el estimado de su contratista, luchamos por pagos justos sustentados en los hechos.' },
+      { page: 'esclaim:reclamos-retrasados', title: 'Reclamaciones retrasadas', desc: 'Semanas o meses de silencio forman parte de su manera de actuar. Procuramos activamente que usted reciba los beneficios a los que tiene derecho.' }
+    ];
+    var problems = problemsEs.map(function (p) {
+      return '<a href="' + href(p.page) + '" class="pil-lift-sm" style="display:flex;flex-direction:column;background:#fff;border:1px solid var(--color-hairline);border-top:3px solid var(--color-accent);border-radius:16px;padding:26px;box-shadow:var(--shadow-sm);text-decoration:none">' +
+        '<h3 style="font-family:var(--font-sans);font-size:19px;font-weight:700;color:var(--color-ink);margin:0 0 8px">' + p.title + '</h3>' +
+        '<p style="font-family:var(--font-sans);font-size:15px;line-height:1.6;color:var(--color-muted);margin:0">' + p.desc + '</p></a>';
+    }).join('');
+    var lossesEs = [
+      ['delayed', 'Reclamaciones retrasadas', 'esclaim:reclamos-retrasados'], ['denied', 'Reclamaciones denegadas', 'esclaim:reclamos-denegados'],
+      ['underpaid', 'Reclamaciones con pagos insuficientes', 'esclaim:reclamos-subpagados'], ['hurricane', 'Huracanes y tormentas tropicales'],
+      ['wind-hail', 'Viento y granizo'], ['roof', 'Daños al techo'], ['water', 'Daños por agua'], ['fire', 'Incendio y humo'],
+      ['mold', 'Moho y riesgos biológicos'], ['frozen-pipe', 'Tuberías congeladas y rotas'], ['lightning', 'Rayos'], ['tornado', 'Tornados'],
+      ['theft', 'Robo y vandalismo'], ['sinkhole', 'Socavones y colapso del terreno'], ['commercial', 'Propiedades comerciales y pérdidas importantes']
+    ].filter(function (l) { return vm.claims[l[0]]; }).map(function (l) {
+      return { label: l[1], icon: vm.claims[l[0]].icon, page: l[2] || 'claim:' + l[0] };
+    }).concat([{ label: 'Defectos de construcción', icon: 'hammer', page: 'practice:construction-defect' }]);
+    var closing = '<section style="background:var(--color-ink)"><div style="max-width:1240px;margin:0 auto;padding:clamp(48px,6vw,76px) 24px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:32px">' +
+      '<div style="max-width:640px"><h2 style="font-family:var(--font-display);font-weight:600;font-size:clamp(26px,3.6vw,40px);line-height:1.15;letter-spacing:-0.02em;color:#fff;margin:0">Su póliza es una promesa. Nosotros hacemos que las aseguradoras la cumplan.</h2>' +
+      '<p style="font-family:var(--font-sans);font-size:18px;line-height:1.6;color:rgba(255,255,255,0.72);margin:14px 0 0">Envíenos la carta de denegación, el estimado o simplemente cuéntenos lo que ha ocurrido hasta ahora. Un abogado de <b>propertyinsurance<span style="color:var(--color-primary)">.law</span></b> revisará su reclamación sin costo y le explicará claramente en qué situación se encuentra. No pagará honorarios ni costos a menos que obtengamos una recuperación a su favor.</p>' +
+      '<p style="font-family:var(--font-sans);font-size:12.5px;color:rgba(255,255,255,0.45);margin:16px 0 0">Publicidad de abogados. Los resultados anteriores no garantizan un resultado similar.</p></div>' +
+      '<div style="display:flex;flex-direction:column;align-items:stretch;gap:12px;min-width:240px">' +
+      btn({ variant: 'accent', size: 'lg', block: true, href: CONSULT_MAILTO_ES, label: 'Solicite una evaluación gratuita de su reclamación', style: 'font-size:15px;white-space:normal;text-align:center' }) +
+      '<a href="' + TEL + '" class="pil-btn pil-btn--secondary pil-btn--lg pil-btn--block"><span style="display:flex">' + I('phone', 17) + '</span><span>Llame al ' + PHONE + '</span></a>' +
+      '</div></div></section>';
+    return '<div style="animation:pilFade .4s var(--ease-out) both">' +
+      hubHead('Reclamaciones de Propiedad', 'Reclamaciones de seguros de propiedad que atendemos', 'Empiece por el problema que enfrenta o por el tipo de pérdida que sufrió. En cualquier caso, contará con un abogado que entiende cómo la aseguradora preparó el expediente de su reclamación.') +
+      '<section style="padding:clamp(48px,6vw,84px) 0"><div style="max-width:1240px;margin:0 auto;padding:0 24px">' +
+      '<div style="font-family:var(--font-sans);font-size:13px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--color-muted);margin-bottom:18px">Según el problema</div>' +
+      '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;margin-bottom:44px">' + problems + '</div>' +
+      '<div style="font-family:var(--font-sans);font-size:13px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--color-muted);margin-bottom:18px">Según el tipo de pérdida</div>' +
+      '<div class="pil-grid4">' + lossesEs.map(damageTile).join('') + '</div>' +
+      '</div></section>' + closing + '</div>';
   }
 
   function pagePracticeHub(vm) {
@@ -1102,6 +1144,7 @@ module.exports = function (PIL_CONTENT, ICON, opts) {
     if (vm.isHome) return pageHome(vm);
     if (vm.isArticle) return pageArticle(vm);
     if (vm.page === 'es') return pageHomeEs(vm);
+    if (vm.isClaimsHubEs) return pageClaimsHubEs(vm);
     if (vm.isClaimsHub) return pageClaimsHub(vm);
     if (vm.isPracticeHub) return pagePracticeHub(vm);
     if (vm.isAbout) return pageAbout(vm);
@@ -1122,6 +1165,7 @@ module.exports = function (PIL_CONTENT, ICON, opts) {
     if (vm.isArticle) return vm.av.metaTitle || (vm.av.h1 + ' | propertyinsurance.law');
     if (vm.isBio) return vm.bio.name + ' | propertyinsurance.law';
     if (vm.isPost) return (vm.post.metaTitle || vm.post.title) + ' | propertyinsurance.law';
+    if (vm.isClaimsHubEs) return 'Reclamaciones de Seguros de Propiedad | Abogados en Florida e Illinois - propertyinsurance.law';
     if (vm.isEs) return 'Abogados de Seguros de Propiedad en Español | Florida e Illinois - propertyinsurance.law';
     var m = {
       'claims-hub': 'Property Claims', 'practice-hub': 'Other Practice Areas', about: 'About the Firm',
@@ -1152,6 +1196,7 @@ module.exports = function (PIL_CONTENT, ICON, opts) {
 
   function pageDescription(vm) {
     if (vm.isArticle && vm.av.metaDescription) return truncateDesc(vm.av.metaDescription, 160);
+    if (vm.isClaimsHubEs) return 'Reclamaciones de seguros de propiedad que atendemos: denegadas, retrasadas y con pagos insuficientes, huracanes, techo, agua, incendio, moho y más.';
     if (vm.isEs) return 'Representamos a propietarios de vivienda con reclamos de seguro de propiedad denegados, retrasados o subpagados en Florida e Illinois. Consulta gratuita. Sin honorarios a menos que ganemos.';
     if (vm.isArticle) return truncateDesc(vm.av.metaDescription || vm.av.tagline, 160);
     if (vm.isBio) return truncateDesc(vm.bio.positioning, 160);

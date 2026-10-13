@@ -27,7 +27,8 @@ var FLAT_PAGE_DIRS = {
   blog: 'blog',
   policies: 'privacy-policy-and-terms',
   contact: 'contact-us',
-  es: 'es'
+  es: 'es',
+  'es-claims-hub': 'es/reclamaciones'
 };
 
 // Pages that already rank on the live Wix site keep their exact old URL
