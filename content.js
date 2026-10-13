@@ -883,8 +883,8 @@
     'reclamos-denegados': {
       en: 'claim:denied',
       eyebrow: 'Reclamaciones Denegadas',
-      h1: 'Reclamaciones de Seguro Denegadas',
-      metaTitle: 'Reclamaciones de Seguro Denegadas | Abogado de Seguros en Florida - propertyinsurance.law',
+      h1: 'Reclamaciones de Seguros Denegadas',
+      metaTitle: 'Reclamaciones de Seguros Denegadas | Abogado de Seguros en Florida - propertyinsurance.law',
       tagline: 'Una carta de denegación no significa necesariamente que su reclamación haya terminado.',
       intro: [
         'Usted pagó su prima de seguro, reportó la pérdida y cooperó con la investigación de la aseguradora. Luego recibió una carta diciendo que la reclamación no estaba cubierta.',
@@ -894,7 +894,7 @@
         'Nuestro trabajo es determinar si la denegación se sostiene.'
       ],
       sections: [
-        { heading: 'Cómo se Deniegan las Reclamaciones de Seguro', type: 'named', body: [
+        { heading: 'Cómo se Deniegan las Reclamaciones de Seguros', type: 'named', body: [
           { term: 'Una inspección incompleta.', desc: 'Una inspección breve puede convertirse en la base de toda la decisión de la aseguradora. Si un área nunca fue examinada adecuadamente, un daño importante puede pasarse por alto o descartarse.' },
           { term: 'Una disputa sobre la causa del daño.', desc: 'La causa de la pérdida puede determinar si hay cobertura. Una aseguradora puede caracterizar el daño por tormenta como desgaste normal, o una falla repentina de plomería como filtración de largo plazo. Esas distinciones importan.' },
           { term: 'Una exclusión en la póliza.', desc: 'Las pólizas de seguro contienen exclusiones, pero la redacción importa. Una denegación debe evaluarse contra el lenguaje real de la póliza, no simplemente el resumen que hace la aseguradora de ella.' },
@@ -931,8 +931,8 @@
     'reclamos-retrasados': {
       en: 'claim:delayed',
       eyebrow: 'Reclamaciones Retrasadas',
-      h1: 'Reclamaciones de Seguro Retrasadas',
-      metaTitle: 'Reclamaciones de Seguro Retrasadas | Abogado de Seguros en Florida - propertyinsurance.law',
+      h1: 'Reclamaciones de Seguros Retrasadas',
+      metaTitle: 'Reclamaciones de Seguros Retrasadas | Abogado de Seguros en Florida - propertyinsurance.law',
       tagline: 'Si su reclamación de seguro ha estado pendiente durante semanas o meses sin una decisión clara, es posible que tenga opciones para hacerlo avanzar.',
       intro: [
         'Usted presentó la reclamación. Proporcionó documentos. Permitió inspecciones. Y todavía está esperando.',
@@ -942,7 +942,7 @@
         'Cuando una reclamación parece estar estancada, revisamos qué ha sucedido, qué sigue pidiendo la aseguradora, y si hay pasos disponibles para que la reclamación avance de nuevo.'
       ],
       sections: [
-        { heading: 'Por Qué se Retrasan las Reclamaciones de Seguro', type: 'named', body: [
+        { heading: 'Por Qué se Retrasan las Reclamaciones de Seguros', type: 'named', body: [
           { term: 'Cambios repetidos de ajustador.', desc: 'Una reclamación puede transferirse de un ajustador a otro, obligándole a explicar la pérdida de nuevo o volver a presentar información que ya está en el expediente.' },
           { term: 'Solicitudes continuas de documentos.', desc: 'La aseguradora puede seguir pidiendo registros, estimados, fotografías u otra información. Algunas solicitudes son necesarias. Otras pueden repetir información que ya se proporcionó o dejarlo sin saber qué está realmente impidiendo una decisión.' },
           { term: 'Retrasos en las inspecciones.', desc: 'Las inspecciones pueden programarse con semanas de anticipación, posponerse, o ser seguidas de solicitudes de inspecciones adicionales o evaluaciones de expertos.' },
@@ -980,8 +980,8 @@
     'reclamos-subpagados': {
       en: 'claim:underpaid',
       eyebrow: 'Reclamaciones con Pagos Insuficientes',
-      h1: 'Reclamaciones de Seguro con Pagos Insuficientes',
-      metaTitle: 'Reclamaciones de Seguro con Pagos Insuficientes | Abogado de Seguros en Florida - propertyinsurance.law',
+      h1: 'Reclamaciones de Seguros con Pagos Insuficientes',
+      metaTitle: 'Reclamaciones de Seguros con Pagos Insuficientes | Abogado de Seguros en Florida - propertyinsurance.law',
       tagline: 'Si la estimación de la aseguradora no se acerca al costo real de reparar su propiedad, la reclamación aún se puede volver a examinar.',
       intro: [
         'A veces la aseguradora acepta que ocurrió una pérdida cubierta pero paga mucho menos de lo que realmente cuestan las reparaciones.',
@@ -1017,7 +1017,7 @@
       faqs: [
         { q: 'La aseguradora ya me pagó. ¿Ha terminado la reclamación?', a: 'No necesariamente. Muchas reclamaciones de seguro de propiedad involucran más de un pago, particularmente cuando se documenta daño adicional, los costos de reparación se vuelven más claros, o queda pendiente depreciación recuperable. Si puede buscar un pago adicional depende de la póliza, las circunstancias de la reclamación, y cualquier documento que pueda haber firmado.' },
         { q: 'El estimado de mi contratista es mucho más alto que el de la aseguradora. ¿Por qué?', a: 'Una gran diferencia no siempre significa que un lado simplemente usó precios más altos. A menudo, los estimados incluyen alcances de trabajo diferentes. El contratista puede incluir reparaciones, materiales, mano de obra, o trabajo relacionado con el código que no aparece en el estimado de la aseguradora. Comparamos los estimados línea por línea para determinar de dónde viene la diferencia.' },
-        { q: '¿Necesito un abogado para disputar un pago insuficiente de mi reclamación?', a: 'No toda reclamación con pago insuficiente requiere un abogado, pero la ayuda legal puede volverse importante cuando la aseguradora disputa la cobertura, se niega a pagar por daño documentado, se basa en exclusiones de la póliza, o no reconsidera de manera significativa su estimado. Un abogado puede revisar la póliza, identificar los problemas que causan el pago insuficiente, tratar directamente con la aseguradora, y determinar la mejor vía para buscar beneficios adicionales.' },
+        { q: '¿Necesito un abogado si mi aseguradora me pagó menos de lo debido?', a: 'No toda reclamación con pago insuficiente requiere un abogado, pero la ayuda legal puede volverse importante cuando la aseguradora disputa la cobertura, se niega a pagar por daño documentado, se basa en exclusiones de la póliza, o no reconsidera de manera significativa su estimado. Un abogado puede revisar la póliza, identificar los problemas que causan el pago insuficiente, tratar directamente con la aseguradora, y determinar la mejor vía para buscar beneficios adicionales.' },
         { q: '¿Cuánto cuesta contratar a su firma?', a: 'No hay costo por la revisión inicial de la reclamación. Si creemos que podemos ayudar y usted decide contratarnos, explicaremos el acuerdo de honorarios antes de comenzar cualquier trabajo. La estructura puede depender de la reclamación y la ley del estado donde ocurrió la pérdida.' }
       ],
       ctaTitle: '¿Cree que le pagaron menos de lo debido?',
