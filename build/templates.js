@@ -68,7 +68,7 @@ module.exports = function (PIL_CONTENT, ICON, opts) {
     florida: 'assets/florida.png', illinois: 'assets/illinois.png'
   };
   var BIO_AVAIL = { 'shari-freeman': 1, 'zaf-goss': 1, 'james-wilson': 1, 'alex-couture': 1 };
-  var BLOG_IMAGE_AVAIL = { 'can-insurance-company-drop-me-after-claim-florida': 'png', 'can-my-insurance-company-replace-only-half-my-roof-in-florida': 'png', 'common-reasons-florida-hurricane-claims-denied': 'png', 'contractor-estimate-higher-than-insurance-florida': 'png', 'do-i-have-to-use-insurance-preferred-contractor-florida': 'png', 'examination-under-oath-florida-property-claim': 'png', 'flood-insurance-claims-in-florida-what-every-homeowner-needs-to-know': 'jpg', 'florida-homeowners-insurance-faqs': 'png', 'florida-insurance-claim-underpaid': 'png', 'florida-roof-matching-law-shingles': 'png', 'how-florida-insurance-companies-calculate-roof-depreciation': 'png', 'how-hurricane-deductibles-work-florida': 'png', 'how-insurance-companies-evaluate-roof-storm-damage-florida': 'png', 'how-long-florida-property-insurance-lawsuit': 'png', 'how-much-should-my-florida-roof-claim-really-pay': 'png', 'insurance-company-denied-my-roof-claim-in-florida-now-what': 'png', 'interior-water-damage-after-storm-florida': 'png', 'is-it-worth-hiring-attorney-florida-insurance-claim': 'png', 'late-notice-denial-florida-insurance-claim': 'png', 'ordinance-and-law-coverage-florida-property-insurance': 'png', 'pre-existing-damage-denial-florida': 'png', 'rcv-vs-acv': 'png', 'recorded-statement-florida-insurance-claim': 'png', 'recoverable-depreciation-florida-property-claim': 'png', 'reopen-closed-florida-insurance-claim': 'png', 'repairs-fail-after-insurance-claim-florida': 'png', 'second-roof-claim-florida': 'png', 'wear-and-tear-roof-claim-denial-florida': 'png', 'what-to-do-after-hurricane-damage-florida': 'png', 'why-is-my-florida-insurance-claim-taking-too-long': 'png', 'wind-vs-flood-damage-florida-claim': 'png' };
+  var BLOG_IMAGE_AVAIL = { 'hurricane-claim-deadlines-florida-insurance-company': 'jpg', 'can-insurance-company-drop-me-after-claim-florida': 'png', 'can-my-insurance-company-replace-only-half-my-roof-in-florida': 'png', 'common-reasons-florida-hurricane-claims-denied': 'png', 'contractor-estimate-higher-than-insurance-florida': 'png', 'do-i-have-to-use-insurance-preferred-contractor-florida': 'png', 'examination-under-oath-florida-property-claim': 'png', 'flood-insurance-claims-in-florida-what-every-homeowner-needs-to-know': 'jpg', 'florida-homeowners-insurance-faqs': 'png', 'florida-insurance-claim-underpaid': 'png', 'florida-roof-matching-law-shingles': 'png', 'how-florida-insurance-companies-calculate-roof-depreciation': 'png', 'how-hurricane-deductibles-work-florida': 'png', 'how-insurance-companies-evaluate-roof-storm-damage-florida': 'png', 'how-long-florida-property-insurance-lawsuit': 'png', 'how-much-should-my-florida-roof-claim-really-pay': 'png', 'insurance-company-denied-my-roof-claim-in-florida-now-what': 'png', 'interior-water-damage-after-storm-florida': 'png', 'is-it-worth-hiring-attorney-florida-insurance-claim': 'png', 'late-notice-denial-florida-insurance-claim': 'png', 'ordinance-and-law-coverage-florida-property-insurance': 'png', 'pre-existing-damage-denial-florida': 'png', 'rcv-vs-acv': 'png', 'recorded-statement-florida-insurance-claim': 'png', 'recoverable-depreciation-florida-property-claim': 'png', 'reopen-closed-florida-insurance-claim': 'png', 'repairs-fail-after-insurance-claim-florida': 'png', 'second-roof-claim-florida': 'png', 'wear-and-tear-roof-claim-denial-florida': 'png', 'what-to-do-after-hurricane-damage-florida': 'png', 'why-is-my-florida-insurance-claim-taking-too-long': 'png', 'wind-vs-flood-damage-florida-claim': 'png' };
 
   // ---------------- helpers ----------------
   function I(name, size, sw) { return ICON(name, size, sw); }
@@ -298,7 +298,7 @@ module.exports = function (PIL_CONTENT, ICON, opts) {
       return d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' });
     }
     function readTimeFor(post) {
-      var words = (post.body || []).reduce(function (n, b) { return n + String(b.text || '').split(/\s+/).length; }, 0);
+      var words = (post.body || []).reduce(function (n, b) { return n + String(b.text || '').replace(/<[^>]+>/g, ' ').trim().split(/\s+/).length; }, 0);
       return Math.max(1, Math.round(words / 200)) + ' min read';
     }
     function resolveLink(raw) {
@@ -323,7 +323,7 @@ module.exports = function (PIL_CONTENT, ICON, opts) {
       return Object.assign({}, p, {
         dateDisplay: fmtPostDate(p.date), readTime: readTimeFor(p), dek: p.metaDescription,
         authorSlug: author ? author.slug : null, authorRole: author ? author.role : '', authorInitials: author ? author.initials : (p.author || '').split(' ').map(function (w) { return w[0]; }).join(''),
-        blocks: (p.body || []).map(function (b) { return { isHeading: b.type === 'heading', text: b.text }; }),
+        blocks: (p.body || []).map(function (b) { return { isHeading: b.type === 'heading', isHtml: b.type === 'html', text: b.text }; }),
         related: related
       });
     }
@@ -1039,6 +1039,8 @@ module.exports = function (PIL_CONTENT, ICON, opts) {
     var p = vm.post;
     var blocks = (p.blocks || []).map(function (b) {
       if (b.isHeading) return '<h2 style="font-family:var(--font-display);font-weight:600;font-size:clamp(23px,3vw,30px);line-height:1.2;letter-spacing:-0.01em;color:var(--color-ink);margin:34px 0 14px">' + inlineLinks(b.text) + '</h2>';
+      // html blocks (tables, lists) can't sit inside a <p>.
+      if (b.isHtml) return '<div style="margin:0 0 22px">' + inlineLinks(b.text) + '</div>';
       return '<p style="font-family:var(--font-sans);font-size:18px;line-height:1.75;color:var(--color-body);margin:0 0 18px">' + inlineLinks(b.text) + '</p>';
     }).join('');
     var related = (p.related || []).map(function (r) {
