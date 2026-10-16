@@ -1021,7 +1021,8 @@ module.exports = function (PIL_CONTENT, ICON, opts) {
         '<p style="font-family:var(--font-sans);font-size:14px;line-height:1.6;color:var(--color-muted);margin:0 0 16px;flex:1">' + b.dek + '</p>' +
         '<span style="font-family:var(--font-sans);font-size:13px;font-weight:600;color:var(--color-body)">By ' + b.author + ' · ' + b.dateDisplay + '</span></div></a>';
     }).join('');
-    var external = (d.externalArticles || []).map(function (u) {
+    // newest first, whatever order content.js lists them in
+    var external = (d.externalArticles || []).slice().sort(function (a, b) { return Date.parse(b.dateDisplay) - Date.parse(a.dateDisplay); }).map(function (u) {
       return '<a href="' + u.url + '" target="_blank" rel="noopener" class="pil-underline" style="display:flex;align-items:flex-start;gap:10px;padding:10px 0;font-family:var(--font-sans);font-size:15px;line-height:1.5;color:var(--color-body);text-decoration:none;border-bottom:1px solid var(--color-hairline-soft)">' +
         '<span style="color:var(--color-primary);display:flex;margin-top:3px;flex:none">' + I('file-text', 16) + '</span>' +
         '<span><span style="color:var(--color-ink);font-weight:600">' + u.title + '</span><br><span style="color:var(--color-muted);font-size:13.5px">' + u.author + ' · ' + u.dateDisplay + '</span></span></a>';

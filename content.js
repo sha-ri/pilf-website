@@ -3111,7 +3111,7 @@
         metaTitle: 'Florida Homeowners Insurance FAQs',
         metaDescription: 'Get answers to top Florida homeowners insurance questions: delayed claims, cancellations, refunds, premium hikes. Speak with an attorney at www.propertyinsurance.law today.',
         category: 'Insurance Dispute Advice', tags: ['policyholder rights', 'cancellation', 'claim process'],
-        author: 'James Wilson', date: '2025-10-23',
+        author: 'James Wilson', date: '2025-10-30',
         links: ['/delayed-insurance-claims-florida'],
         body: [
           { type: 'para', text: 'Dealing with a homeowners insurance claim in Florida can be frustrating, especially when the insurance company isn’t being clear or responsive. At <b>propertyinsurance<span style="color:var(--color-primary)">.law</span></b>, we help Florida homeowners understand their insurance rights and hold insurance companies accountable when they delay, deny, or underpay valid claims.' },
@@ -3142,7 +3142,7 @@
         metaTitle: 'Replacement Cost vs Actual Cash Value: What Florida Homeowners Need to Know',
         metaDescription: 'Learn the difference between Replacement Cost and Actual Cash Value coverage. Florida homeowners: Don\'t settle your insurance claim until you understand your policy.',
         category: 'Property Damage Law', tags: ['coverage basics', 'depreciation', 'ACV'],
-        author: 'Shari Freeman', date: '2025-10-23',
+        author: 'Shari Freeman', date: '2025-11-06',
         links: ['/post/how-florida-insurance-companies-calculate-roof-depreciation'],
         body: [
           { type: 'para', text: 'If you’ve suffered property damage and filed a homeowners insurance claim, understanding the difference between Replacement Cost Value (RCV) and Actual Cash Value (ACV) coverage could make thousands of dollars\' difference in your recovery.' },
