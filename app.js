@@ -586,7 +586,7 @@
       '</div></section>' +
       '<section style="padding:clamp(48px,6vw,80px) 0"><div class="pil-collapse" style="max-width:1100px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:52px;align-items:start">' +
       '<article>' + intro + urgentCta(av.urgentCtaTop, '16px') + sections + steps + urgentCta(av.urgentCtaBottom, '38px') + faqs +
-      '<div style="margin-top:36px;padding:18px 22px;background:#fff;border:1px solid var(--color-hairline);border-left:3px solid var(--color-primary);border-radius:12px;font-family:var(--font-sans);font-size:14px;line-height:1.6;color:var(--color-muted)">' + av.disclaimer + '</div></article>' +
+      '<div style="margin-top:36px;padding:18px 22px;background:#fff;border:1px solid var(--color-hairline);border-radius:12px;font-family:var(--font-sans);font-size:14px;line-height:1.6;color:var(--color-muted)">' + av.disclaimer + '</div></article>' +
       '<aside style="position:sticky;top:96px;display:flex;flex-direction:column;gap:18px">' + sidebarCta(av.ctaTitle, av.ctaBody) + related + '</aside>' +
       '</div></section></div>';
   }
@@ -603,7 +603,7 @@
   // to press a time-sensitive "reach out now" moment.
   function urgentCta(o, marginTop) {
     if (!o) return '';
-    return '<div style="margin-top:' + marginTop + ';background:var(--color-danger-soft);border:1px solid #f3c6c6;border-left:4px solid var(--color-danger);border-radius:14px;padding:clamp(20px,3vw,28px)">' +
+    return '<div style="margin-top:' + marginTop + ';background:var(--color-danger-soft);border:1px solid #f3c6c6;border-radius:14px;padding:clamp(20px,3vw,28px)">' +
       '<h3 style="font-family:var(--font-display);font-weight:600;font-size:clamp(19px,2.4vw,23px);line-height:1.25;color:var(--color-ink);margin:0 0 8px">' + o.heading + '</h3>' +
       '<p style="font-family:var(--font-sans);font-size:15.5px;line-height:1.6;color:var(--color-body);margin:0 0 18px">' + o.body + '</p>' +
       '<div style="display:flex;flex-wrap:wrap;gap:12px">' + btn({ variant: 'danger', href: HURRICANE_MAILTO, label: 'Email Our Team Now' }) +
@@ -626,7 +626,7 @@
 
   function pageClaimsHub(vm) {
     var problems = vm.problems.map(function (p) {
-      return '<a href="' + href(p.page) + '" class="pil-lift-sm" style="display:flex;flex-direction:column;background:#fff;border:1px solid var(--color-hairline);border-top:3px solid var(--color-accent);border-radius:16px;padding:26px;box-shadow:var(--shadow-sm);text-decoration:none">' +
+      return '<a href="' + href(p.page) + '" class="pil-lift-sm" style="display:flex;flex-direction:column;background:#fff;border:1px solid var(--color-hairline);border-radius:16px;padding:26px;box-shadow:var(--shadow-sm);text-decoration:none">' +
         '<h3 style="font-family:var(--font-sans);font-size:19px;font-weight:700;color:var(--color-ink);margin:0 0 8px">' + p.cta + '</h3>' +
         '<p style="font-family:var(--font-sans);font-size:15px;line-height:1.6;color:var(--color-muted);margin:0">' + p.desc + '</p></a>';
     }).join('');
@@ -763,7 +763,7 @@
       eyebrowPlain(d.eyebrow) + '<h1 style="font-family:var(--font-display);font-weight:600;font-size:clamp(32px,4.6vw,52px);line-height:1.08;letter-spacing:-0.02em;color:var(--color-ink);margin:12px 0 0">' + d.h1 + '</h1>' +
       '<p style="font-family:var(--font-sans);font-size:19px;line-height:1.6;color:var(--color-muted);margin:16px auto 0;max-width:560px">' + d.tagline + '</p></div></section>' +
       '<section style="padding:clamp(48px,6vw,80px) 0"><div style="max-width:820px;margin:0 auto;padding:0 24px">' + groups +
-      (d.disclaimer ? '<div style="margin-top:8px;padding:18px 22px;background:var(--color-surface-soft);border:1px solid var(--color-hairline);border-left:3px solid var(--color-primary);border-radius:12px;font-family:var(--font-sans);font-size:14px;line-height:1.6;color:var(--color-muted)">' + d.disclaimer + '</div>' : '') +
+      (d.disclaimer ? '<div style="margin-top:8px;padding:18px 22px;background:var(--color-surface-soft);border:1px solid var(--color-hairline);border-radius:12px;font-family:var(--font-sans);font-size:14px;line-height:1.6;color:var(--color-muted)">' + d.disclaimer + '</div>' : '') +
       '</div></section></div>';
   }
 

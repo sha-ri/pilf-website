@@ -714,10 +714,20 @@ module.exports = function (PIL_CONTENT, ICON, opts) {
       '<div style="font-family:var(--font-sans);font-size:13px;color:var(--color-muted)">' + cap + '</div></div></div>';
   }
 
+  // featured tiles (an active storm page) render in red, matching the menu.
   function damageTile(d) {
-    return '<a href="' + href(d.page) + '" class="pil-lift-sm" style="display:flex;align-items:center;gap:14px;background:#fff;border:1px solid var(--color-hairline);border-radius:14px;padding:18px 20px;box-shadow:var(--shadow-sm);text-decoration:none">' +
-      '<span style="width:44px;height:44px;flex:none;border-radius:12px;background:var(--color-primary-soft);color:var(--color-primary);display:flex;align-items:center;justify-content:center">' + I(d.icon, 22) + '</span>' +
-      '<span style="font-family:var(--font-sans);font-size:15.5px;font-weight:600;color:var(--color-ink)">' + d.label + '</span></a>';
+    var f = d.featured;
+    return '<a href="' + href(d.page) + '" class="pil-lift-sm" style="display:flex;align-items:center;gap:14px;background:' + (f ? 'var(--color-danger-soft)' : '#fff') + ';border:1px solid ' + (f ? '#f3c6c6' : 'var(--color-hairline)') + ';border-radius:14px;padding:18px 20px;box-shadow:var(--shadow-sm);text-decoration:none">' +
+      '<span style="width:44px;height:44px;flex:none;border-radius:12px;background:' + (f ? 'var(--color-danger)' : 'var(--color-primary-soft)') + ';color:' + (f ? '#fff' : 'var(--color-primary)') + ';display:flex;align-items:center;justify-content:center">' + I(d.icon, 22) + '</span>' +
+      '<span style="font-family:var(--font-sans);font-size:15.5px;font-weight:' + (f ? '700' : '600') + ';color:' + (f ? 'var(--color-danger)' : 'var(--color-ink)') + '">' + d.label + '</span></a>';
+  }
+
+  // Claim pages flagged navFeatured, as red tiles to lead a hub's loss grid.
+  function featuredTiles(vm, isEs) {
+    return Object.keys(vm.claims).filter(function (k) { return vm.claims[k].navFeatured; }).map(function (k) {
+      var c = vm.claims[k];
+      return { label: isEs && c.navEs ? c.navEs : c.nav, icon: c.icon, page: isEs && c.es ? c.es : 'claim:' + k, featured: true };
+    });
   }
 
   function starRow(size) { var o = ''; for (var i = 0; i < 5; i++) o += '<span style="display:flex">' + I('star', size) + '</span>'; return o; }
@@ -775,7 +785,7 @@ module.exports = function (PIL_CONTENT, ICON, opts) {
       '</div></section>' +
       '<section style="padding:clamp(48px,6vw,80px) 0"><div class="pil-collapse" style="max-width:1100px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:52px;align-items:start">' +
       '<article>' + intro + urgentCta(av.urgentCtaTop, '16px', vm.isEs) + sections + steps + urgentCta(av.urgentCtaBottom, '38px', vm.isEs) + faqs + urgentCta(av.urgentCtaEnd, '38px', vm.isEs) +
-      '<div style="margin-top:36px;padding:18px 22px;background:#fff;border:1px solid var(--color-hairline);border-left:3px solid var(--color-primary);border-radius:12px;font-family:var(--font-sans);font-size:14px;line-height:1.6;color:var(--color-muted)">' + av.disclaimer + '</div></article>' +
+      '<div style="margin-top:36px;padding:18px 22px;background:#fff;border:1px solid var(--color-hairline);border-radius:12px;font-family:var(--font-sans);font-size:14px;line-height:1.6;color:var(--color-muted)">' + av.disclaimer + '</div></article>' +
       '<aside style="position:sticky;top:96px;display:flex;flex-direction:column;gap:18px">' + sidebarCta(av.ctaTitle, av.ctaBody, vm.isEs) + related + '</aside>' +
       '</div></section></div>';
   }
@@ -793,7 +803,7 @@ module.exports = function (PIL_CONTENT, ICON, opts) {
   // an empty object renders just the two red buttons.
   function urgentCta(o, marginTop, isEs) {
     if (!o) return '';
-    return '<div style="margin-top:' + marginTop + ';background:var(--color-danger-soft);border:1px solid #f3c6c6;border-left:4px solid var(--color-danger);border-radius:14px;padding:clamp(20px,3vw,28px)">' +
+    return '<div style="margin-top:' + marginTop + ';background:var(--color-danger-soft);border:1px solid #f3c6c6;border-radius:14px;padding:clamp(20px,3vw,28px)">' +
       (o.heading ? '<h3 style="font-family:var(--font-display);font-weight:600;font-size:clamp(19px,2.4vw,23px);line-height:1.25;color:var(--color-ink);margin:0 0 8px">' + o.heading + '</h3>' : '') +
       (o.body ? '<p style="font-family:var(--font-sans);font-size:15.5px;line-height:1.6;color:var(--color-body);margin:0 0 18px">' + o.body + '</p>' : '') +
       '<div style="display:flex;flex-wrap:wrap;gap:12px">' + btn({ variant: 'danger', href: isEs ? HURRICANE_MAILTO_ES : HURRICANE_MAILTO, label: isEs ? 'Escríbanos Ahora' : 'Email Our Team Now' }) +
@@ -820,7 +830,7 @@ module.exports = function (PIL_CONTENT, ICON, opts) {
 
   function pageClaimsHub(vm) {
     var problems = vm.problems.map(function (p) {
-      return '<a href="' + href(p.page) + '" class="pil-lift-sm" style="display:flex;flex-direction:column;background:#fff;border:1px solid var(--color-hairline);border-top:3px solid var(--color-accent);border-radius:16px;padding:26px;box-shadow:var(--shadow-sm);text-decoration:none">' +
+      return '<a href="' + href(p.page) + '" class="pil-lift-sm" style="display:flex;flex-direction:column;background:#fff;border:1px solid var(--color-hairline);border-radius:16px;padding:26px;box-shadow:var(--shadow-sm);text-decoration:none">' +
         '<h3 style="font-family:var(--font-sans);font-size:19px;font-weight:700;color:var(--color-ink);margin:0 0 8px">' + p.cta + '</h3>' +
         '<p style="font-family:var(--font-sans);font-size:15px;line-height:1.6;color:var(--color-muted);margin:0">' + p.desc + '</p></a>';
     }).join('');
@@ -830,7 +840,7 @@ module.exports = function (PIL_CONTENT, ICON, opts) {
       '<div style="font-family:var(--font-sans);font-size:13px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--color-muted);margin-bottom:18px">By problem</div>' +
       '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;margin-bottom:44px">' + problems + '</div>' +
       '<div style="font-family:var(--font-sans);font-size:13px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--color-muted);margin-bottom:18px">By type of loss</div>' +
-      '<div class="pil-grid4">' + vm.damageTiles.map(damageTile).join('') + '</div>' +
+      '<div class="pil-grid4">' + featuredTiles(vm).concat(vm.damageTiles).map(damageTile).join('') + '</div>' +
       '</div></section></div>';
   }
 
@@ -843,7 +853,7 @@ module.exports = function (PIL_CONTENT, ICON, opts) {
       { page: 'esclaim:reclamos-retrasados', title: 'Reclamaciones retrasadas', desc: 'Semanas o meses de silencio forman parte de su manera de actuar. Procuramos activamente que usted reciba los beneficios a los que tiene derecho.' }
     ];
     var problems = problemsEs.map(function (p) {
-      return '<a href="' + href(p.page) + '" class="pil-lift-sm" style="display:flex;flex-direction:column;background:#fff;border:1px solid var(--color-hairline);border-top:3px solid var(--color-accent);border-radius:16px;padding:26px;box-shadow:var(--shadow-sm);text-decoration:none">' +
+      return '<a href="' + href(p.page) + '" class="pil-lift-sm" style="display:flex;flex-direction:column;background:#fff;border:1px solid var(--color-hairline);border-radius:16px;padding:26px;box-shadow:var(--shadow-sm);text-decoration:none">' +
         '<h3 style="font-family:var(--font-sans);font-size:19px;font-weight:700;color:var(--color-ink);margin:0 0 8px">' + p.title + '</h3>' +
         '<p style="font-family:var(--font-sans);font-size:15px;line-height:1.6;color:var(--color-muted);margin:0">' + p.desc + '</p></a>';
     }).join('');
@@ -870,7 +880,7 @@ module.exports = function (PIL_CONTENT, ICON, opts) {
       '<div style="font-family:var(--font-sans);font-size:13px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--color-muted);margin-bottom:18px">Según el problema</div>' +
       '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;margin-bottom:44px">' + problems + '</div>' +
       '<div style="font-family:var(--font-sans);font-size:13px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--color-muted);margin-bottom:18px">Según el tipo de pérdida</div>' +
-      '<div class="pil-grid4">' + lossesEs.map(damageTile).join('') + '</div>' +
+      '<div class="pil-grid4">' + featuredTiles(vm, true).concat(lossesEs).map(damageTile).join('') + '</div>' +
       '</div></section>' + closing + '</div>';
   }
 
@@ -997,7 +1007,7 @@ module.exports = function (PIL_CONTENT, ICON, opts) {
       eyebrowPlain(d.eyebrow) + '<h1 style="font-family:var(--font-display);font-weight:600;font-size:clamp(32px,4.6vw,52px);line-height:1.08;letter-spacing:-0.02em;color:var(--color-ink);margin:12px 0 0">' + d.h1 + '</h1>' +
       '<p style="font-family:var(--font-sans);font-size:19px;line-height:1.6;color:var(--color-muted);margin:16px auto 0;max-width:560px">' + d.tagline + '</p></div></section>' +
       '<section style="padding:clamp(48px,6vw,80px) 0"><div style="max-width:820px;margin:0 auto;padding:0 24px">' + groups +
-      (d.disclaimer ? '<div style="margin-top:8px;padding:18px 22px;background:var(--color-surface-soft);border:1px solid var(--color-hairline);border-left:3px solid var(--color-primary);border-radius:12px;font-family:var(--font-sans);font-size:14px;line-height:1.6;color:var(--color-muted)">' + d.disclaimer + '</div>' : '') +
+      (d.disclaimer ? '<div style="margin-top:8px;padding:18px 22px;background:var(--color-surface-soft);border:1px solid var(--color-hairline);border-radius:12px;font-family:var(--font-sans);font-size:14px;line-height:1.6;color:var(--color-muted)">' + d.disclaimer + '</div>' : '') +
       '</div></section></div>';
   }
 
