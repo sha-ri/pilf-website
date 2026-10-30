@@ -3194,7 +3194,7 @@
 
   // ---- Shared / home ----
   var stats = [
-    { value: '$10M+', prefix: '$', end: 10, suffix: 'M+', label: 'recovered for policyholders' },
+    { value: '$112M+', prefix: '$', end: 112, suffix: 'M+', label: 'recovered for policyholders' },
     { value: '3,500+', end: 3500, comma: true, suffix: '+', label: 'claims handled' },
     { value: '$0', prefix: '$', end: 0, start: 250, label: 'fee unless we win' }
   ];
